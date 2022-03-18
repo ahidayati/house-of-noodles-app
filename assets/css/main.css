@@ -1,1 +1,10 @@
 @import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+/*navbar*/
+.navbar-logo {
+    width: 20%;
+}
