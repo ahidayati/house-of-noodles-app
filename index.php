@@ -59,7 +59,7 @@
                         <a class="nav-link" href="#">Menu</a>
                         <a class="nav-link" href="#">Reservation</a>
                         <a class="nav-link" href="#">Contact Us</a>
-                        <a class="nav-link" href="#"><i class="fa-solid fa-phone"></i> 12.34.56.78.90</a>
+                        <a class="nav-link" href="tel:123-456-7890"><i class="fa-solid fa-phone"></i> 12.34.56.78.90</a>
                     </div>
                 </div>
             </div>
@@ -140,7 +140,7 @@
 
 <!--reservation section-->
     <section id="reservation-section">
-        <div class="container my-5">
+        <div class="container py-5">
             <h2 class="text-center">Reserve Your Table Now</h2>
             <form>
                 <div class="row">
@@ -151,8 +151,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="inputEmail" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            <input type="email" class="form-control" id="inputEmail">
                         </div>
                         <div class="mb-3">
                             <label for="inputPhone" class="form-label">Phone No.</label>
@@ -264,7 +263,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="inputMessage" class="form-label" hidden>Message</label>
-                                    <textarea rows="3" type="text" class="form-control" id="inputMessage">Message</textarea>
+                                    <textarea rows="3" type="text" class="form-control" id="inputMessage" placeholder="Message"></textarea>
                                 </div>
                             </div>
                         </div>
