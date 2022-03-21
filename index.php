@@ -191,7 +191,7 @@
             <div class="col-5 offset-7">
                 <i class="fa-solid fa-quote-right"></i>
                 <p class="testimonial-text">I ordered the spicy tonkotsu ramen, the flavor profile was 10/10. I truly appreciate how much care they put into the presentation of the bowl. That really took the experience the extra mile for me. The noodles are fresh, the cuts of pork belly are juicy and the broth is delicious and not too salty. It was an excellent experience, must try for noodle lovers!</p>
-                <p class="testimonial-name">Lucy Liu</p>
+                <p class="testimonial-name">Jean-Claude Van Damme</p>
             </div>
         </div>
     </section>
