@@ -19,18 +19,33 @@
 //
 //var_dump($rows);
 
+
+use app\controller\HomeController;
+use Bramus\Router\Router;
+
 require 'vendor/autoload.php';
-include 'controller/HomeController.php';
+//require 'src/controller/HomeController.php';
+//require 'vendor/bramus/router/src/Bramus/Router/Router.php';
 
-$home = new HomeController();
-$home->display();
-
+//$home = new HomeController();
+//$home->display();
 
 //if (empty($_GET['page'])) {
 //    (new HomeController())();
 //} else {
 //    echo "page not found";
 //}
+
+// Create a Router
+$router = new Router();
+
+// Define Routes
+$router->get('/', function () {
+    (new HomeController())->display();
+});
+
+// Run router
+$router->run();
 
 ?>
 

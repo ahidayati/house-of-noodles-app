@@ -10,7 +10,6 @@ const minify = require('gulp-clean-css');
 function compilejs() {
     return src(['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.js', 'assets/js/main.js'])
         .pipe(concat('main.js'))
-        .pipe(minify())
         .pipe(dest('assets/public/js'))
 }
 

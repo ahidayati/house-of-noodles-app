@@ -2,7 +2,7 @@
     "name": "annisa/app",
     "autoload": {
         "psr-4": {
-            "Annisa\\App\\": "src/"
+            "app\\": "src/"
         }
     },
     "authors": [
