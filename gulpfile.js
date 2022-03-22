@@ -9,8 +9,9 @@ const minify = require('gulp-clean-css');
 // function to compile js files
 function compilejs() {
     return src(['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.js', 'assets/js/main.js'])
-        .pipe(concat('all.js'))
-        .pipe(dest('assets/dist/'))
+        .pipe(concat('main.js'))
+        .pipe(minify())
+        .pipe(dest('assets/public/js'))
 }
 
 // function to convert and compile scss to css
@@ -19,7 +20,7 @@ function compilescss(){
         .pipe(sass())
         .pipe(prefix())
         .pipe(minify())
-        .pipe(dest('assets/dist/'))
+        .pipe(dest('assets/public/css'))
 }
 
 // watchtask
