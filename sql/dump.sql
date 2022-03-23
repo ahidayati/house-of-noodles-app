@@ -24,25 +24,30 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `database` /*!40100 DEFAULT CHARACTER S
 USE `database`;
 
 --
--- Table structure for table `table1`
+-- Table structure for table `homepage_item`
 --
 
-DROP TABLE IF EXISTS `table1`;
+DROP TABLE IF EXISTS `homepage_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `table1` (
-  `id` int(11) NOT NULL,
-  `name` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `homepage_item` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `section` varchar(50) NOT NULL,
+  `heading` varchar(50) NOT NULL,
+  `subheading` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `table1`
+-- Dumping data for table `homepage_item`
 --
 
-LOCK TABLES `table1` WRITE;
-/*!40000 ALTER TABLE `table1` DISABLE KEYS */;
-/*!40000 ALTER TABLE `table1` ENABLE KEYS */;
+LOCK TABLES `homepage_item` WRITE;
+/*!40000 ALTER TABLE `homepage_item` DISABLE KEYS */;
+INSERT INTO `homepage_item` VALUES
+(1,'header','Welcome to the house of noodles','No life without noodles');
+/*!40000 ALTER TABLE `homepage_item` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-22 11:37:56
+-- Dump completed on 2022-03-23 15:49:27

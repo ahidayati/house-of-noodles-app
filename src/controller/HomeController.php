@@ -4,7 +4,7 @@ namespace app\controller;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-
+use app\model\Home;
 
 //include $_SERVER['DOCUMENT_ROOT']."/src/model/Home.php";
 //var_dump(file_exists($_SERVER['DOCUMENT_ROOT']."/src/model/Home.php"));

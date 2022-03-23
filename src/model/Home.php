@@ -1,6 +1,7 @@
 <?php
 
-include_once 'Connection.php';
+namespace app\model;
+use PDO;
 
 class Home extends Connection
 {
