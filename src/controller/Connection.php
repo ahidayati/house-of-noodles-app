@@ -1,6 +1,7 @@
 <?php
 
-
+namespace app\controller;
+use PDO;
 
 class Connection
 {
