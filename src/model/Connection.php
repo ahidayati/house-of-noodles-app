@@ -4,8 +4,8 @@ class Connection
 {
     public function connection()
     {
-//        $pdo = new PDO('mysql:host=localhost;dbname=exam_pdo', '', '');
-//        return $pdo;
+        //$pdo = new PDO('mysql:host=localhost;dbname=exam_pdo', '', '');
+        //return $pdo;
 
         try{
             //$connect = new PDO("mysql:host=mariadb;port=3306;dbname=database", "user", "zeus");

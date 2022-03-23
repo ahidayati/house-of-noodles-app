@@ -8,31 +8,31 @@
                     <div class="row">
                         <div class="col-6 py-sm-3 d-flex flex-column justify-content-center">
                             <div class="mb-3">
-                                <label for="inputName" class="form-label" hidden>Name</label>
-                                <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                <label for="contactName" class="form-label" hidden>Name</label>
+                                <input type="text" class="form-control" id="contactName" name="contactName" placeholder="Name" required>
                             </div>
                             <div class="mb-3">
-                                <label for="inputEmail" class="form-label" hidden>Email Address</label>
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+                                <label for="contactEmail" class="form-label" hidden>Email Address</label>
+                                <input type="email" class="form-control" id="contactEmail" name="contactEmail" placeholder="Email Address" required>
                             </div>
                             <div class="mb-3">
-                                <label for="inputPhone" class="form-label" hidden>Phone No.</label>
-                                <input type="tel" class="form-control" id="inputPhone" placeholder="Phone No.">
+                                <label for="contactPhone" class="form-label" hidden>Phone No.</label>
+                                <input type="tel" class="form-control" id="contactPhone" name="contactPhone" placeholder="Phone No." required>
                             </div>
                         </div>
                         <div class="col-6 py-sm-3 d-flex flex-column justify-content-center">
                             <div class="mb-3">
-                                <label for="inputSubject" class="form-label" hidden>Subject</label>
-                                <input type="text" class="form-control" id="inputSubject" placeholder="Subject">
+                                <label for="contactSubject" class="form-label" hidden>Subject</label>
+                                <input type="text" class="form-control" id="contactSubject" name="contactSubject" placeholder="Subject">
                             </div>
                             <div class="mb-3">
-                                <label for="inputMessage" class="form-label" hidden>Message</label>
-                                <textarea rows="3" type="text" class="form-control" id="inputMessage" placeholder="Message"></textarea>
+                                <label for="contactMessage" class="form-label" hidden>Message</label>
+                                <textarea rows="3" type="text" class="form-control" id="contactMessage" name="contactMessage" placeholder="Message"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="text-center mb-sm-5">
-                        <button type="submit" class="btn btn-outline-light">Submit</button>
+                        <button type="submit" class="btn btn-outline-light" id="contactSubmit" name="contactSubmit">Submit</button>
                     </div>
                 </form>
             </div>
