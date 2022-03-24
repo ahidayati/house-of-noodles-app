@@ -24,10 +24,13 @@ class HomeController
 //        var_dump($headerSection);
 //        die();
 
+        $thisYear = Date("Y");
+
         $loader = new FilesystemLoader('./templates');
         $twig = new Environment($loader);
         echo $twig->render('home/index.html.twig', [
             'testVariable' => $headerSection,
+            'thisYear' => $thisYear,
 
         ]);
     }

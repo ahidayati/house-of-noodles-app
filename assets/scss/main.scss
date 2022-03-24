@@ -1,6 +1,8 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 body {
+  padding: 0;
+  margin: 0;
   font-family: 'Raleway', sans-serif;
 }
 
@@ -11,7 +13,7 @@ body {
 
 //header section
 #header-section {
-    background: url("../../images/header-image.jpg") no-repeat center;
+    background: url("/assets/images/header-image.jpg") no-repeat center;
     background-size: cover;
     height: 650px;
     position: relative;
@@ -34,11 +36,21 @@ body {
 #menu-section {
   padding: 2rem 0;
   background-color: #EEEBDD;
+
+  .menu-items-row {
+    //padding: 2rem 10rem;
+
+    .menu-item-title {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+  }
+
 }
 
 //hours section
 #hours-section {
-  background: url("../../images/opening-hours-image.jpg") no-repeat center;
+  background: url("/assets/images/opening-hours-image.jpg") no-repeat center;
   background-size: cover;
   height: 300px;
   padding: 2rem 0;
@@ -65,8 +77,11 @@ body {
   background-size: cover;
   height: 400px;
 
-  div {
+  .testimonial-box {
     text-align: right;
+    background-color: RGB(255, 255, 255, 0.7);
+    border-radius: 5px;
+    padding: 2rem;
 
     .fa-solid {
       font-size: 2rem;
@@ -96,6 +111,9 @@ body {
 
   }
 
+  //.testimonial-textbox {
+  //  background-color: RGB(0, 0, 0, .5);
+  //}
 }
 
 //footer
@@ -121,5 +139,16 @@ body {
     font-size: 0.8rem;
     color: #5c636a;
     text-decoration: none;
+  }
+}
+
+//.form-control:focus {
+//  border-color: dimgrey;
+//  box-shadow: 0 0 0 0.25rem rgb(32 32 32 / 25%);
+//}
+
+@media only screen and (max-width: 600px) {
+  .testimonial-text {
+    font-size: 0.3rem;
   }
 }

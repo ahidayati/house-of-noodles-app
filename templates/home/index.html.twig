@@ -13,7 +13,7 @@
 
     <!--menu section-->
     <section id="menu-section">
-        <div class="container">
+        <div class="container py-5">
             <div class="text-center row">
                 <h2>Our Menu</h2>
                 <p>Our menu changes occasionally. Any meat can be replaced with tofu or saitan. Ask our server for more information about specific allergen.</p>
@@ -26,29 +26,25 @@
                 <button class="col btn btn-outline-dark mx-5"><i class="fa-solid fa-seedling"></i> Vegetarian</button>
                 <button class="col btn btn-outline-dark mx-5"><i class="fa-solid fa-pepper-hot"></i> Spicy</button>
             </div>
-            <div class="row">
+            <div class="row menu-items-row px-lg-5 mx-lg-5">
                 <div class="col-lg-6 col-sm-12">
                     <div>
-                        <h3>Bangkok Shrimp Pad Thai</h3>
+                        <div class="d-flex justify-content-between"><span class="menu-item-title">Bangkok Shrimp Pad Thai</span> <span>15€</span></div>
                         <p>Stir-fried rice noodles with shrimp, peanuts, a scrambled egg, and bean sprouts.</p>
-                        <span>15€</span>
                     </div>
                     <div>
-                        <h3>Bali Chicken Fried Noodles</h3>
+                        <div class="d-flex justify-content-between"><span class="menu-item-title">Bali Chicken Fried Noodles</span> <span>16€</span></div>
                         <p>Thin yellow noodles stir fried in cooking oil with garlic, onion, chicken, cabbages and tomatoes.</p>
-                        <span>16€</span>
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-12">
                     <div>
-                        <h3>Saigon Beef Pho Bo</h3>
+                        <div class="d-flex justify-content-between"><span class="menu-item-title">Saigon Beef Pho Bo</span> <span>14€</span></div>
                         <p>Vietnamese noodle soup dish consisting of broth, rice noodles, herbs, and beef meat.</p>
-                        <span>14€</span>
                     </div>
                     <div>
-                        <h3>Osaka Spicy Tofu Ramen</h3>
+                        <div class="d-flex justify-content-between"><span class="menu-item-title">Osaka Spicy Tofu Ramen</span> <span>14€</span></div>
                         <p>Vegetarian ramen with mushroom, carrot, vegetable broth and sweet soy sauce braised tofu.</p>
-                        <span>14€</span>
                     </div>
                 </div>
             </div>
@@ -58,7 +54,7 @@
     <!--hours section-->
     <section id="hours-section">
         <div class="container text-center">
-            <h2>Opening Hours</h2>
+            <h2 class="text-decoration-underline">Opening Hours</h2>
             <div class="row">
                 <div class="col">
                     <h3>Monday to Thursday</h3>
@@ -100,7 +96,7 @@
                     <div class="col-lg-3 col-sm-12 d-flex flex-column justify-content-center">
                         <div class="mb-3">
                             <label for="reservePerson" class="form-label">How Many Person</label>
-                            <select id="reservePerson">
+                            <select class="form-select" id="reservePerson">
                                 <option value=1>1 person</option>
                                 <option value=2>2 persons</option>
                                 <option value=3>3 persons</option>
@@ -118,7 +114,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-dark">RESERVE A TABLE</button>
+                    <button type="submit" class="btn btn-outline-dark">RESERVE A TABLE</button>
                 </div>
             </form>
         </div>
@@ -127,7 +123,7 @@
     <!--testimonial section-->
     <section id="testimonial-section">
         <div class="container py-5">
-            <div class="col-5 offset-7">
+            <div class="col-lg-5 offset-lg-7 col-sm-12 testimonial-box">
                 <i class="fa-solid fa-quote-right"></i>
                 <p class="testimonial-text">I ordered the spicy tonkotsu ramen, the flavor profile was 10/10. I truly appreciate how much care they put into the presentation of the bowl. That really took the experience the extra mile for me. The noodles are fresh, the cuts of pork belly are juicy and the broth is delicious and not too salty. It was an excellent experience, must try for noodle lovers!</p>
                 <p class="testimonial-name">Jean-Claude Van Damme</p>
@@ -139,12 +135,12 @@
     <section id="values-section">
         <div class="container py-5">
             <h2 class="text-center">Our Values</h2>
-            <p class="text-center">Our core values allow us to bring the best foods and services to you</p>
+            <p class="text-center">Our core values allow us to bring the best foods and services to you.</p>
             <div class="row">
                 <div class="col-lg-4 col-sm-12">
                     <div class="card text-white">
                         <img src="/assets/images/card-1.jpg" class="card-img" alt="card-image">
-                        <div class="card-img-overlay d-flex flex-column justify-content-center">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center testimonial-textbox">
                             <h5 class="card-title text-center">High Quality</h5>
                             <p class="card-text">Every ingredients are sourced from responsible suppliers who provide high quality products.</p>
                         </div>
