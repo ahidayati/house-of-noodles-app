@@ -28,6 +28,13 @@ body {
       width: 30%;
       color: #ffffff;
     }
+
+    .header-button {
+      position: absolute;
+      bottom: 20%;
+      left: 10%;
+      font-weight: bold;
+    }
   }
 
 }
@@ -101,19 +108,29 @@ body {
 #values-section {
   background-color: #EEEBDD;
 
-  h5, p {
-    color: #000000;
+  .card {
+    overflow: hidden;
+    h5, p {
+      color: #000000;
+    }
+
+    .card-body {
+      background-color: #EEEBDD;
+
+      .values-icon {
+        font-size: 2rem;
+        background-color: #ffffff;
+        padding: 5%;
+        border-radius: 50%;
+      }
+    }
+
   }
-
-  .card:hover {
-    -webkit-filter: opacity(.5);
-    filter: opacity(.5);
-
-  }
-
-  //.testimonial-textbox {
-  //  background-color: RGB(0, 0, 0, .5);
-  //}
+    .values-icon:hover {
+      transform: scale(1.5);
+      transition: 1s ease;
+      background-color: #EEEBDD;
+    }
 }
 
 //footer

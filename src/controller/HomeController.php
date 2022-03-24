@@ -4,10 +4,10 @@ namespace app\controller;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use app\model\Home;
+use app\model\Database;
 
-//include $_SERVER['DOCUMENT_ROOT']."/src/model/Home.php";
-//var_dump(file_exists($_SERVER['DOCUMENT_ROOT']."/src/model/Home.php"));
+//include $_SERVER['DOCUMENT_ROOT']."/src/model/HomeDB.php";
+//var_dump(file_exists($_SERVER['DOCUMENT_ROOT']."/src/model/HomeDB.php"));
 //die();
 
 class HomeController
@@ -19,18 +19,12 @@ class HomeController
 
     public function displayPage()
     {
-        $newHome = new Home();
-        $headerSection = $newHome->displayHeaderSection();
-//        var_dump($headerSection);
-//        die();
-
-        $thisYear = Date("Y");
 
         $loader = new FilesystemLoader('./templates');
         $twig = new Environment($loader);
         echo $twig->render('home/index.html.twig', [
-            'testVariable' => $headerSection,
-            'thisYear' => $thisYear,
+            'headerSectionItems' => (new Database())->read(["heading", "subheading"], "homepage_item"),
+            'thisYear' => Date("Y"),
 
         ]);
     }

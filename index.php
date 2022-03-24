@@ -22,12 +22,20 @@
 //
 //var_dump($rows);
 
+
+
 use app\controller\HomeController;
 use Bramus\Router\Router as Bramus;
 
 require 'vendor/autoload.php';
 //require 'src/controller/HomeController.php';
 //require 'vendor/bramus/router/src/Bramus/Router/Router.php';
+
+//whoops handler to debug php
+$whoops = new \Whoops\Run;
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
+
 
 //$home = new HomeController();
 //$home->display();
