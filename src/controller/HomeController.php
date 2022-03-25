@@ -23,7 +23,7 @@ class HomeController
         $loader = new FilesystemLoader('./templates');
         $twig = new Environment($loader);
         echo $twig->render('home/index.html.twig', [
-            'headerSectionItems' => (new Database())->read(["heading", "subheading"], "homepage_item"),
+            'headerSectionItems' => (new Database())->read("homepage_item", ["heading", "subheading"]),
             'thisYear' => Date("Y"),
 
         ]);

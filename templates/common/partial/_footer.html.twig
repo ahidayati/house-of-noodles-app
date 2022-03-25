@@ -9,32 +9,33 @@
                         <div class="col-6 py-sm-3 d-flex flex-column justify-content-center">
                             <div class="mb-3">
                                 <label for="contactName" class="form-label" hidden>Name</label>
-                                <input type="text" class="form-control" id="contactName" name="contactName" placeholder="Name" required>
+                                <input type="text" class="form-control" id="contactName" name="contactName" placeholder="Name" required value="testname">
                             </div>
                             <div class="mb-3">
                                 <label for="contactEmail" class="form-label" hidden>Email Address</label>
-                                <input type="email" class="form-control" id="contactEmail" name="contactEmail" placeholder="Email Address" required>
+                                <input type="email" class="form-control" id="contactEmail" name="contactEmail" placeholder="Email Address" required value="test@mail">
                             </div>
                             <div class="mb-3">
                                 <label for="contactPhone" class="form-label" hidden>Phone No.</label>
-                                <input type="tel" class="form-control" id="contactPhone" name="contactPhone" placeholder="Phone No." required>
+                                <input type="tel" class="form-control" id="contactPhone" name="contactPhone" placeholder="Phone No." required value="12345">
                             </div>
                         </div>
                         <div class="col-6 py-sm-3 d-flex flex-column justify-content-center">
                             <div class="mb-3">
                                 <label for="contactSubject" class="form-label" hidden>Subject</label>
-                                <input type="text" class="form-control" id="contactSubject" name="contactSubject" placeholder="Subject">
+                                <input type="text" class="form-control" id="contactSubject" name="contactSubject" placeholder="Subject" value="testsubject">
                             </div>
                             <div class="mb-3">
                                 <label for="contactMessage" class="form-label" hidden>Message</label>
-                                <textarea rows="3" type="text" class="form-control" id="contactMessage" name="contactMessage" placeholder="Message"></textarea>
+                                <textarea rows="3" type="text" class="form-control" id="contactMessage" name="contactMessage" placeholder="Message">testmessage</textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center mb-sm-5">
-                        <button type="submit" class="btn btn-outline-light" id="contactSubmit" name="contactSubmit">Submit</button>
-                    </div>
                 </form>
+                <div class="text-center mb-sm-5">
+                    <button class="btn btn-outline-light" id="contactSubmit" name="contactSubmit">Submit</button>
+                </div>
+                <div id="contactMessageResult"></div>
             </div>
             <div class="col d-flex flex-column justify-content-center">
                 <div class="mx-auto">
