@@ -35,28 +35,36 @@ class Database
         return $row;
     }
 
-//    public function add(string $tableName, array $fieldName, array $values)
+//    public function add(string $tableName, array $fieldName, string $value1, string $value2, string $value3, string $value4, string $value5)
 //    {
-//        $query = "INSERT INTO ".$tableName." (".implode(", ", $fieldName).") VALUES (".implode(", ", $values).");";
+//        $query = "INSERT INTO ".$tableName." (".implode(", ", $fieldName).") VALUES (:value1, :value2, :value3, :value4, :value5);";
 //        $results = $this->pdo->prepare($query);
 //
-//        $results->execute($values);
+//        $results->execute([
+//            ":value1" => $value1,
+//            ":value2" => $value2,
+//            ":value3" => $value3,
+//            ":value4" => $value4,
+//            ":value5" => $value5,
+//        ]);
 //    }
 
-//https://stackoverflow.com/questions/920353/can-i-bind-an-array-to-an-in-condition
-
-    public function add(string $tableName, array $fieldName, string $value1, string $value2, string $value3, string $value4, string $value5)
+    public function add(string $tableName, array $fieldName, array $values)
     {
-        $query = "INSERT INTO ".$tableName." (".implode(", ", $fieldName).") VALUES (:value1, :value2, :value3, :value4, :value5);";
+        $insertValues = [];
+        foreach ($values as $key=>$value){
+            $insertValues[] = ":value".$key;
+        };
+
+        $query = "INSERT INTO ".$tableName." (".implode(", ", $fieldName).") VALUES (".implode(", ", $insertValues).");";
         $results = $this->pdo->prepare($query);
 
-        $results->execute([
-            ":value1" => $value1,
-            ":value2" => $value2,
-            ":value3" => $value3,
-            ":value4" => $value4,
-            ":value5" => $value5,
-        ]);
+            foreach ($values as $key=>$value){
+                $results->bindValue(":value".$key, $value);
+            };
+        $results->execute();
     }
+
+
 
 }

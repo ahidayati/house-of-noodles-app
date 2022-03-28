@@ -28,7 +28,8 @@ if($_POST['name'] !== "" && $_POST['email'] !== "" && $_POST['phone'] !== ""){
     $phone=$_POST['phone'];
     $subject=$_POST['subject'];
     $message=$_POST['message'];
-    (new Database())->add("contact_form", ["name", "email", "phone", "subject", "message"], $name, $email, $phone, $subject, $message);
+//    (new Database())->add("contact_form", ["name", "email", "phone", "subject", "message"], $name, $email, $phone, $subject, $message);
+    (new Database())->add("contact_form", ["name", "email", "phone", "subject", "message"], [$name, $email, $phone, $subject, $message]);
     $result=true;
 }
 

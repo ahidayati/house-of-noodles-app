@@ -31,13 +31,14 @@ DROP TABLE IF EXISTS `contact_form`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `contact_form` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
-  `message` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `message` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,6 +47,8 @@ CREATE TABLE `contact_form` (
 
 LOCK TABLES `contact_form` WRITE;
 /*!40000 ALTER TABLE `contact_form` DISABLE KEYS */;
+INSERT INTO `contact_form` VALUES
+(1,'testname','test@mail','12345','testsubject','testmessage');
 /*!40000 ALTER TABLE `contact_form` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,4 +88,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-25 17:57:27
+-- Dump completed on 2022-03-28 10:25:07

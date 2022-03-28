@@ -61,16 +61,24 @@
 
 const contactSubmitBtn = document.getElementById("contactSubmit");
 
-// // get input values
-let nameContact = document.getElementById("contactName").value;
-let emailContact = document.getElementById("contactEmail").value;
-let phoneContact = document.getElementById("contactPhone").value;
-let subjectContact = document.getElementById("contactSubject").value;
-let messageContact = document.getElementById("contactMessage").value;
-// let formData = {contactName: nameContact, contactEmail: emailContact, contactPhone: phoneContact, contactSubject: subjectContact, contactMessage: messageContact};
+let nameContact = document.getElementById("contactName");
+let emailContact = document.getElementById("contactEmail");
+let phoneContact = document.getElementById("contactPhone");
+let subjectContact = document.getElementById("contactSubject");
+let messageContact = document.getElementById("contactMessage");
 
-contactSubmitBtn.addEventListener("click", function (){
 
+contactSubmitBtn.addEventListener("click", function (e){
+    e.preventDefault();
+    // get input values
+    let nameValue = nameContact.value;
+    let emailValue = emailContact.value;
+    let phoneValue = phoneContact.value;
+    let subjectValue = subjectContact.value;
+    let messageValue = messageContact.value;
+
+    // console.log(nameContact);
+    // console.log(nameValue, emailValue, phoneValue, subjectValue, messageValue);
 
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "/assets/php/contact-form-treat.php", true);
@@ -80,7 +88,7 @@ contactSubmitBtn.addEventListener("click", function (){
             document.getElementById("contactMessageResult").innerHTML=xhr.responseText;
         }
     }
-    xhr.send("name="+nameContact+"&email="+emailContact+"&phone="+phoneContact+"&subject="+subjectContact+"&message="+messageContact);
+    xhr.send("name="+nameValue+"&email="+emailValue+"&phone="+phoneValue+"&subject="+subjectValue+"&message="+messageValue);
 
 });
 
