@@ -10974,6 +10974,7 @@ contactSubmitBtn.addEventListener("click", function (e){
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange=function () {
         if(xhr.readyState == 4 && xhr.status ==200) {
+            contactSubmitBtn.setAttribute('disabled', 'true');
             document.getElementById("contactMessageResult").innerHTML=xhr.responseText;
         }
     }
