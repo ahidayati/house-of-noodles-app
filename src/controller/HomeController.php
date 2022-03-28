@@ -19,13 +19,15 @@ class HomeController
 
     public function displayPage()
     {
+//        var_dump((new Database())->viewMenu(["menuCategoryTitle", "=", "'Main Dishes'"]));
+//        die();
 
         $loader = new FilesystemLoader('./templates');
         $twig = new Environment($loader);
         echo $twig->render('home/index.html.twig', [
-            'headerSectionItems' => (new Database())->read("homepage_item", ["heading", "subheading"]),
+            'headerSectionItems' => (new Database())->view("homepage_item", ["heading", "subheading"]),
             'thisYear' => Date("Y"),
-
+            'showMenuItems' => (new Database())->viewMenu(["menuCategoryTitle", "=", "'Main Dishes'"]),
         ]);
     }
 }

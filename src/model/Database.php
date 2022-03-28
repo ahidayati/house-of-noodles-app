@@ -22,11 +22,11 @@ class Database
         return $this->pdo;
     }
 
-    public function read(string $tableName, array $fieldName)
+    public function view(string $tableName, array $fieldName)
     {
         $fieldInString = implode(", ", $fieldName);
 
-        $query = "SELECT ".$fieldInString." FROM ".$tableName;
+        $query = "SELECT ".$fieldInString." FROM ".$tableName.";";
         $this->pdo->prepare($query);
         $results = $this->pdo->query($query);
         $results->execute();
@@ -65,6 +65,16 @@ class Database
         $results->execute();
     }
 
+    //https://stackoverflow.com/questions/3029454/sql-query-through-an-intermediate-table
+    public function viewMenu(array $conditions = null)
+    {
+        $query = "SELECT menuItem, menuDescription, price FROM menu JOIN menu_category ON menu_category.idMenu=menu.id JOIN category ON category.id=menu_category.idCategory"." WHERE ".implode(" ", $conditions)." ORDER BY menu.menuItemOrder;";
+        $this->pdo->prepare($query);
+        $results = $this->pdo->query($query);
+        $results->execute();
 
+        $rows = $results->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
 
 }

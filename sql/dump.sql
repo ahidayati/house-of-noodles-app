@@ -24,6 +24,36 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `database` /*!40100 DEFAULT CHARACTER S
 USE `database`;
 
 --
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `menuCategoryTitle` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category`
+--
+
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES
+(1,'Starters'),
+(2,'Main Dishes'),
+(3,'Deserts'),
+(4,'Drinks'),
+(5,'Vegetarian'),
+(6,'Spicy');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `contact_form`
 --
 
@@ -37,8 +67,9 @@ CREATE TABLE `contact_form` (
   `phone` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `message` text NOT NULL,
+  `createdAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,8 +78,6 @@ CREATE TABLE `contact_form` (
 
 LOCK TABLES `contact_form` WRITE;
 /*!40000 ALTER TABLE `contact_form` DISABLE KEYS */;
-INSERT INTO `contact_form` VALUES
-(1,'testname','test@mail','12345','testsubject','testmessage');
 /*!40000 ALTER TABLE `contact_form` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +89,7 @@ DROP TABLE IF EXISTS `homepage_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `homepage_item` (
-  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `section` varchar(50) NOT NULL,
   `heading` varchar(50) NOT NULL,
   `subheading` varchar(50) NOT NULL,
@@ -78,6 +107,93 @@ INSERT INTO `homepage_item` VALUES
 (1,'header','Welcome to the house of noodles','No life without noodles');
 /*!40000 ALTER TABLE `homepage_item` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `menu`
+--
+
+DROP TABLE IF EXISTS `menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `menuItem` varchar(255) NOT NULL,
+  `menuDescription` text NOT NULL,
+  `menuItemOrder` int(2) NOT NULL,
+  `price` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menu`
+--
+
+LOCK TABLES `menu` WRITE;
+/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` VALUES
+(1,'Bangkok Shrimp Pad Thai','Stir-fried rice noodles with shrimp, peanuts, a scrambled egg, and bean sprouts.',1,15),
+(2,'Bali Chicken Fried Noodles','Thin yellow noodles stir fried in cooking oil with garlic, onion, chicken, cabbages and tomatoes.',2,16),
+(3,'Saigon Beef Pho Bo','Vietnamese noodle soup dish consisting of broth, rice noodles, herbs, and beef meat.',3,14),
+(4,'Osaka Spicy Tofu Ramen','Vegetarian ramen with mushroom, carrot, vegetable broth and sweet soy sauce braised tofu.',4,14);
+/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `menu_category`
+--
+
+DROP TABLE IF EXISTS `menu_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `menu_category` (
+  `idMenu` int(11) NOT NULL,
+  `idCategory` int(11) NOT NULL,
+  KEY `FK_menu` (`idMenu`),
+  KEY `FK_category` (`idCategory`),
+  CONSTRAINT `FK_category` FOREIGN KEY (`idCategory`) REFERENCES `category` (`id`),
+  CONSTRAINT `FK_menu` FOREIGN KEY (`idMenu`) REFERENCES `menu` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menu_category`
+--
+
+LOCK TABLES `menu_category` WRITE;
+/*!40000 ALTER TABLE `menu_category` DISABLE KEYS */;
+INSERT INTO `menu_category` VALUES
+(1,2),
+(2,2),
+(3,2),
+(4,2),
+(4,5),
+(4,6);
+/*!40000 ALTER TABLE `menu_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `navbar`
+--
+
+DROP TABLE IF EXISTS `navbar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `navbar` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `navbarItem` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `navbar`
+--
+
+LOCK TABLES `navbar` WRITE;
+/*!40000 ALTER TABLE `navbar` DISABLE KEYS */;
+/*!40000 ALTER TABLE `navbar` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -88,4 +204,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-28 10:25:07
+-- Dump completed on 2022-03-28 15:42:59
