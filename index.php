@@ -29,6 +29,15 @@ $router = new Bramus();
 $router->get('/', function () {
     (new HomeController())->displayPage();
 });
+$router->get('/terms-conditions', function () {
+    (new \app\controller\TermsConditionsController())->displayTC();
+});
+$router->get('/privacy-policy', function () {
+    (new \app\controller\PrivacyPolicyController())->displayPP();
+});
+$router->get('/info', function () {
+    (new \app\controller\InfoController())->displayInfo();
+});
 
 // Custom 404 Handler
 $router->set404(function () {
@@ -36,6 +45,8 @@ $router->set404(function () {
     //echo '404, route not found!';
     (new Route404Controller())->display404();
 });
+
+
 
 // Run router
 $router->run();
