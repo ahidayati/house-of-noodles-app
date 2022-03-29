@@ -38,6 +38,9 @@ $router->get('/privacy-policy', function () {
 $router->get('/info', function () {
     (new \app\controller\InfoController())->displayInfo();
 });
+$router->get('/admin-login', function () {
+    (new \app\controller\AdminController())->displayAdminLogin();
+});
 
 // Custom 404 Handler
 $router->set404(function () {
