@@ -146,8 +146,18 @@ body {
   background-color: #121313;
   color: #ffffff;
 
-  .map-img {
-    max-width: 400px;
+  .map-box {
+    a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #000000;
+      background-color: #ffffff;
+    }
+    .map-img {
+      max-width: 400px;
+    }
   }
 
   .social-logo {
@@ -155,12 +165,20 @@ body {
     font-size: 1.5rem;
     margin: 0 1rem 1rem;
   }
+  .social-logo:hover {
+    color: #000000;
+    background-color: #ffffff;
+  }
 
   .copyright-text {
     font-size: 0.8rem;
     a {
       color: #ffffff;
       text-decoration: none;
+    }
+    a:hover {
+      color: #000000;
+      background-color: #ffffff;
     }
 
   }
