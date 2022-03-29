@@ -69,7 +69,7 @@ CREATE TABLE `contact_form` (
   `message` text NOT NULL,
   `createdAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,6 +78,9 @@ CREATE TABLE `contact_form` (
 
 LOCK TABLES `contact_form` WRITE;
 /*!40000 ALTER TABLE `contact_form` DISABLE KEYS */;
+INSERT INTO `contact_form` VALUES
+(7,'test','mail@test','777','foo','bar','2022-03-29 09:02:28'),
+(8,'test','mail','777','foo','bar','2022-03-29 09:02:42');
 /*!40000 ALTER TABLE `contact_form` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,8 +96,8 @@ CREATE TABLE `homepage_item` (
   `section` varchar(50) NOT NULL,
   `heading` varchar(50) NOT NULL,
   `subheading` varchar(50) NOT NULL,
-  `textDescription` text NOT NULL,
-  `itemOrder` int(2) NOT NULL,
+  `textDescription` text DEFAULT NULL,
+  `itemOrder` int(2) DEFAULT NULL,
   `activeStatus` tinyint(1) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -239,4 +242,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29  8:58:39
+-- Dump completed on 2022-03-29 14:55:37
