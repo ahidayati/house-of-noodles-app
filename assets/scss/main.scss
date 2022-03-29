@@ -133,9 +133,11 @@ body {
 
   }
     .values-icon:hover {
-      transform: scale(1.5);
-      transition: 1s ease;
-      background-color: #EEEBDD;
+      background-color: #000000 !important;
+      color: #ffffff;
+      //transform: scale(1.5);
+      //transition: 1s ease;
+      //background-color: #EEEBDD;
     }
 }
 
