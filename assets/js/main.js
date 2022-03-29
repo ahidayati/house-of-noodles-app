@@ -70,6 +70,7 @@ let messageContact = document.getElementById("contactMessage");
 
 contactSubmitBtn.addEventListener("click", function (e){
     e.preventDefault();
+
     // get input values
     let nameValue = nameContact.value;
     let emailValue = emailContact.value;

@@ -25,7 +25,7 @@ class HomeController
         $loader = new FilesystemLoader('./templates');
         $twig = new Environment($loader);
         echo $twig->render('home/index.html.twig', [
-            'headerSectionItems' => (new Database())->view("homepage_item", ["heading", "subheading"]),
+            'headerSectionItems' => (new Database())->viewItem("homepage_item", ["heading", "subheading"], ["section", "=", "'header'"]),
             'thisYear' => Date("Y"),
             'showMenuItems' => (new Database())->viewMenu(["menuCategoryTitle", "=", "'Main Dishes'"]),
         ]);

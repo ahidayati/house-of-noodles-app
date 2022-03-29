@@ -1,35 +1,11 @@
 <?php
 
-//echo "test";
-
-//var_dump($_ENV);
-//pdo connection test
-//try{
-//    //$connect = new PDO("mysql:host=mariadb;port=3306;dbname=database", "user", "zeus");
-//    $connect = new PDO("mysql:host=".$_ENV["MYSQL_HOST"].";port=3306;dbname=".$_ENV["MYSQL_DATABASE"], $_ENV["MYSQL_USER"], $_ENV["MYSQL_PASSWORD"]);
-//    $connect -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-//    echo "Connected succesfully <br>";
-//} catch(PDOException $e){
-//    echo "Connection failed: " . $e -> getMessage();
-//}
-//
-//
-//$query = "SELECT * FROM table1;";
-//$results = $connect->query($query);
-//$results->execute();
-//
-//$rows = $results->fetchAll(PDO::FETCH_ASSOC);
-//
-//var_dump($rows);
-
-
-
 use app\controller\HomeController;
+use app\controller\Route404Controller;
 use Bramus\Router\Router as Bramus;
 
 require 'vendor/autoload.php';
-//require 'src/controller/HomeController.php';
-//require 'vendor/bramus/router/src/Bramus/Router/Router.php';
+
 
 //whoops handler to debug php
 $whoops = new \Whoops\Run;
@@ -52,6 +28,13 @@ $router = new Bramus();
 // Define Routes
 $router->get('/', function () {
     (new HomeController())->displayPage();
+});
+
+// Custom 404 Handler
+$router->set404(function () {
+    header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+    //echo '404, route not found!';
+    (new Route404Controller())->display404();
 });
 
 // Run router

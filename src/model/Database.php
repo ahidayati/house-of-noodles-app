@@ -22,11 +22,11 @@ class Database
         return $this->pdo;
     }
 
-    public function view(string $tableName, array $fieldName)
+    public function viewItem(string $tableName, array $fieldName, array $conditions = NULL)
     {
         $fieldInString = implode(", ", $fieldName);
 
-        $query = "SELECT ".$fieldInString." FROM ".$tableName.";";
+        $query = "SELECT ".$fieldInString." FROM ".$tableName." WHERE ".implode(" ", $conditions).";";
         $this->pdo->prepare($query);
         $results = $this->pdo->query($query);
         $results->execute();

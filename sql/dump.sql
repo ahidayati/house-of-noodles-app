@@ -69,7 +69,7 @@ CREATE TABLE `contact_form` (
   `message` text NOT NULL,
   `createdAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,6 +93,11 @@ CREATE TABLE `homepage_item` (
   `section` varchar(50) NOT NULL,
   `heading` varchar(50) NOT NULL,
   `subheading` varchar(50) NOT NULL,
+  `textDescription` text NOT NULL,
+  `itemOrder` int(2) NOT NULL,
+  `activeStatus` tinyint(1) NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -104,7 +109,7 @@ CREATE TABLE `homepage_item` (
 LOCK TABLES `homepage_item` WRITE;
 /*!40000 ALTER TABLE `homepage_item` DISABLE KEYS */;
 INSERT INTO `homepage_item` VALUES
-(1,'header','Welcome to the house of noodles','No life without noodles');
+(1,'header','Welcome to the house of noodles','No life without noodles','',0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `homepage_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,8 +187,9 @@ DROP TABLE IF EXISTS `navbar`;
 CREATE TABLE `navbar` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `navbarItem` varchar(50) NOT NULL,
+  `navbarLink` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,7 +198,36 @@ CREATE TABLE `navbar` (
 
 LOCK TABLES `navbar` WRITE;
 /*!40000 ALTER TABLE `navbar` DISABLE KEYS */;
+INSERT INTO `navbar` VALUES
+(1,'Menu','#menu-section'),
+(2,'Reservation','#reservation-section'),
+(3,'Contact Us','#footer-section'),
+(4,'12.34.56.78.90','tel:123-456-7890');
 /*!40000 ALTER TABLE `navbar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `style_option`
+--
+
+DROP TABLE IF EXISTS `style_option`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `style_option` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `optionName` varchar(255) NOT NULL,
+  `optionValue` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `style_option`
+--
+
+LOCK TABLES `style_option` WRITE;
+/*!40000 ALTER TABLE `style_option` DISABLE KEYS */;
+/*!40000 ALTER TABLE `style_option` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -204,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-28 15:42:59
+-- Dump completed on 2022-03-29  8:58:39
