@@ -11005,3 +11005,28 @@ if ($("page").data("title") === "admin-login") {
         xhr.send("username="+usernameValue+"&password="+passwordValue);
     });
 };
+
+if ($("page").data("title") === "dashboard") {
+    const adminLogoutBtn = document.getElementById("adminLogout");
+
+    adminLogoutBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/assets/php/admin-logout.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange=function () {
+
+            if(xhr.readyState == 4 && xhr.status ==200) {
+                if(xhr.responseText === "Logout"){
+                    window.location.href = "/admin-login";
+
+                } else {
+                    console.log("response="+xhr.responseText);
+                }
+
+            }
+        }
+        xhr.send("logout=true");
+    });
+};

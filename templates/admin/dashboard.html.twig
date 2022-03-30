@@ -4,4 +4,19 @@
 
 {% block body %}
     <h1>HELLOOOOOOOOOO THIS IS DASHBOARD</h1>
+    <page data-title="dashboard">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <div>Homepage</div>
+                    <div>Reservation</div>
+                    <div>User</div>
+                    <div><a id="adminLogout" class="btn btn-primary">Logout</a></div>
+                </div>
+                <div class="col-9">
+                    hello {{ session.use }}
+                </div>
+            </div>
+        </div>
+    </page>
 {% endblock %}
