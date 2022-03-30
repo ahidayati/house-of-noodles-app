@@ -11,7 +11,7 @@ class InfoController {
         $loader = new FilesystemLoader('./templates');
         $twig = new Environment($loader);
         echo $twig->render('info/index.html.twig', [
-
+            'thisRoute' => $_SERVER['REQUEST_URI'],
         ]);
     }
 }
