@@ -10,170 +10,173 @@
     <div>{{ menuItem['menuItem'] }}</div>
     {% endfor %}
 
-    <!--header section-->
-    <section id="header-section">
-        <div>
-            <h1 class="header-text">{{ headerSectionItems["heading"] }}</h1>
-            <a href="#reservation-section" class="btn btn-outline-light header-button">Reserve Now</a>
-        </div>
-    </section>
+    <page data-title="homepage">
+        <!--header section-->
+        <section id="header-section">
+            <div>
+                <h1 class="header-text">{{ headerSectionItems["heading"] }}</h1>
+                <a href="#reservation-section" class="btn btn-outline-light header-button">Reserve Now</a>
+            </div>
+        </section>
 
-    <!--menu section-->
-    <section id="menu-section">
-        <div class="container py-5">
-            <div class="text-center row">
-                <h2>Our Menu</h2>
-                <p>Our menu changes occasionally. Any meat can be replaced with tofu or saitan. Ask our server for more information about specific allergen.</p>
-            </div>
-            <div class="text-center my-3 row">
-                <button class="col btn btn-outline-dark mx-5"><i class="fa-solid fa-cookie"></i> Starters</button>
-                <button class="col btn btn-dark mx-5"><i class="fa-solid fa-bowl-rice"></i> Main Dishes</button>
-                <button class="col btn btn-outline-dark mx-5"><i class="fa-solid fa-cheese"></i> Deserts</button>
-                <button class="col btn btn-outline-dark mx-5"><i class="fa-solid fa-martini-glass-citrus"></i> Drinks</button>
-                <button class="col btn btn-outline-dark mx-5"><i class="fa-solid fa-seedling"></i> Vegetarian</button>
-                <button class="col btn btn-outline-dark mx-5"><i class="fa-solid fa-pepper-hot"></i> Spicy</button>
-            </div>
-            <div class="row menu-items-row px-lg-5 mx-lg-5">
-                <div class="col-lg-6 offset-lg-3 col-sm-12">
-                    <div>
-                        <div class="d-flex justify-content-between"><span class="menu-item-title">Bangkok Shrimp Pad Thai</span> <span>15€</span></div>
-                        <p>Stir-fried rice noodles with shrimp, peanuts, a scrambled egg, and bean sprouts.</p>
+        <!--menu section-->
+        <section id="menu-section">
+            <div class="container py-5">
+                <div class="text-center row">
+                    <h2>Our Menu</h2>
+                    <p>Our menu changes occasionally. Any meat can be replaced with tofu or saitan. Ask our server for more information about specific allergen.</p>
+                </div>
+                <div class="text-center my-3 row">
+                    <button class="col btn btn-outline-dark mx-5"><i class="fa-solid fa-cookie"></i> Starters</button>
+                    <button class="col btn btn-dark mx-5"><i class="fa-solid fa-bowl-rice"></i> Main Dishes</button>
+                    <button class="col btn btn-outline-dark mx-5"><i class="fa-solid fa-cheese"></i> Deserts</button>
+                    <button class="col btn btn-outline-dark mx-5"><i class="fa-solid fa-martini-glass-citrus"></i> Drinks</button>
+                    <button class="col btn btn-outline-dark mx-5"><i class="fa-solid fa-seedling"></i> Vegetarian</button>
+                    <button class="col btn btn-outline-dark mx-5"><i class="fa-solid fa-pepper-hot"></i> Spicy</button>
+                </div>
+                <div class="row menu-items-row px-lg-5 mx-lg-5">
+                    <div class="col-lg-6 offset-lg-3 col-sm-12">
+                        <div>
+                            <div class="d-flex justify-content-between"><span class="menu-item-title">Bangkok Shrimp Pad Thai</span> <span>15€</span></div>
+                            <p>Stir-fried rice noodles with shrimp, peanuts, a scrambled egg, and bean sprouts.</p>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-between"><span class="menu-item-title">Bali Chicken Fried Noodles</span> <span>16€</span></div>
+                            <p>Thin yellow noodles stir fried in cooking oil with garlic, onion, chicken, cabbages and tomatoes.</p>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-between"><span class="menu-item-title">Saigon Beef Pho Bo</span> <span>14€</span></div>
+                            <p>Vietnamese noodle soup dish consisting of broth, rice noodles, herbs, and beef meat.</p>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-between"><span class="menu-item-title">Osaka Spicy Tofu Ramen</span> <span>14€</span></div>
+                            <p>Vegetarian ramen with mushroom, carrot, vegetable broth and sweet soy sauce braised tofu.</p>
+                        </div>
                     </div>
-                    <div>
-                        <div class="d-flex justify-content-between"><span class="menu-item-title">Bali Chicken Fried Noodles</span> <span>16€</span></div>
-                        <p>Thin yellow noodles stir fried in cooking oil with garlic, onion, chicken, cabbages and tomatoes.</p>
-                    </div>
-                    <div>
-                        <div class="d-flex justify-content-between"><span class="menu-item-title">Saigon Beef Pho Bo</span> <span>14€</span></div>
-                        <p>Vietnamese noodle soup dish consisting of broth, rice noodles, herbs, and beef meat.</p>
-                    </div>
-                    <div>
-                        <div class="d-flex justify-content-between"><span class="menu-item-title">Osaka Spicy Tofu Ramen</span> <span>14€</span></div>
-                        <p>Vegetarian ramen with mushroom, carrot, vegetable broth and sweet soy sauce braised tofu.</p>
+                    <div class="col-lg-6 col-sm-12">
+
                     </div>
                 </div>
-                <div class="col-lg-6 col-sm-12">
-
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!--hours section-->
-    <section id="hours-section">
-        <div class="container text-center">
-            <h2 class="text-decoration-underline">Opening Hours</h2>
-            <div class="row">
-                <div class="col">
-                    <h3>Monday to Thursday</h3>
-                    <h4>09:00 - 23:00</h4>
-                </div>
-                <div class="col">
-                    <h3>Friday and Saturday</h3>
-                    <h4>08:00 - 24:00</h4>
-                </div>
-            </div>
-            <!--            <div class="row special-announcement">-->
-            <!--                <span>Closed for Summer Break: 15 July - 1 August 2022</span>-->
-            <!--            </div>-->
-        </div>
-    </section>
-
-    <!--reservation section-->
-    <section id="reservation-section">
-        <div class="container py-5">
-            <h2 class="text-center">Reserve Your Table Now</h2>
-            <form>
+        <!--hours section-->
+        <section id="hours-section">
+            <div class="container text-center">
+                <h2 class="text-decoration-underline">Opening Hours</h2>
                 <div class="row">
-                    <div class="col-lg-3 offset-lg-3 col-sm-12 d-flex flex-column justify-content-center">
-                        <div class="mb-3">
-                            <label for="reserveName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="reserveName">
-                        </div>
-                        <div class="mb-3">
-                            <label for="reserveEmail" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="reserveEmail">
-                        </div>
-                        <div class="mb-3">
-                            <label for="reservePhone" class="form-label">Phone No.</label>
-                            <input type="tel" class="form-control" id="reservePhone">
-                        </div>
+                    <div class="col">
+                        <h3>Monday to Thursday</h3>
+                        <h4>09:00 - 23:00</h4>
                     </div>
-                    <div class="col-lg-3 col-sm-12 d-flex flex-column justify-content-center">
-                        <div class="mb-3">
-                            <label for="reservePerson" class="form-label">How Many Person</label>
-                            <select class="form-select" id="reservePerson">
-                                <option value=1>1 person</option>
-                                <option value=2>2 persons</option>
-                                <option value=3>3 persons</option>
-                                <option value=4>4 persons</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="reserveDate" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="reserveDate">
-                        </div>
-                        <div class="mb-3">
-                            <label for="reserveHour" class="form-label">Hour</label>
-                            <input type="time" class="form-control" id="reserveHour">
-                        </div>
+                    <div class="col">
+                        <h3>Friday and Saturday</h3>
+                        <h4>08:00 - 24:00</h4>
                     </div>
                 </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-outline-dark">RESERVE A TABLE</button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!--testimonial section-->
-    <section id="testimonial-section">
-        <div class="container py-5">
-            <div class="col-lg-5 offset-lg-7 col-sm-12 testimonial-box">
-                <i class="fa-solid fa-quote-right"></i>
-                <p class="testimonial-text">I ordered the spicy tonkotsu ramen, the flavor profile was 10/10. I truly appreciate how much care they put into the presentation of the bowl. That really took the experience the extra mile for me. The noodles are fresh, the cuts of pork belly are juicy and the broth is delicious and not too salty. It was an excellent experience, must try for noodle lovers!</p>
-                <p class="testimonial-name">Jean-Claude Van Damme</p>
+                <!--            <div class="row special-announcement">-->
+                <!--                <span>Closed for Summer Break: 15 July - 1 August 2022</span>-->
+                <!--            </div>-->
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!--values section-->
-    <section id="values-section">
-        <div class="container py-5">
-            <h2 class="text-center">Our Values</h2>
-            <p class="text-center">Our core values allow us to bring the best foods and services to you.</p>
-            <div class="row">
-                <div class="col-lg-4 col-sm-12">
-                    <div class="card text-white">
-                        <img src="/assets/images/card-1.jpg" class="card-img" alt="card-image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title text-center"><i class="values-icon fa-solid fa-fish-fins"></i></h5>
-                            <h5>Fresh</h5>
-                            <p class="card-text">Every ingredients are sourced from responsible suppliers who provide high quality products.</p>
+        <!--reservation section-->
+        <section id="reservation-section">
+            <div class="container py-5">
+                <h2 class="text-center">Reserve Your Table Now</h2>
+                <form>
+                    <div class="row">
+                        <div class="col-lg-3 offset-lg-3 col-sm-12 d-flex flex-column justify-content-center">
+                            <div class="mb-3">
+                                <label for="reserveName" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="reserveName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="reserveEmail" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="reserveEmail">
+                            </div>
+                            <div class="mb-3">
+                                <label for="reservePhone" class="form-label">Phone No.</label>
+                                <input type="tel" class="form-control" id="reservePhone">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-12 d-flex flex-column justify-content-center">
+                            <div class="mb-3">
+                                <label for="reservePerson" class="form-label">How Many Person</label>
+                                <select class="form-select" id="reservePerson">
+                                    <option value=1>1 person</option>
+                                    <option value=2>2 persons</option>
+                                    <option value=3>3 persons</option>
+                                    <option value=4>4 persons</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reserveDate" class="form-label">Date</label>
+                                <input type="date" class="form-control" id="reserveDate">
+                            </div>
+                            <div class="mb-3">
+                                <label for="reserveHour" class="form-label">Hour</label>
+                                <input type="time" class="form-control" id="reserveHour">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-sm-12">
-                    <div class="card text-white">
-                        <img src="/assets/images/card-2.jpg" class="card-img" alt="card-image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title text-center"><i class="values-icon fa-solid fa-fire-burner"></i></h5>
-                            <h5>Authenticity</h5>
-                            <p class="card-text">The recipes used are authentic from deep research and have been passed down for generations.</p>
-                        </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-dark">RESERVE A TABLE</button>
                     </div>
-                </div>
-                <div class="col-lg-4 col-sm-12">
-                    <div class="card text-white">
-                        <img src="/assets/images/card-3.jpg" class="card-img" alt="card-image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title text-center"><i class="values-icon fa-solid fa-heart"></i></h5>
-                            <h5>Made With Love</h5>
-                            <p class="card-text">Every dish is made by our professional chefs with love and passion for good food.</p>
-                        </div>
-                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!--testimonial section-->
+        <section id="testimonial-section">
+            <div class="container py-5">
+                <div class="col-lg-5 offset-lg-7 col-sm-12 testimonial-box">
+                    <i class="fa-solid fa-quote-right"></i>
+                    <p class="testimonial-text">I ordered the spicy tonkotsu ramen, the flavor profile was 10/10. I truly appreciate how much care they put into the presentation of the bowl. That really took the experience the extra mile for me. The noodles are fresh, the cuts of pork belly are juicy and the broth is delicious and not too salty. It was an excellent experience, must try for noodle lovers!</p>
+                    <p class="testimonial-name">Jean-Claude Van Damme</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!--values section-->
+        <section id="values-section">
+            <div class="container py-5">
+                <h2 class="text-center">Our Values</h2>
+                <p class="text-center">Our core values allow us to bring the best foods and services to you.</p>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-12">
+                        <div class="card text-white">
+                            <img src="/assets/images/card-1.jpg" class="card-img" alt="card-image">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center"><i class="values-icon fa-solid fa-fish-fins"></i></h5>
+                                <h5>Fresh</h5>
+                                <p class="card-text">Every ingredients are sourced from responsible suppliers who provide high quality products.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <div class="card text-white">
+                            <img src="/assets/images/card-2.jpg" class="card-img" alt="card-image">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center"><i class="values-icon fa-solid fa-fire-burner"></i></h5>
+                                <h5>Authenticity</h5>
+                                <p class="card-text">The recipes used are authentic from deep research and have been passed down for generations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <div class="card text-white">
+                            <img src="/assets/images/card-3.jpg" class="card-img" alt="card-image">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center"><i class="values-icon fa-solid fa-heart"></i></h5>
+                                <h5>Made With Love</h5>
+                                <p class="card-text">Every dish is made by our professional chefs with love and passion for good food.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </page data-title="homepage">
+
 {% endblock %}

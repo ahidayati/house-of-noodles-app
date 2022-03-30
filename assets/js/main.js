@@ -6,19 +6,6 @@
 //     alert("jQuery is available")
 // }
 
-// $.ajax({
-//     method: 'POST',
-//     url: 'https://formsubmit.co/ajax/hidayati.ann@email.com',
-//     dataType: 'json',
-//     accepts: 'application/json',
-//     data: {
-//         name: "FormSubmit",
-//         message: "I'm from Devro LABS"
-//     },
-//     success: (data) => console.log(data),
-//     error: (err) => console.log(err)
-// });
-
 // const testdiv = document.getElementById("test-div");
 // const testbtn = document.getElementById("test-btn");
 // let pageCounter = 1;
@@ -59,79 +46,73 @@
 //     testdiv.insertAdjacentHTML('beforeend', htmlString);
 // };
 
-const contactSubmitBtn = document.getElementById("contactSubmit");
 
-let nameContact = document.getElementById("contactName");
-let emailContact = document.getElementById("contactEmail");
-let phoneContact = document.getElementById("contactPhone");
-let subjectContact = document.getElementById("contactSubject");
-let messageContact = document.getElementById("contactMessage");
+if ($("page").data("title") === "homepage") {
+    const contactSubmitBtn = document.getElementById("contactSubmit");
+
+    let nameContact = document.getElementById("contactName");
+    let emailContact = document.getElementById("contactEmail");
+    let phoneContact = document.getElementById("contactPhone");
+    let subjectContact = document.getElementById("contactSubject");
+    let messageContact = document.getElementById("contactMessage");
 
 
-contactSubmitBtn.addEventListener("click", function (e){
-    e.preventDefault();
+    contactSubmitBtn.addEventListener("click", function (e){
+        e.preventDefault();
 
-    // get input values
-    let nameValue = nameContact.value;
-    let emailValue = emailContact.value;
-    let phoneValue = phoneContact.value;
-    let subjectValue = subjectContact.value;
-    let messageValue = messageContact.value;
+        // get input values
+        let nameValue = nameContact.value;
+        let emailValue = emailContact.value;
+        let phoneValue = phoneContact.value;
+        let subjectValue = subjectContact.value;
+        let messageValue = messageContact.value;
 
-    // console.log(nameContact);
-    // console.log(nameValue, emailValue, phoneValue, subjectValue, messageValue);
+        // console.log(nameContact);
+        // console.log(nameValue, emailValue, phoneValue, subjectValue, messageValue);
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "/assets/php/contact-form-treat.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange=function () {
-        if(xhr.readyState == 4 && xhr.status ==200) {
-            contactSubmitBtn.setAttribute('disabled', 'true');
-            document.getElementById("contactMessageResult").innerHTML=xhr.responseText;
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/assets/php/contact-form-treat.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange=function () {
+            if(xhr.readyState == 4 && xhr.status ==200) {
+                contactSubmitBtn.setAttribute('disabled', 'true');
+                document.getElementById("contactMessageResult").innerHTML=xhr.responseText;
+            }
         }
-    }
-    xhr.send("name="+nameValue+"&email="+emailValue+"&phone="+phoneValue+"&subject="+subjectValue+"&message="+messageValue);
+        xhr.send("name="+nameValue+"&email="+emailValue+"&phone="+phoneValue+"&subject="+subjectValue+"&message="+messageValue);
 
-});
+    });
+};
 
-// contactSubmitBtn.addEventListener("click", function (){
-//     const data = new FormData();
-//     data.append("nameContact", nameContact);
-//     data.append("emailContact", emailContact);
-//     data.append("phoneContact", phoneContact);
-//     data.append("subjectContact", subjectContact);
-//     data.append("messageContact", messageContact);
-//
-//
-//     const xhr = new XMLHttpRequest();
-//     xhr.open("POST", "http://localhost/assets/php/contact-form-treat.php", true);
-//     xhr.send(data);
-// })
+if ($("page").data("title") === "admin-login") {
+    const adminSubmitBtn = document.getElementById("adminSubmit");
 
-// function submitForm()
-// {
-//     var contactName = $('input[name=contactName]').val();
-//     var contactEmail = $('input[name=contactEmail]').val();
-//     var contactPhone = $('input[name=contactPhone]').val();
-//     var contactSubject = $('input[name=contactSubject]').val();
-//
-//     if(contactName != '' && contactEmail!= '' && contactPhone != '')
-//     {
-//         var formData = {contactName: contactName, contactEmail: contactEmail, contactPhone: contactPhone, contactSubject: contactSubject};
-//         $('#contactMessageResult').html('<span style="color: red">Processing form. . . please wait. . .</span>');
-//         $.ajax({url: "http://localhost/assets/php/contact-form-treat.php", type: 'POST', data: formData, success: function(response)
-//             {
-//                 var res = JSON.parse(response);
-//                 console.log(res);
-//                 if(res.success == true)
-//                     $('#contactMessageResult').html('<span style="color: green">Form submitted successfully</span>');
-//                 else
-//                     $('#contactMessageResult').html('<span style="color: red">Form not submitted. Some error in running the database query.</span>');
-//             }
-//         });
-//     }
-//     else
-//     {
-//         $('#contactMessageResult').html('<span style="color: red">Please fill all the fields</span>');
-//     }
-// }
+    let adminUsername = document.getElementById("adminUsername");
+    let adminPassword = document.getElementById("adminPassword");
+    let messages = document.getElementById("adminFormMessages");
+
+    adminSubmitBtn.addEventListener("click", function(e){
+        e.preventDefault();
+
+        // get input values
+        let usernameValue = adminUsername.value;
+        let passwordValue = adminPassword.value;
+
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/assets/php/check-admin-login.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange=function () {
+
+            if(xhr.readyState == 4 && xhr.status ==200) {
+                if(xhr.responseText === "Success"){
+                    window.location.href = "/dashboard";
+                } else {
+                    messages.innerHTML=xhr.responseText;
+                }
+
+            }
+        }
+        xhr.send("username="+usernameValue+"&password="+passwordValue);
+    });
+};

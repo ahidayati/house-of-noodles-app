@@ -69,7 +69,7 @@ CREATE TABLE `contact_form` (
   `message` text NOT NULL,
   `createdAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,9 +78,6 @@ CREATE TABLE `contact_form` (
 
 LOCK TABLES `contact_form` WRITE;
 /*!40000 ALTER TABLE `contact_form` DISABLE KEYS */;
-INSERT INTO `contact_form` VALUES
-(7,'test','mail@test','777','foo','bar','2022-03-29 09:02:28'),
-(8,'test','mail','777','foo','bar','2022-03-29 09:02:42');
 /*!40000 ALTER TABLE `contact_form` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -232,6 +229,33 @@ LOCK TABLES `style_option` WRITE;
 /*!40000 ALTER TABLE `style_option` DISABLE KEYS */;
 /*!40000 ALTER TABLE `style_option` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES
+(1,'annisa','$2y$10$6VMaDWqhGJKZGM8UEX/e4O9LhK0I/QGVQWwd/.v2MMmDrrDjZ9ofC'),
+(2,'foo','$2y$10$Ro0MwMP5MEk3as9fye20ee2U3NAqvVpJ8HlE1ndsMunCilTwwdzvS');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -242,4 +266,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 15:31:39
+-- Dump completed on 2022-03-30 14:40:54

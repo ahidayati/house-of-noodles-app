@@ -41,6 +41,9 @@ $router->get('/info', function () {
 $router->get('/admin-login', function () {
     (new \app\controller\AdminController())->displayAdminLogin();
 });
+$router->get('/dashboard', function () {
+    (new \app\controller\DashboardController())->displayDashboard();
+});
 
 // Custom 404 Handler
 $router->set404(function () {

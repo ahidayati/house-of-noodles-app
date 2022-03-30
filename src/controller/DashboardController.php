@@ -4,14 +4,14 @@ namespace app\controller;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
-class AdminController {
-    public function displayAdminLogin()
+class DashboardController {
+    public function displayDashboard()
     {
 
         $loader = new FilesystemLoader('./templates');
         $twig = new Environment($loader);
-        echo $twig->render('admin/index.html.twig', [
-            'thisRoute' => $_SERVER['REQUEST_URI'],
+        echo $twig->render('admin/dashboard.html.twig', [
+
         ]);
     }
 }
