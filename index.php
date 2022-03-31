@@ -6,13 +6,6 @@ use Bramus\Router\Router as Bramus;
 
 require 'vendor/autoload.php';
 
-
-//whoops handler to debug php
-$whoops = new \Whoops\Run;
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-$whoops->register();
-
-
 //$home = new HomeController();
 //$home->display();
 
@@ -21,6 +14,12 @@ $whoops->register();
 //} else {
 //    echo "page not found";
 //}
+
+
+//whoops handler to debug php
+$whoops = new \Whoops\Run;
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
 
 // Create a Router
 $router = new Bramus();
@@ -51,7 +50,6 @@ $router->set404(function () {
     //echo '404, route not found!';
     (new Route404Controller())->display404();
 });
-
 
 
 // Run router

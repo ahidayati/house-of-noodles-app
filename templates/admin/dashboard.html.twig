@@ -4,27 +4,54 @@
 
 {% block body %}
 
-    {% if session.use %}
-        <h1>HELLOOOOOOOOOO THIS IS DASHBOARD</h1>
+{#    {% if session.use %}#}
         <page data-title="dashboard">
-            <div class="container-fluid vh-100">
-                <div class="row">
-                    <div class="col-3">
-                        <div>Homepage</div>
-                        <div>Reservation</div>
-                        <div>User</div>
-                        <div><a id="adminLogout" class="btn btn-primary">Logout</a></div>
+
+            <div class="container vh-100">
+                <h1 class="my-1">Dashboard</h1>
+                <div class="my-1">Hello {{ session.use }}.</div>
+                <div class="row d-flex justify-content-center my-2">
+                    <div class="col-2 d-flex flex-column justify-content-between border rounded-3 bg-dark text-light py-3 mx-2">
+                        <div>
+                            <div>Homepage</div>
+                            <div>Restaurant's Menu</div>
+                            <div>Reservation</div>
+                            <div>User</div>
+                        </div>
+                        <div>
+                            <a id="adminLogout" class="btn btn-outline-light">Logout</a>
+                        </div>
                     </div>
-                    <div class="col-9">
-                        hello {{ session.use }}
+                    <div class="col-9 border rounded-3 bg-dark text-light py-3 mx-2">
+                        <div class="row px-3">
+                            <h4 class="mb-2">Header Section</h4>
+                            <div class="border border-light rounded-3">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="header-heading" class="form-label">Heading</label>
+                                        <input type="text" class="form-control" id="header-heading">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="header-subheading" class="form-label">Subheading</label>
+                                        <input type="text" class="form-control" id="header-subheading">
+                                    </div>
+                                </form>
+                                <div>
+                                    <p>Last Updated:</p>
+                                </div>
+                                <div class="text-center mb-3" id="contactMessageResult">
+                                    <button class="btn btn-outline-light" id="contactSubmit">Save</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </page>
-    {% else %}
-        <div class="container mt-5 vh-100">
-            This page is only accessible by administrator. Please log in first.
-        </div>
-    {% endif %}
+{#    {% else %}#}
+{#        <div class="container mt-5 vh-100">#}
+{#            This page is only accessible by administrator. Please log in <a class="text-black" href="/admin-login">here</a> first.#}
+{#        </div>#}
+{#    {% endif %}#}
 
 {% endblock %}

@@ -32,7 +32,7 @@ if($_POST['name'] !== "" && $_POST['email'] !== "" && $_POST['phone'] !== ""){
 
     //input to database
     (new Database())->add("contact_form", ["name", "email", "phone", "subject", "message", "createdAt"], [$clientName, $clientEmail, $clientPhone, $clientSubject, $clientMessage, $clientDatetime]);
-    $result=true;
+    $result==true;
 }
 
 if($result==true){
