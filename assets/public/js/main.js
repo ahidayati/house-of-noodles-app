@@ -11013,9 +11013,31 @@ if ($("page").data("title") === "admin-login") {
 //script exist only on dashboard page
 if ($("page").data("title") === "dashboard") {
 
-    const adminLogoutBtn = document.getElementById("adminLogout");
+    //update header section
+    const updateHeaderBtn = document.getElementById("headerSubmit");
+    updateHeaderBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        // get input values
+        let headingValue = document.getElementById('header-heading').value;
+        let subheadingValue = document.getElementById('header-subheading').value;
+
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/assets/php/dashboard-update.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange=function () {
+            if(xhr.readyState == 4 && xhr.status ==200) {
+                console.log(xhr.responseText);
+                document.getElementById("headerMessageResult").innerHTML=xhr.responseText;
+            }
+        }
+        xhr.send("headerHeading="+headingValue+"&headerSubheading="+subheadingValue);
+    });
+
 
     //admin logout button
+    const adminLogoutBtn = document.getElementById("adminLogout");
     adminLogoutBtn.addEventListener("click", function(e) {
         e.preventDefault();
 

@@ -35,19 +35,23 @@ class Database
         return $row;
     }
 
-//    public function add(string $tableName, array $fieldName, string $value1, string $value2, string $value3, string $value4, string $value5)
-//    {
-//        $query = "INSERT INTO ".$tableName." (".implode(", ", $fieldName).") VALUES (:value1, :value2, :value3, :value4, :value5);";
-//        $results = $this->pdo->prepare($query);
-//
-//        $results->execute([
-//            ":value1" => $value1,
-//            ":value2" => $value2,
-//            ":value3" => $value3,
-//            ":value4" => $value4,
-//            ":value5" => $value5,
-//        ]);
-//    }
+    public function updateItem(string $tableName, array $fields, array $values, array $conditions)
+    {
+
+        $setArray = [];
+        foreach ($fields as $key=>$field){
+            $setArray[] = $field." = ".":value".$key;
+        };
+
+        $query = "UPDATE ".$tableName." SET ".implode(", ", $setArray)." WHERE ".implode(" ", $conditions).";";
+        $results = $this->pdo->prepare($query);
+
+        foreach ($values as $key=>$value){
+            $results->bindValue(":value".$key, $value);
+        };
+
+        $results->execute();
+    }
 
     public function add(string $tableName, array $fieldName, array $values)
     {
