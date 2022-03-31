@@ -46,8 +46,9 @@
 //     testdiv.insertAdjacentHTML('beforeend', htmlString);
 // };
 
-
+//script exist only on homepage
 if ($("page").data("title") === "homepage") {
+
     const contactSubmitBtn = document.getElementById("contactSubmit");
 
     let nameContact = document.getElementById("contactName");
@@ -56,7 +57,7 @@ if ($("page").data("title") === "homepage") {
     let subjectContact = document.getElementById("contactSubject");
     let messageContact = document.getElementById("contactMessage");
 
-
+    //to submit data on contact form
     contactSubmitBtn.addEventListener("click", function (e){
         e.preventDefault();
 
@@ -84,13 +85,16 @@ if ($("page").data("title") === "homepage") {
     });
 };
 
+//script exist only on admin-login page
 if ($("page").data("title") === "admin-login") {
+
     const adminSubmitBtn = document.getElementById("adminSubmit");
 
     let adminUsername = document.getElementById("adminUsername");
     let adminPassword = document.getElementById("adminPassword");
     let messages = document.getElementById("adminFormMessages");
 
+    //admin login function
     adminSubmitBtn.addEventListener("click", function(e){
         e.preventDefault();
 
@@ -117,9 +121,12 @@ if ($("page").data("title") === "admin-login") {
     });
 };
 
+//script exist only on dashboard page
 if ($("page").data("title") === "dashboard") {
+
     const adminLogoutBtn = document.getElementById("adminLogout");
 
+    //admin logout button
     adminLogoutBtn.addEventListener("click", function(e) {
         e.preventDefault();
 
