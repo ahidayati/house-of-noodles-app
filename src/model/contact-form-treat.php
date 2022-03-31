@@ -13,6 +13,7 @@ if($_POST['name'] !== "" && $_POST['email'] !== "" && $_POST['phone'] !== ""){
     $clientPhone=$_POST['phone'];
     $clientSubject=$_POST['subject'];
     $clientMessage=$_POST['message'];
+    date_default_timezone_set('Europe/Paris');
     $clientDatetime = (new \DateTime())->format('Y-m-d H:i:s');
 
     //email for admin

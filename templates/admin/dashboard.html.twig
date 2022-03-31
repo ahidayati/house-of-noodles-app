@@ -29,15 +29,15 @@
                                 <form>
                                     <div class="mb-3">
                                         <label for="header-heading" class="form-label">Heading</label>
-                                        <input type="text" class="form-control" id="header-heading">
+                                        <input type="text" class="form-control" id="header-heading" value="{{ headerSectionItems['heading'] }}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="header-subheading" class="form-label">Subheading</label>
-                                        <input type="text" class="form-control" id="header-subheading">
+                                        <input type="text" class="form-control" id="header-subheading" value="{{ headerSectionItems['subheading'] }}">
                                     </div>
                                 </form>
                                 <div>
-                                    <p>Last Updated:</p>
+                                    <p>Last Updated: {{ headerSectionItems['updatedAt']|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
                                 </div>
                                 <div class="text-center mb-3">
                                     <button class="btn btn-outline-light" id="headerSubmit">Save</button>
