@@ -10961,7 +10961,7 @@ if ($("page").data("title") === "homepage") {
         // console.log(nameValue, emailValue, phoneValue, subjectValue, messageValue);
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/src/model/contact-form-treat.php", true);
+        xhr.open("POST", "/contact-form-post", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange=function () {
             if(xhr.readyState == 4 && xhr.status == 200) {
@@ -11035,6 +11035,30 @@ if ($("page").data("title") === "dashboard") {
         xhr.send("headerHeading="+headingValue+"&headerSubheading="+subheadingValue);
     });
 
+    //update hours section
+    const updateHoursBtn = document.getElementById("hoursSubmit");
+    updateHoursBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        // get input values
+        let text1Value = document.getElementById('hours-text1').value;
+        let text2Value = document.getElementById('hours-text2').value;
+        let text3Value = document.getElementById('hours-text3').value;
+        let text4Value = document.getElementById('hours-text4').value;
+        let text5Value = document.getElementById('hours-text5').value;
+
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/dashboard/update/hours-section", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange=function () {
+            if(xhr.readyState == 4 && xhr.status == 200) {
+                //console.log(xhr.responseText);
+                document.getElementById("hoursMessageResult").innerHTML=xhr.responseText;
+            }
+        }
+        xhr.send("text1="+text1Value+"&text2="+text2Value+"&text3="+text3Value+"&text4="+text4Value+"&text5="+text5Value);
+    });
 
     //admin logout button
     const adminLogoutBtn = document.getElementById("adminLogout");

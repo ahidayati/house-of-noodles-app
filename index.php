@@ -38,23 +38,31 @@ $router->get('/info', function () {
     (new \app\controller\InfoController())->displayInfo();
 });
 
+//homepage's contact form
+$router->post('/contact-form-post', function () {
+    (new HomeController())->contactFormTreatment();
+});
+
 //admin routes
 $router->get('/admin-login', function () {
     (new \app\controller\AdminController())->displayAdminLogin();
 });
-//$router->post('/admin-login/check/', function () {
-//    (new \app\controller\AdminController())->adminLoginCheck();
-//});
-//$router->post('/admin-logout/', function () {
-//    (new \app\controller\AdminController())->adminLogout();
-//});
 $router->get('/dashboard', function () {
     (new \app\controller\DashboardController())->displayDashboard();
 });
+//$router->post('/admin-login/check', function () {
+//    (new \app\controller\AdminController())->adminLoginCheck();
+//});
+//$router->post('/admin-logout', function () {
+//    (new \app\controller\AdminController())->adminLogout();
+//});
 
 // route to send superglobal post to update data
 $router->post('/dashboard/update/header-section', function () {
     (new \app\controller\DashboardController())->updateHeader();
+});
+$router->post('/dashboard/update/hours-section', function () {
+    (new \app\controller\DashboardController())->updateHours();
 });
 
 // Custom 404 Handler

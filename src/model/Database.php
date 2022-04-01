@@ -57,7 +57,7 @@ class Database
         }
     }
 
-    public function add(string $tableName, array $fieldName, array $values)
+    public function addItem(string $tableName, array $fieldName, array $values)
     {
         $insertValues = [];
         foreach ($values as $key=>$value){
@@ -70,7 +70,12 @@ class Database
             foreach ($values as $key=>$value){
                 $results->bindValue(":value".$key, $value);
             };
-        $results->execute();
+
+        if ($results->execute()){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //https://stackoverflow.com/questions/3029454/sql-query-through-an-intermediate-table

@@ -69,7 +69,7 @@ CREATE TABLE `contact_form` (
   `message` text NOT NULL,
   `createdAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,15 +91,17 @@ DROP TABLE IF EXISTS `homepage_item`;
 CREATE TABLE `homepage_item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `section` varchar(50) NOT NULL,
-  `heading` varchar(50) NOT NULL,
-  `subheading` varchar(50) NOT NULL,
-  `textDescription` text DEFAULT NULL,
+  `text1` varchar(50) DEFAULT NULL,
+  `text2` varchar(50) DEFAULT NULL,
+  `text3` text DEFAULT NULL,
+  `text4` varchar(255) NOT NULL,
+  `text5` varchar(255) NOT NULL,
   `itemOrder` int(2) DEFAULT NULL,
   `activeStatus` tinyint(1) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +111,8 @@ CREATE TABLE `homepage_item` (
 LOCK TABLES `homepage_item` WRITE;
 /*!40000 ALTER TABLE `homepage_item` DISABLE KEYS */;
 INSERT INTO `homepage_item` VALUES
-(1,'header','Welcome to the house of noodles','No life without noodles','',0,0,'0000-00-00 00:00:00','2022-04-01 09:20:53');
+(1,'header','Welcome to the house of noodles','No life without noodles','','','',0,1,'0000-00-00 00:00:00','2022-04-01 14:47:50'),
+(2,'hours','Opening Hours','Monday to Thursday','09:00 - 23:00','Friday and Saturday','08:00 - 24:00',0,1,'2022-04-01 14:11:06','2022-04-01 14:43:19');
 /*!40000 ALTER TABLE `homepage_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,4 +269,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-01  9:33:00
+-- Dump completed on 2022-04-01 14:58:48

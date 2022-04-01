@@ -1,0 +1,144 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+{#    {% if session.use %}#}
+        <page data-title="dashboard">
+
+            <div class="container">
+                <h1 class="my-1">Dashboard</h1>
+                <div class="my-1">Hello {{ session.use }}.</div>
+                <div class="my-1">Last Login:</div>
+                <div class="row d-flex justify-content-center my-2">
+                    <div class="col-2 d-flex flex-column justify-content-between border rounded-3 bg-dark text-light py-3 mx-2">
+                        <div>
+                            <div class="btn btn-light text-start mb-3 w-100">Homepage</div>
+                            <div class="btn btn-outline-light text-start mb-3 w-100">Restaurant's Menu</div>
+                            <div class="btn btn-outline-light text-start mb-3 w-100">Reservation</div>
+                            <div class="btn btn-outline-light text-start mb-3 w-100">User</div>
+                        </div>
+                        <div>
+                            <a id="adminLogout" class="btn btn-outline-light w-100">Logout</a>
+                        </div>
+                    </div>
+                    <div class="col-9 border rounded-3 bg-dark text-light py-3 mx-2">
+                        <div class="row px-3">
+                            <h4 class="mb-2">Header Section</h4>
+                            <div class="border border-light rounded-3">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="header-heading" class="form-label">Heading</label>
+                                        <input type="text" class="form-control" id="header-heading" value="{{ headerSectionItems['text1'] }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="header-subheading" class="form-label">Sub Heading</label>
+                                        <input type="text" class="form-control" id="header-subheading" value="{{ headerSectionItems['text2'] }}">
+                                    </div>
+                                </form>
+                                <div>
+                                    <p>Last Updated: {{ headerSectionItems['updatedAt']|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
+                                </div>
+                                <div class="text-center mb-3">
+                                    <button class="btn btn-outline-light" id="headerSubmit">Save</button>
+                                </div>
+                                <div id="headerMessageResult"></div>
+                            </div>
+                        </div>
+                        <div class="row px-3 mt-3">
+                            <h4 class="mb-2">Hours Section</h4>
+                            <div class="border border-light rounded-3">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="hours-text1" class="form-label">Heading</label>
+                                        <input type="text" class="form-control" id="hours-text1" value="{{ hoursSectionItems['text1'] }}">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="hours-text2" class="form-label">Sub Heading Left</label>
+                                                <input type="text" class="form-control" id="hours-text2" value="{{ hoursSectionItems['text2'] }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="hours-text3" class="form-label">Sub Sub Heading Left</label>
+                                                <input type="text" class="form-control" id="hours-text3" value="{{ hoursSectionItems['text3'] }}">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="hours-text4" class="form-label">Sub Heading Right</label>
+                                                <input type="text" class="form-control" id="hours-text4" value="{{ hoursSectionItems['text4'] }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="hours-text5" class="form-label">Sub Sub Heading Right</label>
+                                                <input type="text" class="form-control" id="hours-text5" value="{{ hoursSectionItems['text5'] }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div>
+                                    <p>Last Updated: {{ hoursSectionItems['updatedAt']|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
+                                </div>
+                                <div class="text-center mb-3">
+                                    <button class="btn btn-outline-light" id="hoursSubmit">Save</button>
+                                </div>
+                                <div id="hoursMessageResult"></div>
+                            </div>
+                        </div>
+                        <div class="row px-3 mt-3">
+                            <h4 class="mb-2">Another Section</h4>
+                            <div class="border border-light rounded-3">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Heading</label>
+                                        <input type="text" class="form-control" id="" value="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Sub Heading</label>
+                                        <input type="text" class="form-control" id="" value="">
+                                    </div>
+                                </form>
+                                <div>
+                                    <p>Last Updated: </p>
+                                </div>
+                                <div class="text-center mb-3">
+                                    <button class="btn btn-outline-light" id="">Save</button>
+                                </div>
+                                <div id=""></div>
+                            </div>
+                        </div>
+                        <div class="row px-3 mt-3">
+                            <h4 class="mb-2">Another Section</h4>
+                            <div class="border border-light rounded-3">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Heading</label>
+                                        <input type="text" class="form-control" id="" value="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Sub Heading</label>
+                                        <input type="text" class="form-control" id="" value="">
+                                    </div>
+                                </form>
+                                <div>
+                                    <p>Last Updated: </p>
+                                </div>
+                                <div class="text-center mb-3">
+                                    <button class="btn btn-outline-light" id="">Save</button>
+                                </div>
+                                <div id=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </page>
+{#    {% else %}#}
+{#        <div class="container mt-5 vh-100">#}
+{#            This page is only accessible by administrator. Please log in <a class="text-black" href="/admin-login">here</a> first.#}
+{#        </div>#}
+{#    {% endif %}#}
+
+{% endblock %}
