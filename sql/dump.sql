@@ -109,7 +109,7 @@ CREATE TABLE `homepage_item` (
 LOCK TABLES `homepage_item` WRITE;
 /*!40000 ALTER TABLE `homepage_item` DISABLE KEYS */;
 INSERT INTO `homepage_item` VALUES
-(1,'header','Welcome to the house of noodles','No life without noodles','',0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+(1,'header','Welcome to the house of noodles','No life without noodles','',0,0,'0000-00-00 00:00:00','2022-04-01 09:20:53');
 /*!40000 ALTER TABLE `homepage_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,4 +266,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-30 15:50:20
+-- Dump completed on 2022-04-01  9:33:00
