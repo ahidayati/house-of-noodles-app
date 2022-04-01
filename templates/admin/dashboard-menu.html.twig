@@ -1,0 +1,73 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+{#    {% if session.use %}#}
+        <page data-title="dashboard">
+
+            <div class="container">
+                <h1 class="my-1">Dashboard</h1>
+                <div class="my-1">Hello {{ session.use }}.</div>
+                <div class="my-1">Last Login:</div>
+                <div class="row d-flex justify-content-center my-2">
+                    <div class="col-2 d-flex flex-column justify-content-between border rounded-3 bg-dark text-light py-3 mx-2">
+                        <div>
+                            <a href="/dashboard" class="btn btn-outline-light text-start mb-3 w-100">Homepage</a>
+                            <a href="/dashboard-menu" class="btn btn-light text-start mb-3 w-100">Restaurant's Menu</a>
+                            <a class="btn btn-outline-light text-start mb-3 w-100">Reservation</a>
+                            <a class="btn btn-outline-light text-start mb-3 w-100">User</a>
+                        </div>
+                        <div>
+                            <a id="adminLogout" class="btn btn-outline-light w-100">Logout</a>
+                        </div>
+                    </div>
+                    <div class="col-9 border rounded-3 bg-dark text-light py-3 mx-2">
+                        <div class="row px-3">
+                            <h4 class="mb-2">Menu Items</h4>
+
+                            {% for dish in viewMenuItems %}
+                            <div class="border border-light rounded-3 mb-4">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="header-heading" class="form-label">Item</label>
+                                        <input type="text" class="form-control" id="header-heading" value="{{ dish.menuItem }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="header-subheading" class="form-label">Description</label>
+                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.menuDescription }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="header-subheading" class="form-label">Price in €</label>
+                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.price }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="header-subheading" class="form-label">Category</label>
+                                        <input type="text" class="form-control" id="header-subheading" value="">
+                                    </div>
+                                </form>
+                                <div>
+                                    <p>Created: </p>
+                                    <p>Last Updated: </p>
+                                </div>
+                                <div class="text-center mb-3">
+                                    <button class="btn btn-outline-light" id="headerSubmit">Save</button>
+                                </div>
+                                <div id="headerMessageResult"></div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </page>
+{#    {% else %}#}
+{#        <div class="container mt-5 vh-100">#}
+{#            This page is only accessible by administrator. Please log in <a class="text-black" href="/admin-login">here</a> first.#}
+{#        </div>#}
+{#    {% endif %}#}
+
+{% endblock %}

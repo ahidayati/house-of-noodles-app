@@ -29,7 +29,7 @@ class HomeController
             'thisRoute' => $_SERVER['REQUEST_URI'],
 
             'headerSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2"], ["section", "=", "'header'"]),
-            'showMenuItems' => (new Database())->viewMenu(["menuCategoryTitle", "=", "'Main Dishes'"]),
+            'showMenuItems' => (new Database())->viewMenuItems([" WHERE","menuCategoryTitle", "=", "'Main Dishes'"]),
 
             'thisYear' => Date("Y"),
         ]);

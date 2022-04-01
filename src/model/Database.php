@@ -102,15 +102,39 @@ class Database
     }
 
     //https://stackoverflow.com/questions/3029454/sql-query-through-an-intermediate-table
-    public function viewMenu(array $conditions = null) :bool|array
+    public function viewMenuItems(array $conditions = NULL) :bool|array
     {
-        $query = "SELECT menuItem, menuDescription, price FROM menu JOIN menu_category ON menu_category.idMenu=menu.id JOIN category ON category.id=menu_category.idCategory"." WHERE ".implode(" ", $conditions)." ORDER BY menu.menuItemOrder;";
+        if (!empty($conditions)){
+            $implodeConditions = implode(" ", $conditions);
+        } else {
+            $implodeConditions = NULL;
+        }
+
+        $query = "SELECT DISTINCT menuItem, menuDescription, price FROM menu JOIN menu_category ON menu_category.idMenu=menu.id JOIN category ON category.id=menu_category.idCategory ".$implodeConditions." ORDER BY menu.menuItemOrder;";
         $this->pdo->prepare($query);
         $results = $this->pdo->query($query);
         $results->execute();
 
         $rows = $results->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
+    }
+
+    public function viewMenuItem(array $conditions = NULL) :bool|array
+    {
+        if (!empty($conditions)){
+            $implodeConditions = implode(" ", $conditions);
+        } else {
+            $implodeConditions = null;
+        }
+
+
+        $query = "SELECT menuItem, menuDescription, price FROM menu JOIN menu_category ON menu_category.idMenu=menu.id JOIN category ON category.id=menu_category.idCategory"." WHERE ".$implodeConditions." ORDER BY menu.menuItemOrder;";
+        $this->pdo->prepare($query);
+        $results = $this->pdo->query($query);
+        $results->execute();
+
+        $row = $results->fetch(PDO::FETCH_ASSOC);
+        return $row;
     }
 
 }

@@ -48,7 +48,10 @@ $router->get('/admin-login', function () {
     (new \app\controller\AdminController())->displayAdminLogin();
 });
 $router->get('/dashboard', function () {
-    (new \app\controller\DashboardController())->displayDashboard();
+    (new \app\controller\DashboardController())->displayDashboardHome();
+});
+$router->get('/dashboard-menu', function () {
+    (new \app\controller\DashboardController())->displayDashboardMenu();
 });
 //$router->post('/admin-login/check', function () {
 //    (new \app\controller\AdminController())->adminLoginCheck();

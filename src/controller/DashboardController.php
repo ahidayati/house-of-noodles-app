@@ -6,7 +6,7 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 class DashboardController {
-    public function displayDashboard()
+    public function displayDashboardHome()
     {
 
         session_start();
@@ -17,6 +17,19 @@ class DashboardController {
         echo $twig->render('admin/dashboard-home.html.twig', [
             'headerSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2", "updatedAt"], ["section", "=", "'header'"]),
             'hoursSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2", "text3", "text4", "text5", "updatedAt"], ["section", "=", "'hours'"]),
+        ]);
+    }
+
+    public function displayDashboardMenu()
+    {
+
+        session_start();
+
+        $loader = new FilesystemLoader('./templates');
+        $twig = new Environment($loader);
+        $twig->addGlobal('session', $_SESSION);
+        echo $twig->render('admin/dashboard-menu.html.twig', [
+            'viewMenuItems' => (new Database())->viewMenuItems(),
         ]);
     }
 
