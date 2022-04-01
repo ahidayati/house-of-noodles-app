@@ -50,7 +50,11 @@ class Database
             $results->bindValue(":value".$key, $value);
         };
 
-        $results->execute();
+        if ($results->execute()){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function add(string $tableName, array $fieldName, array $values)

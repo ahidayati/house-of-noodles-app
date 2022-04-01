@@ -37,11 +37,24 @@ $router->get('/privacy-policy', function () {
 $router->get('/info', function () {
     (new \app\controller\InfoController())->displayInfo();
 });
+
+//admin routes
 $router->get('/admin-login', function () {
     (new \app\controller\AdminController())->displayAdminLogin();
 });
+//$router->post('/admin-login/check/', function () {
+//    (new \app\controller\AdminController())->adminLoginCheck();
+//});
+//$router->post('/admin-logout/', function () {
+//    (new \app\controller\AdminController())->adminLogout();
+//});
 $router->get('/dashboard', function () {
     (new \app\controller\DashboardController())->displayDashboard();
+});
+
+// route to send superglobal post to update data
+$router->post('/dashboard/update/header-section', function () {
+    (new \app\controller\DashboardController())->updateHeader();
 });
 
 // Custom 404 Handler

@@ -75,7 +75,7 @@ if ($("page").data("title") === "homepage") {
         xhr.open("POST", "/src/model/contact-form-treat.php", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange=function () {
-            if(xhr.readyState == 4 && xhr.status ==200) {
+            if(xhr.readyState == 4 && xhr.status == 200) {
                 contactSubmitBtn.setAttribute('disabled', 'true');
                 document.getElementById("contactMessageResult").innerHTML=xhr.responseText;
             }
@@ -108,7 +108,7 @@ if ($("page").data("title") === "admin-login") {
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange=function () {
 
-            if(xhr.readyState == 4 && xhr.status ==200) {
+            if(xhr.readyState == 4 && xhr.status == 200) {
                 if(xhr.responseText === "Success"){
                     window.location.href = "/dashboard";
                 } else {
@@ -135,10 +135,10 @@ if ($("page").data("title") === "dashboard") {
 
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/src/model/dashboard-header-update.php", true);
+        xhr.open("POST", "/dashboard/update/header-section", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange=function () {
-            if(xhr.readyState == 4 && xhr.status ==200) {
+            if(xhr.readyState == 4 && xhr.status == 200) {
                 //console.log(xhr.responseText);
                 document.getElementById("headerMessageResult").innerHTML=xhr.responseText;
             }
@@ -156,11 +156,9 @@ if ($("page").data("title") === "dashboard") {
         xhr.open("POST", "/src/model/admin-logout.php", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange=function () {
-
-            if(xhr.readyState == 4 && xhr.status ==200) {
+            if(xhr.readyState == 4 && xhr.status == 200) {
                 if(xhr.responseText === "Logout"){
                     window.location.href = "/admin-login";
-
                 } else {
                     console.log("response="+xhr.responseText);
                 }

@@ -2,7 +2,7 @@
 use app\model\Database;
 require_once '../../src/model/Database.php';
 
-$result=false;
+$result = false;
 if($_POST['headerHeading'] !== "" && $_POST['headerSubheading'] !== ""){
     $headerHeading = $_POST['headerHeading'];
     $headerSubheading = $_POST['headerSubheading'];
@@ -10,11 +10,11 @@ if($_POST['headerHeading'] !== "" && $_POST['headerSubheading'] !== ""){
 
     //update to database
     (new Database())->updateItem("homepage_item", ["heading", "subheading", "updatedAt"], [$headerHeading, $headerSubheading, $updateTime], ["section", " = ", "'header'"]);
-    $result=true;
+    $result = true;
 } else {
     echo "<span class='bg-danger text-light'>Empty field(s).</span>";
 }
 
-if($result==true){
+if($result == true){
     echo"<span class='bg-light text-black'>Data successfully updated. <i class='fa-solid fa-thumbs-up'></i></span>";
 }
