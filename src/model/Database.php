@@ -22,7 +22,7 @@ class Database
         return $this->pdo;
     }
 
-    public function viewItem(string $tableName, array $fieldName, array $conditions = NULL)
+    public function viewItem(string $tableName, array $fieldName, array $conditions) :bool|array
     {
         $fieldInString = implode(", ", $fieldName);
 
@@ -35,7 +35,7 @@ class Database
         return $row;
     }
 
-    public function updateItem(string $tableName, array $fields, array $values, array $conditions)
+    public function updateItem(string $tableName, array $fields, array $values, array $conditions) :bool
     {
 
         $setArray = [];
@@ -57,7 +57,7 @@ class Database
         }
     }
 
-    public function addItem(string $tableName, array $fieldName, array $values)
+    public function addItem(string $tableName, array $fieldName, array $values) :bool
     {
         $insertValues = [];
         foreach ($values as $key=>$value){
@@ -78,8 +78,31 @@ class Database
         }
     }
 
+
+    public function deleteItem(string $tableName, array $fields, array $values) :bool
+    {
+        $conditionFields = [];
+        foreach ($fields as $key=>$field){
+            $conditionFields[] = $field." = ".":value".$key;
+        };
+
+        $query = "DELETE FROM ".$tableName." WHERE ".implode(" ", $conditionFields).";";
+        $results = $this->pdo->prepare($query);
+
+        foreach ($values as $key=>$value){
+            $results->bindValue(":value".$key, $value);
+        };
+
+        if ($results->execute()){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     //https://stackoverflow.com/questions/3029454/sql-query-through-an-intermediate-table
-    public function viewMenu(array $conditions = null)
+    public function viewMenu(array $conditions = null) :bool|array
     {
         $query = "SELECT menuItem, menuDescription, price FROM menu JOIN menu_category ON menu_category.idMenu=menu.id JOIN category ON category.id=menu_category.idCategory"." WHERE ".implode(" ", $conditions)." ORDER BY menu.menuItemOrder;";
         $this->pdo->prepare($query);
