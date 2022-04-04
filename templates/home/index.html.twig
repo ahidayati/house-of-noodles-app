@@ -14,8 +14,8 @@
         <!--header section-->
         <section id="header-section">
             <div>
-                <h1 class="header-text">{{ headerSectionItems["text1"] }}</h1>
-                {#<p class="header-text">{{ headerSectionItems["text2"] }}</p>#}
+                <h1 class="header-text">{{ headerSectionItems.text1 }}</h1>
+                {#<p>{{ headerSectionItems["text2"] }}</p>#}
                 <a href="#reservation-section" class="btn btn-outline-light header-button">Reserve Now</a>
             </div>
         </section>
@@ -64,15 +64,15 @@
         <!--hours section-->
         <section id="hours-section">
             <div class="container text-center">
-                <h2 class="text-decoration-underline">Opening Hours</h2>
+                <h2 class="text-decoration-underline">{{ hoursSectionItems.text1 }}</h2>
                 <div class="row">
                     <div class="col">
-                        <h3>Monday to Thursday</h3>
-                        <h4>09:00 - 23:00</h4>
+                        <h3>{{ hoursSectionItems.text2 }}</h3>
+                        <h4>{{ hoursSectionItems.text3 }}</h4>
                     </div>
                     <div class="col">
-                        <h3>Friday and Saturday</h3>
-                        <h4>08:00 - 24:00</h4>
+                        <h3>{{ hoursSectionItems.text4 }}</h3>
+                        <h4>{{ hoursSectionItems.text5 }}</h4>
                     </div>
                 </div>
                 <!--            <div class="row special-announcement">-->

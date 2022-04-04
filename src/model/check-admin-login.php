@@ -10,7 +10,7 @@ if($_POST['username'] !== "" && $_POST['password'] !== ""){
     $pass = $_POST['password'];
 
 
-    $validityCheck = (new Database())->viewItem("user", ["username", "password"], ["username", "=", "'".$user."'"]);
+    $validityCheck = (new Database())->viewItem("user", ["username", "password"], [" WHERE","username", "=", "'".$user."'"]);
 
     if ($validityCheck == true && password_verify($pass, $validityCheck['password'])){
     //if($validityCheck['username'] === $user && $validityCheck['password'] === $pass){

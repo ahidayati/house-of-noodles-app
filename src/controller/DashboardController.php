@@ -11,12 +11,19 @@ class DashboardController {
 
         session_start();
 
+        if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 60)) {
+            session_unset();
+            session_destroy();
+            echo "session destroyed";
+        }
+        $_SESSION['start'] = time();
+
         $loader = new FilesystemLoader('./templates');
         $twig = new Environment($loader);
         $twig->addGlobal('session', $_SESSION);
         echo $twig->render('admin/dashboard-home.html.twig', [
-            'headerSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2", "updatedAt"], ["section", "=", "'header'"]),
-            'hoursSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2", "text3", "text4", "text5", "updatedAt"], ["section", "=", "'hours'"]),
+            'headerSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2", "updatedAt"], [" WHERE","section", "=", "'header'"]),
+            'hoursSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2", "text3", "text4", "text5", "updatedAt"], [" WHERE", "section", "=", "'hours'"]),
         ]);
     }
 

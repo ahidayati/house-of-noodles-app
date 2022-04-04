@@ -24,9 +24,13 @@ class Database
 
     public function viewItem(string $tableName, array $fieldName, array $conditions) :bool|array
     {
-        $fieldInString = implode(", ", $fieldName);
+        if (!empty($conditions)){
+            $implodeConditions = implode(" ", $conditions);
+        } else {
+            $implodeConditions = NULL;
+        }
 
-        $query = "SELECT ".$fieldInString." FROM ".$tableName." WHERE ".implode(" ", $conditions).";";
+        $query = "SELECT ".implode(", ", $fieldName)." FROM ".$tableName.$implodeConditions.";";
         $this->pdo->prepare($query);
         $results = $this->pdo->query($query);
         $results->execute();
