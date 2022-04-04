@@ -10999,7 +10999,7 @@ if ($("page").data("title") === "admin-login") {
 
             if(xhr.readyState == 4 && xhr.status == 200) {
                 if(xhr.responseText === "Success"){
-                    window.location.href = "/dashboard";
+                    window.location.href = "/dashboard/";
                 } else {
                     messages.innerHTML=xhr.responseText;
                 }
@@ -11059,6 +11059,32 @@ if ($("page").data("title") === "dashboard") {
         }
         xhr.send("text1="+text1Value+"&text2="+text2Value+"&text3="+text3Value+"&text4="+text4Value+"&text5="+text5Value);
     });
+
+    //admin logout button
+    const adminLogoutBtn = document.getElementById("adminLogout");
+    adminLogoutBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/src/model/admin-logout.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange=function () {
+            if(xhr.readyState == 4 && xhr.status == 200) {
+                if(xhr.responseText === "Logout"){
+                    window.location.href = "/admin-login";
+                } else {
+                    console.log("response="+xhr.responseText);
+                }
+
+            }
+        }
+        xhr.send("logout=true");
+    });
+};
+
+//script exist only on dashboard-menu page
+if ($("page").data("title") === "dashboard-menu") {
+
 
     //admin logout button
     const adminLogoutBtn = document.getElementById("adminLogout");

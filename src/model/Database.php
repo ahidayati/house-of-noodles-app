@@ -102,7 +102,7 @@ class Database
     }
 
     //https://stackoverflow.com/questions/3029454/sql-query-through-an-intermediate-table
-    public function viewMenuItems(array $conditions = NULL) :bool|array
+    public function viewMenuItems(array $fieldName, array $conditions = NULL) :bool|array
     {
         if (!empty($conditions)){
             $implodeConditions = implode(" ", $conditions);
@@ -110,7 +110,7 @@ class Database
             $implodeConditions = NULL;
         }
 
-        $query = "SELECT DISTINCT menuItem, menuDescription, price FROM menu JOIN menu_category ON menu_category.idMenu=menu.id JOIN category ON category.id=menu_category.idCategory ".$implodeConditions." ORDER BY menu.menuItemOrder;";
+        $query = "SELECT DISTINCT ".implode(", ", $fieldName)." FROM menu JOIN menu_category ON menu_category.idMenu=menu.id JOIN category ON category.id=menu_category.idCategory ".$implodeConditions." ORDER BY menu.menuItemOrder;";
         $this->pdo->prepare($query);
         $results = $this->pdo->query($query);
         $results->execute();
@@ -124,9 +124,8 @@ class Database
         if (!empty($conditions)){
             $implodeConditions = implode(" ", $conditions);
         } else {
-            $implodeConditions = null;
+            $implodeConditions = NULL;
         }
-
 
         $query = "SELECT menuItem, menuDescription, price FROM menu JOIN menu_category ON menu_category.idMenu=menu.id JOIN category ON category.id=menu_category.idCategory"." WHERE ".$implodeConditions." ORDER BY menu.menuItemOrder;";
         $this->pdo->prepare($query);

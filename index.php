@@ -47,12 +47,26 @@ $router->post('/contact-form-post', function () {
 $router->get('/admin-login', function () {
     (new \app\controller\AdminController())->displayAdminLogin();
 });
-$router->get('/dashboard', function () {
-    (new \app\controller\DashboardController())->displayDashboardHome();
+
+$router->mount('/dashboard', function() use ($router) {
+
+    // results in '/dashboard/'
+    $router->get('/', function() {
+        (new \app\controller\DashboardController())->displayDashboardHome();
+    });
+
+    // results in '/dashboard/home'
+    $router->get('/menu', function() {
+        (new \app\controller\DashboardController())->displayDashboardMenu();
+    });
+
+    // will result in 'dashboard/menu/id'
+    $router->get('/menu/(\d+)', function($id) {
+        echo 'menu id ' . htmlentities($id);
+    });
+
 });
-$router->get('/dashboard-menu', function () {
-    (new \app\controller\DashboardController())->displayDashboardMenu();
-});
+
 //$router->post('/admin-login/check', function () {
 //    (new \app\controller\AdminController())->adminLoginCheck();
 //});

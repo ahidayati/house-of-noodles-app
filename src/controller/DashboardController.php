@@ -29,7 +29,8 @@ class DashboardController {
         $twig = new Environment($loader);
         $twig->addGlobal('session', $_SESSION);
         echo $twig->render('admin/dashboard-menu.html.twig', [
-            'viewMenuItems' => (new Database())->viewMenuItems(),
+            'viewMenuItems' => (new Database())->viewMenuItems(["menu.id", "menu.menuItem", "menu.menuDescription", "menu.price", "menu.createdAt", "menu.updatedAt"]),
+//            'viewMenuItemCategories' => (new Database())->viewMenuItems(["category.menuCategoryTitle"], [" WHERE", "menu.id", "="]),
         ]);
     }
 

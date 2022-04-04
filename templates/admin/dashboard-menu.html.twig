@@ -5,7 +5,7 @@
 {% block body %}
 
 {#    {% if session.use %}#}
-        <page data-title="dashboard">
+        <page data-title="dashboard-menu">
 
             <div class="container">
                 <h1 class="my-1">Dashboard</h1>
@@ -14,8 +14,8 @@
                 <div class="row d-flex justify-content-center my-2">
                     <div class="col-2 d-flex flex-column justify-content-between border rounded-3 bg-dark text-light py-3 mx-2">
                         <div>
-                            <a href="/dashboard" class="btn btn-outline-light text-start mb-3 w-100">Homepage</a>
-                            <a href="/dashboard-menu" class="btn btn-light text-start mb-3 w-100">Restaurant's Menu</a>
+                            <a href="/dashboard/" class="btn btn-outline-light text-start mb-3 w-100">Homepage</a>
+                            <a href="/dashboard/menu" class="btn btn-light text-start mb-3 w-100">Restaurant's Menu</a>
                             <a class="btn btn-outline-light text-start mb-3 w-100">Reservation</a>
                             <a class="btn btn-outline-light text-start mb-3 w-100">User</a>
                         </div>
@@ -34,25 +34,25 @@
                                         <label for="header-heading" class="form-label">Item</label>
                                         <input type="text" class="form-control" id="header-heading" value="{{ dish.menuItem }}">
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="header-subheading" class="form-label">Description</label>
-                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.menuDescription }}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="header-subheading" class="form-label">Price in €</label>
-                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.price }}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="header-subheading" class="form-label">Category</label>
-                                        <input type="text" class="form-control" id="header-subheading" value="">
-                                    </div>
+{#                                    <div class="mb-3">#}
+{#                                        <label for="header-subheading" class="form-label">Description</label>#}
+{#                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.menuDescription }}">#}
+{#                                    </div>#}
+{#                                    <div class="mb-3">#}
+{#                                        <label for="header-subheading" class="form-label">Price in €</label>#}
+{#                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.price }}">#}
+{#                                    </div>#}
+{#                                    <div class="mb-3">#}
+{#                                        <label for="header-subheading" class="form-label">Category</label>#}
+{#                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.menuCategoryTitle }}">#}
+{#                                    </div>#}
                                 </form>
                                 <div>
-                                    <p>Created: </p>
-                                    <p>Last Updated: </p>
+                                    <p>Created: {{ dish.createdAt|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
+                                    <p>Last Updated: {{ dish.updatedAt|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
                                 </div>
                                 <div class="mb-3 d-flex justify-content-between">
-                                    <button class="btn btn-primary" id="headerSubmit">Save <i class="fa-solid fa-floppy-disk"></i></button>
+                                    <button class="btn btn-success" id="headerSubmit">Edit <i class="fa-solid fa-pen-to-square"></i></button>
                                     <button class="btn btn-danger" id="headerSubmit">Delete <i class="fa-solid fa-trash-can"></i></button>
                                 </div>
                                 <div id="headerMessageResult"></div>
