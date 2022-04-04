@@ -5,7 +5,7 @@
 {% block body %}
 
     {#    {% if session.use %}#}
-    <page data-title="dashboard">
+    <page data-title="dashboard-menu-edit">
 
         <div class="container">
             <h1 class="my-1">Dashboard Edit</h1>
@@ -25,39 +25,63 @@
                 </div>
                 <div class="col-9 border rounded-3 bg-dark text-light py-3 mx-2">
                     <div class="row px-3">
-                        <h4 class="mb-2">Menu Items</h4>
+                        <h4 class="mb-2">Menu Item</h4>
 
-{#                        {% for dish in viewMenuItems %}#}
-{#                            <div class="border border-light rounded-3 mb-4">#}
-{#                                <form>#}
-{#                                    <div class="mb-3">#}
-{#                                        <label for="header-heading" class="form-label">Item</label>#}
-{#                                        <input type="text" class="form-control" id="header-heading" value="{{ dish.menuItem }}">#}
-{#                                    </div>#}
-{#                                    #}{#                                    <div class="mb-3">#}
-{#                                    #}{#                                        <label for="header-subheading" class="form-label">Description</label>#}
-{#                                    #}{#                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.menuDescription }}">#}
-{#                                    #}{#                                    </div>#}
-{#                                    #}{#                                    <div class="mb-3">#}
-{#                                    #}{#                                        <label for="header-subheading" class="form-label">Price in €</label>#}
-{#                                    #}{#                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.price }}">#}
-{#                                    #}{#                                    </div>#}
-{#                                    #}{#                                    <div class="mb-3">#}
-{#                                    #}{#                                        <label for="header-subheading" class="form-label">Category</label>#}
-{#                                    #}{#                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.menuCategoryTitle }}">#}
-{#                                    #}{#                                    </div>#}
-{#                                </form>#}
-{#                                <div>#}
-{#                                    <p>Created: </p>#}
-{#                                    <p>Last Updated: </p>#}
-{#                                </div>#}
-{#                                <div class="mb-3 d-flex justify-content-between">#}
-{#                                    <a class="btn btn-success" id="headerSubmit">Edit <i class="fa-solid fa-pen-to-square"></i></a>#}
-{#                                    <a class="btn btn-danger" id="headerSubmit">Delete <i class="fa-solid fa-trash-can"></i></a>#}
-{#                                </div>#}
-{#                                <div id="headerMessageResult"></div>#}
-{#                            </div>#}
-{#                        {% endfor %}#}
+
+                            <div class="border border-light rounded-3 mb-4">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="header-heading" class="form-label">Item</label>
+                                        <input type="text" class="form-control" id="header-heading" value="{{ viewMenuItem.menuItem }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="header-subheading" class="form-label">Description</label>
+                                        <input type="text" class="form-control" id="header-subheading" value="{{ viewMenuItem.menuDescription }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="header-subheading" class="form-label">Price</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="header-subheading" value="{{ viewMenuItem.price }}">
+                                            <span class="input-group-text">€</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="header-subheading" class="form-label">Category</label>
+                                        <a class="btn btn-secondary text-light mb-2"><i class="fa-solid fa-circle-plus"></i></a>
+
+                                        {% for menuCategory in viewMenuItemCategories %}
+                                        <div class="input-group mb-2">
+                                            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                                <option>Choose Category</option>
+
+                                                {% for category in viewAllCategories %}
+                                                <option value="{{ category.id }}"
+
+                                                        {% if menuCategory.menuCategoryTitle == category.menuCategoryTitle %}
+                                                            {% set select = 'selected' %}
+                                                                 {{ select }}
+                                                        {% endif %}
+
+                                                >{{ category.menuCategoryTitle }}</option>
+                                                {% endfor %}
+
+                                            </select>
+                                            <button class="btn btn-danger" type="button"><i class="fa-solid fa-trash-can"></i></button>
+                                        </div>
+                                        {% endfor %}
+
+                                    </div>
+                                </form>
+                                <div>
+                                    <p>Created: {{ viewMenuItem.createdAt|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
+                                    <p>Last Updated: {{ viewMenuItem.updatedAt|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
+                                </div>
+                                <div class="mb-3 text-center">
+                                    <a class="btn btn-primary" id="headerSubmit">Save <i class="fa-solid fa-floppy-disk"></i></a>
+                                </div>
+                                <div id="headerMessageResult"></div>
+                            </div>
+
 
                     </div>
                 </div>

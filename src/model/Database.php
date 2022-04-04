@@ -35,6 +35,24 @@ class Database
         return $row;
     }
 
+    public function viewItems(string $tableName, array $fieldName, array $conditions = NULL) :bool|array
+    {
+        if (!empty($conditions)){
+            $implodeConditions = implode(" ", $conditions);
+        } else {
+            $implodeConditions = NULL;
+        }
+
+        $query = "SELECT ".implode(", ", $fieldName)." FROM ".$tableName." ".$implodeConditions.";";
+        $this->pdo->prepare($query);
+        $results = $this->pdo->query($query);
+        $results->execute();
+
+        $rows = $results->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+
+
     public function updateItem(string $tableName, array $fields, array $values, array $conditions) :bool
     {
 
@@ -119,7 +137,7 @@ class Database
         return $rows;
     }
 
-    public function viewMenuItem(array $conditions = NULL) :bool|array
+    public function viewMenuItem(array $fieldName, array $conditions = NULL) :bool|array
     {
         if (!empty($conditions)){
             $implodeConditions = implode(" ", $conditions);
@@ -127,7 +145,7 @@ class Database
             $implodeConditions = NULL;
         }
 
-        $query = "SELECT menuItem, menuDescription, price FROM menu JOIN menu_category ON menu_category.idMenu=menu.id JOIN category ON category.id=menu_category.idCategory"." WHERE ".$implodeConditions." ORDER BY menu.menuItemOrder;";
+        $query = "SELECT ".implode(", ", $fieldName)." FROM menu JOIN menu_category ON menu_category.idMenu=menu.id JOIN category ON category.id=menu_category.idCategory"." ".$implodeConditions." ;";
         $this->pdo->prepare($query);
         $results = $this->pdo->query($query);
         $results->execute();

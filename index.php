@@ -62,7 +62,8 @@ $router->mount('/dashboard', function() use ($router) {
 
     // will result in 'dashboard/menu/id'
     $router->get('/menu/(\d+)', function($id) {
-        echo 'menu id ' . htmlentities($id);
+//        echo 'menu id ' . htmlentities($id);
+        (new \app\controller\DashboardController())->displayDashboardMenuEach($id);
     });
 
 });

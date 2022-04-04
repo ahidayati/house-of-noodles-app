@@ -34,6 +34,24 @@ class DashboardController {
         ]);
     }
 
+    public function displayDashboardMenuEach($id)
+    {
+
+        session_start();
+
+//        var_dump((new Database())->viewMenuItems(["category.menuCategoryTitle"], [" WHERE", " menu.id", " =", $id]));
+//        die();
+
+        $loader = new FilesystemLoader('./templates');
+        $twig = new Environment($loader);
+        $twig->addGlobal('session', $_SESSION);
+        echo $twig->render('admin/dashboard-menu-edit.html.twig', [
+            'viewMenuItem' => (new Database())->viewMenuItem(["menu.id", "menu.menuItem", "menu.menuDescription", "menu.price", "menu.createdAt", "menu.updatedAt"], [" WHERE", " menu.id", " =", $id]),
+            'viewAllCategories' => (new Database())->viewItems("category", ["id", "menuCategoryTitle"]),
+            'viewMenuItemCategories' => (new Database())->viewMenuItems(["category.menuCategoryTitle"], [" WHERE", " menu.id", " =", $id]),
+        ]);
+    }
+
     public function updateHeader()
     {
         if($_POST['headerHeading'] !== "" && $_POST['headerSubheading'] !== ""){

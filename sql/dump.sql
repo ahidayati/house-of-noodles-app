@@ -129,6 +129,8 @@ CREATE TABLE `menu` (
   `menuDescription` text NOT NULL,
   `menuItemOrder` int(2) NOT NULL,
   `price` float NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -140,10 +142,10 @@ CREATE TABLE `menu` (
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
 INSERT INTO `menu` VALUES
-(1,'Bangkok Shrimp Pad Thai','Stir-fried rice noodles with shrimp, peanuts, a scrambled egg, and bean sprouts.',1,15),
-(2,'Bali Chicken Fried Noodles','Thin yellow noodles stir fried in cooking oil with garlic, onion, chicken, cabbages and tomatoes.',2,16),
-(3,'Saigon Beef Pho Bo','Vietnamese noodle soup dish consisting of broth, rice noodles, herbs, and beef meat.',3,14),
-(4,'Osaka Spicy Tofu Ramen','Vegetarian ramen with mushroom, carrot, vegetable broth and sweet soy sauce braised tofu.',4,14);
+(1,'Bangkok Shrimp Pad Thai','Stir-fried rice noodles with shrimp, peanuts, a scrambled egg, and bean sprouts.',1,15,'2022-04-04 08:59:21','2022-04-04 08:59:21'),
+(2,'Bali Chicken Fried Noodles','Thin yellow noodles stir fried in cooking oil with garlic, onion, chicken, cabbages and tomatoes.',2,16,'2022-04-04 08:59:21','2022-04-04 08:59:21'),
+(3,'Saigon Beef Pho Bo','Vietnamese noodle soup dish consisting of broth, rice noodles, herbs, and beef meat.',3,14,'2022-04-04 08:59:21','2022-04-04 08:59:21'),
+(4,'Osaka Spicy Tofu Ramen','Vegetarian ramen with mushroom, carrot, vegetable broth and sweet soy sauce braised tofu.',4,14,'2022-04-04 08:59:21','2022-04-04 08:59:21');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,8 +161,8 @@ CREATE TABLE `menu_category` (
   `idCategory` int(11) NOT NULL,
   KEY `FK_menu` (`idMenu`),
   KEY `FK_category` (`idCategory`),
-  CONSTRAINT `FK_category` FOREIGN KEY (`idCategory`) REFERENCES `category` (`id`),
-  CONSTRAINT `FK_menu` FOREIGN KEY (`idMenu`) REFERENCES `menu` (`id`)
+  CONSTRAINT `FK_category` FOREIGN KEY (`idCategory`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_menu` FOREIGN KEY (`idMenu`) REFERENCES `menu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -269,4 +271,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-01 19:46:40
+-- Dump completed on 2022-04-04 15:04:52

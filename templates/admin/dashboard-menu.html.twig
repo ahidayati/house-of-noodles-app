@@ -25,7 +25,11 @@
                     </div>
                     <div class="col-9 border rounded-3 bg-dark text-light py-3 mx-2">
                         <div class="row px-3">
-                            <h4 class="mb-2">Menu Items</h4>
+                            <div class="d-flex justify-content-between mb-3">
+                                <h4>Menu Items</h4>
+                                <a class="btn btn-secondary text-light">Add Item <i class="fa-solid fa-circle-plus"></i></a>
+                            </div>
+
 
                             {% for dish in viewMenuItems %}
                             <div class="border border-light rounded-3 mb-4">
@@ -34,26 +38,13 @@
                                         <label for="header-heading" class="form-label">Item</label>
                                         <input type="text" class="form-control" id="header-heading" value="{{ dish.menuItem }}">
                                     </div>
-{#                                    <div class="mb-3">#}
-{#                                        <label for="header-subheading" class="form-label">Description</label>#}
-{#                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.menuDescription }}">#}
-{#                                    </div>#}
-{#                                    <div class="mb-3">#}
-{#                                        <label for="header-subheading" class="form-label">Price in €</label>#}
-{#                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.price }}">#}
-{#                                    </div>#}
-{#                                    <div class="mb-3">#}
-{#                                        <label for="header-subheading" class="form-label">Category</label>#}
-{#                                        <input type="text" class="form-control" id="header-subheading" value="{{ dish.menuCategoryTitle }}">#}
-{#                                    </div>#}
                                 </form>
                                 <div>
-                                    <p>Created: {{ dish.createdAt|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
                                     <p>Last Updated: {{ dish.updatedAt|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
                                 </div>
                                 <div class="mb-3 d-flex justify-content-between">
-                                    <button class="btn btn-success" id="headerSubmit">Edit <i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button class="btn btn-danger" id="headerSubmit">Delete <i class="fa-solid fa-trash-can"></i></button>
+                                    <a href="/dashboard/menu/{{ dish.id }}" class="btn btn-success" id="headerSubmit">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a class="btn btn-danger" id="headerSubmit">Delete <i class="fa-solid fa-trash-can"></i></a>
                                 </div>
                                 <div id="headerMessageResult"></div>
                             </div>

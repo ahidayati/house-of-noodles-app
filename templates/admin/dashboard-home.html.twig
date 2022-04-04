@@ -24,6 +24,8 @@
                         </div>
                     </div>
                     <div class="col-9 border rounded-3 bg-dark text-light py-3 mx-2">
+
+                        {#header section#}
                         <div class="row px-3">
                             <h4 class="mb-2">Header Section</h4>
                             <div class="border border-light rounded-3">
@@ -41,11 +43,13 @@
                                     <p>Last Updated: {{ headerSectionItems['updatedAt']|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
                                 </div>
                                 <div class="text-center mb-3">
-                                    <button class="btn btn-primary" id="headerSubmit">Save <i class="fa-solid fa-floppy-disk"></i></button>
+                                    <button class="btn btn-primary" id="headerSubmit">Save Update <i class="fa-solid fa-floppy-disk"></i></button>
                                 </div>
                                 <div id="headerMessageResult"></div>
                             </div>
                         </div>
+
+                        {#hours section#}
                         <div class="row px-3 mt-3">
                             <h4 class="mb-2">Hours Section</h4>
                             <div class="border border-light rounded-3">
@@ -81,11 +85,13 @@
                                     <p>Last Updated: {{ hoursSectionItems['updatedAt']|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
                                 </div>
                                 <div class="text-center mb-3">
-                                    <button class="btn btn-primary" id="hoursSubmit">Save <i class="fa-solid fa-floppy-disk"></i></button>
+                                    <button class="btn btn-primary" id="hoursSubmit">Save Update <i class="fa-solid fa-floppy-disk"></i></button>
                                 </div>
                                 <div id="hoursMessageResult"></div>
                             </div>
                         </div>
+
+                        {#section#}
                         <div class="row px-3 mt-3">
                             <h4 class="mb-2">Another Section</h4>
                             <div class="border border-light rounded-3">
@@ -103,11 +109,13 @@
                                     <p>Last Updated: </p>
                                 </div>
                                 <div class="text-center mb-3">
-                                    <button class="btn btn-primary" id="">Save <i class="fa-solid fa-floppy-disk"></i></button>
+                                    <button class="btn btn-primary" id="">Save Update <i class="fa-solid fa-floppy-disk"></i></button>
                                 </div>
                                 <div id=""></div>
                             </div>
                         </div>
+
+                        {#section#}
                         <div class="row px-3 mt-3">
                             <h4 class="mb-2">Another Section</h4>
                             <div class="border border-light rounded-3">
@@ -125,11 +133,12 @@
                                     <p>Last Updated: </p>
                                 </div>
                                 <div class="text-center mb-3">
-                                    <button class="btn btn-primary" id="">Save <i class="fa-solid fa-floppy-disk"></i></button>
+                                    <button class="btn btn-primary" id="">Save Update <i class="fa-solid fa-floppy-disk"></i></button>
                                 </div>
                                 <div id=""></div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
