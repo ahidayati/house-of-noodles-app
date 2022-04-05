@@ -2,17 +2,17 @@
 
 namespace app\controller;
 
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
+class Route404Controller extends AbstractController
+{
 
-class Route404Controller {
+    function __construct()
+    {
+        parent::__construct();
+    }
 
     public function display404()
     {
-
-        $loader = new FilesystemLoader('./templates');
-        $twig = new Environment($loader);
-        echo $twig->render('404/index.html.twig', [
+        echo $this->render('404/index.html.twig', [
 
         ]);
     }

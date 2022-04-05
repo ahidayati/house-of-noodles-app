@@ -1,16 +1,17 @@
 <?php
+
 namespace app\controller;
 
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
+class TermsConditionsController extends AbstractController
+{
+    function __construct()
+    {
+        parent::__construct();
+    }
 
-class TermsConditionsController {
     public function displayTC()
     {
-
-        $loader = new FilesystemLoader('./templates');
-        $twig = new Environment($loader);
-        echo $twig->render('terms_conditions/index.html.twig', [
+        echo $this->render('terms_conditions/index.html.twig', [
 
         ]);
     }

@@ -2,30 +2,22 @@
 
 namespace app\controller;
 
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
 use app\model\Database;
 
-
-//include $_SERVER['DOCUMENT_ROOT']."/src/model/HomeDB.php";
-//var_dump(file_exists($_SERVER['DOCUMENT_ROOT']."/src/model/HomeDB.php"));
-//die();
-
-class HomeController
+class HomeController extends AbstractController
 {
 
-//    function __construct()
-//    {
-//    }
+    function __construct()
+    {
+        parent::__construct();
+    }
 
     public function displayPage()
     {
 //        var_dump($_SERVER['REQUEST_URI']);
 //        die();
 
-        $loader = new FilesystemLoader('./templates');
-        $twig = new Environment($loader);
-        echo $twig->render('home/index.html.twig', [
+        echo $this->render('home/index.html.twig', [
             'thisRoute' => $_SERVER['REQUEST_URI'],
 
             'headerSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'header'"]),

@@ -1,16 +1,18 @@
 <?php
+
 namespace app\controller;
 
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
+class PrivacyPolicyController extends AbstractController
+{
+    function __construct()
+    {
+        parent::__construct();
+    }
 
-class PrivacyPolicyController {
     public function displayPP()
     {
 
-        $loader = new FilesystemLoader('./templates');
-        $twig = new Environment($loader);
-        echo $twig->render('privacy_policy/index.html.twig', [
+        echo $this->render('privacy_policy/index.html.twig', [
 
         ]);
     }

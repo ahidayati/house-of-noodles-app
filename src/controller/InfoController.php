@@ -1,16 +1,17 @@
 <?php
+
 namespace app\controller;
 
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
+class InfoController extends AbstractController
+{
+    function __construct()
+    {
+        parent::__construct();
+    }
 
-class InfoController {
     public function displayInfo()
     {
-
-        $loader = new FilesystemLoader('./templates');
-        $twig = new Environment($loader);
-        echo $twig->render('info/index.html.twig', [
+        echo $this->render('info/index.html.twig', [
             'thisRoute' => $_SERVER['REQUEST_URI'],
         ]);
     }

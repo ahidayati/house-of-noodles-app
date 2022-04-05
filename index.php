@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 use app\controller\HomeController;
 use app\controller\Route404Controller;
 use Bramus\Router\Router as Bramus;
@@ -23,8 +25,10 @@ $whoops->register();
 
 // Create a Router
 $router = new Bramus();
+//var_dump($_POST);
+//die();
 
-// Define Routes
+// homepage routes
 $router->get('/', function () {
     (new HomeController())->displayPage();
 });
@@ -44,9 +48,14 @@ $router->post('/contact-form-post', function () {
 });
 
 //admin routes
+
 $router->get('/admin-login', function () {
     (new \app\controller\AdminController())->displayAdminLogin();
 });
+
+//$router->post('/testlogin', function () {
+//    (new \app\controller\AdminController())->adminLoginCheck();
+//});
 
 $router->mount('/dashboard', function() use ($router) {
 
@@ -60,7 +69,7 @@ $router->mount('/dashboard', function() use ($router) {
         (new \app\controller\DashboardController())->displayDashboardMenu();
     });
 
-    // will result in 'dashboard/menu/id'
+    // results in 'dashboard/menu/id'
     $router->get('/menu/(\d+)', function($id) {
 //        echo 'menu id ' . htmlentities($id);
         (new \app\controller\DashboardController())->displayDashboardMenuEach($id);
@@ -68,9 +77,7 @@ $router->mount('/dashboard', function() use ($router) {
 
 });
 
-//$router->post('/admin-login/check', function () {
-//    (new \app\controller\AdminController())->adminLoginCheck();
-//});
+
 //$router->post('/admin-logout', function () {
 //    (new \app\controller\AdminController())->adminLogout();
 //});
