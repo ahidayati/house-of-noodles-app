@@ -91,17 +91,17 @@ DROP TABLE IF EXISTS `homepage_item`;
 CREATE TABLE `homepage_item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `section` varchar(50) NOT NULL,
-  `text1` varchar(50) DEFAULT NULL,
-  `text2` varchar(50) DEFAULT NULL,
+  `text1` varchar(255) DEFAULT NULL,
+  `text2` varchar(255) DEFAULT NULL,
   `text3` text DEFAULT NULL,
-  `text4` varchar(255) NOT NULL,
-  `text5` varchar(255) NOT NULL,
+  `text4` varchar(255) DEFAULT NULL,
+  `text5` varchar(255) DEFAULT NULL,
   `itemOrder` int(2) DEFAULT NULL,
   `activeStatus` tinyint(1) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,7 +112,13 @@ LOCK TABLES `homepage_item` WRITE;
 /*!40000 ALTER TABLE `homepage_item` DISABLE KEYS */;
 INSERT INTO `homepage_item` VALUES
 (1,'header','Welcome to the house of noodles','No life without noodles','','','',0,1,'0000-00-00 00:00:00','2022-04-01 14:47:50'),
-(2,'hours','Opening Hours','Monday to Thursday','09:00 - 23:00','Friday and Saturday','08:00 - 24:00',0,1,'2022-04-01 14:11:06','2022-04-01 14:43:19');
+(2,'hours','Opening Hours','Monday to Thursday','09:00 - 23:00','Friday and Saturday','08:00 - 24:00',0,1,'2022-04-01 14:11:06','2022-04-01 14:43:19'),
+(3,'testimonial','Testimonial','Jean-Claude Van Damme','I ordered the spicy tonkotsu ramen, the flavor profile was 10/10. I truly appreciate how much care they put into the presentation of the bowl. That really took the experience the extra mile for me. The noodles are fresh, the cuts of pork belly are juicy and the broth is delicious and not too salty. It was an excellent experience, must try for noodle lovers!',NULL,NULL,NULL,1,'2022-04-06 14:07:18','2022-04-06 14:07:18'),
+(4,'card-main','Our Values','Our core values allow us to bring the best foods and services to you.',NULL,NULL,NULL,NULL,1,'2022-04-06 14:10:47','2022-04-06 14:10:47'),
+(5,'card-1','Fresh','Every ingredients are sourced from responsible suppliers who provide high quality products.',NULL,NULL,NULL,NULL,1,'2022-04-06 14:12:58','2022-04-06 14:12:58'),
+(6,'card-2','Authenticity','The recipes used are authentic from deep research and have been passed down for generations.',NULL,NULL,NULL,NULL,1,'2022-04-06 14:12:58','2022-04-06 14:12:58'),
+(7,'card-3','Made With Love','Every dish is made by our professional chefs with love and passion for good food.',NULL,NULL,NULL,NULL,1,'2022-04-06 14:12:58','2022-04-06 14:12:58'),
+(8,'menu','Our Menu','Our menu changes occasionally. Any meat can be replaced with tofu or saitan. Ask our server for more information about specific allergen.',NULL,NULL,NULL,NULL,1,'2022-04-06 14:16:13','2022-04-06 14:16:13');
 /*!40000 ALTER TABLE `homepage_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -271,4 +277,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-04 15:04:52
+-- Dump completed on 2022-04-06 14:17:01
