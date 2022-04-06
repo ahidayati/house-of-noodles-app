@@ -91,22 +91,22 @@
                             </div>
                         </div>
 
-                        {#section#}
+                        {#testimonial section#}
                         <div class="row px-3 mt-3">
-                            <h4 class="mb-2">Another Section</h4>
+                            <h4 class="mb-2">Testimonial Section</h4>
                             <div class="border border-light rounded-3">
                                 <form>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Heading</label>
-                                        <input type="text" class="form-control" id="" value="">
+                                        <label for="" class="form-label">Testimonial Text</label>
+                                        <textarea rows="4" type="text" class="form-control" id="">{{ testimonialSectionItems['text3'] }}</textarea>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Sub Heading</label>
-                                        <input type="text" class="form-control" id="" value="">
+                                        <label for="" class="form-label">Reviewer's Name</label>
+                                        <input type="text" class="form-control" id="" value="{{ testimonialSectionItems['text2'] }}">
                                     </div>
                                 </form>
                                 <div>
-                                    <p>Last Updated: </p>
+                                    <p>Last Updated: {{ testimonialSectionItems['updatedAt']|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
                                 </div>
                                 <div class="text-center mb-3">
                                     <button class="btn btn-primary" id="">Save Update <i class="fa-solid fa-floppy-disk"></i></button>

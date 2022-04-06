@@ -26,6 +26,7 @@ class DashboardController extends AbstractController
         echo $this->render('admin/dashboard-home.html.twig', [
             'headerSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2", "updatedAt"], [" WHERE","section", "=", "'header'"]),
             'hoursSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2", "text3", "text4", "text5", "updatedAt"], [" WHERE", "section", "=", "'hours'"]),
+            'testimonialSectionItems' => (new Database())->viewItem("homepage_item", ["text2", "text3", "updatedAt"], [" WHERE", "section", "=", "'testimonial'"]),
         ]);
     }
 
