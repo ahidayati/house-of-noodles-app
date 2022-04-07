@@ -12,7 +12,7 @@ class DashboardController extends AbstractController
 
     public function displayDashboardHome()
     {
-        //condition for timeout session
+        //condition for session timeout
         if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 1800)) {
             session_unset();
             session_destroy();
@@ -38,7 +38,7 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    public function displayDashboardMenuEach($id)
+    public function displayDashboardMenuEdit($id)
     {
 //        var_dump((new Database())->viewMenuItems(["category.menuCategoryTitle"], [" WHERE", " menu.id", " =", $id]));
 //        die();
@@ -49,6 +49,15 @@ class DashboardController extends AbstractController
             'viewMenuItemCategories' => (new Database())->viewMenuItems(["category.menuCategoryTitle"], [" WHERE", " menu.id", " =", $id]),
         ]);
     }
+
+    public function displayDashboardMenuAdd()
+    {
+
+        echo $this->render('admin/dashboard-menu-add.html.twig', [
+            'viewAllCategories' => (new Database())->viewItems("category", ["id", "menuCategoryTitle"]),
+        ]);
+    }
+
 
     public function updateHeader()
     {

@@ -17,6 +17,7 @@
                         <a href="/dashboard/" class="btn btn-outline-light text-start mb-3 w-100">Homepage</a>
                         <a href="/dashboard/menu" class="btn btn-light text-start mb-3 w-100">Restaurant's Menu</a>
                         <a class="btn btn-outline-light text-start mb-3 w-100">Reservation</a>
+                        <a class="btn btn-outline-light text-start mb-3 w-100">Message</a>
                         <a class="btn btn-outline-light text-start mb-3 w-100">User</a>
                     </div>
                     <div>
@@ -47,7 +48,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="header-subheading" class="form-label">Category</label>
-                                        <a class="btn btn-secondary text-light mb-2"><i class="fa-solid fa-circle-plus"></i></a>
+                                        {#<a class="btn btn-secondary text-light mb-2"><i class="fa-solid fa-circle-plus"></i></a>
 
                                         {% for menuCategory in viewMenuItemCategories %}
                                         <div class="input-group mb-2">
@@ -68,10 +69,10 @@
                                             </select>
                                             <button class="btn btn-danger" type="button"><i class="fa-solid fa-trash-can"></i></button>
                                         </div>
-                                        {% endfor %}
+                                        {% endfor %}#}
 
 
-                                        {#{% for category in viewAllCategories %}
+                                        {% for category in viewAllCategories %}
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="{{ category.id }}" id="flexCheckChecked"
 
@@ -86,7 +87,7 @@
                                                 {{ category.menuCategoryTitle }}
                                             </label>
                                         </div>
-                                        {% endfor %}#}
+                                        {% endfor %}
 
 
                                     </div>

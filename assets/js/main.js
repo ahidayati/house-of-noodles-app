@@ -218,3 +218,35 @@ if ($("page").data("title") === "dashboard-menu") {
         xhr.send("logout=true");
     });
 };
+
+//script exist only on dashboard-menu-add page
+if ($("page").data("title") === "dashboard-menu-add") {
+
+
+    //add new item button
+    const newItemSubmitBtn = document.getElementById("newItemSubmit");
+    newItemSubmitBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        // get input values
+        let menuItemValue = document.getElementById('menu-item').value;
+        let menuDescriptionValue = document.getElementById('menu-description').value;
+        let menuPriceValue = document.getElementById('menu-price').value;
+        let menuCategories = document.querySelectorAll('.menu-categories');
+
+
+
+        console.log(menuItemValue, menuDescriptionValue, menuPriceValue);
+        console.info(menuCategories);
+
+        // const xhr = new XMLHttpRequest();
+        // xhr.open("POST", "/src/model/admin-logout.php", true);
+        // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // xhr.onreadystatechange=function () {
+        //     if(xhr.readyState == 4 && xhr.status == 200) {
+        //         document.getElementById("hoursMessageResult").innerHTML=xhr.responseText;
+        //     }
+        // }
+        // xhr.send("logout=true");
+    });
+};

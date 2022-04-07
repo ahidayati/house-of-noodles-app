@@ -1,0 +1,82 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+    {#    {% if session.use %}#}
+    <page data-title="dashboard-menu-add">
+
+        <div class="container">
+            <h1 class="my-1">Dashboard Add</h1>
+            <div class="my-1">Hello {{ session.use }}.</div>
+            <div class="my-1">Last Login:</div>
+            <div class="row d-flex justify-content-center my-2">
+                <div class="col-2 d-flex flex-column justify-content-between border rounded-3 bg-dark text-light py-3 mx-2">
+                    <div>
+                        <a href="/dashboard/" class="btn btn-outline-light text-start mb-3 w-100">Homepage</a>
+                        <a href="/dashboard/menu" class="btn btn-light text-start mb-3 w-100">Restaurant's Menu</a>
+                        <a class="btn btn-outline-light text-start mb-3 w-100">Reservation</a>
+                        <a class="btn btn-outline-light text-start mb-3 w-100">Message</a>
+                        <a class="btn btn-outline-light text-start mb-3 w-100">User</a>
+                    </div>
+                    <div>
+                        <a id="adminLogout" class="btn btn-outline-light w-100">Logout</a>
+                    </div>
+                </div>
+                <div class="col-9 border rounded-3 bg-dark text-light py-3 mx-2">
+                    <div class="row px-3">
+                        <h4 class="mb-2">Menu Item</h4>
+
+
+                            <div class="border border-light rounded-3 mb-4">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="menu-item" class="form-label">Item</label>
+                                        <input type="text" class="form-control" id="menu-item">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="menu-description" class="form-label">Description</label>
+                                        <input type="text" class="form-control" id="menu-description">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="menu-price" class="form-label">Price</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="menu-price">
+                                            <span class="input-group-text">€</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Category</label>
+
+                                        {% for category in viewAllCategories %}
+                                        <div class="form-check">
+                                            <input class="form-check-input menu-categories" type="checkbox" value="{{ category.id }}">
+                                            <label class="form-check-label" for="menu-categories">
+                                                {{ category.menuCategoryTitle }}
+                                            </label>
+                                        </div>
+                                        {% endfor %}
+
+                                    </div>
+                                </form>
+                                <div class="mb-3 text-center">
+                                    <a class="btn btn-primary" id="newItemSubmit">Save New Item <i class="fa-solid fa-floppy-disk"></i></a>
+                                </div>
+                                <div id="headerMessageResult"></div>
+                            </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </page>
+    {#    {% else %}#}
+    {#        <div class="container mt-5 vh-100">#}
+    {#            This page is only accessible by administrator. Please log in <a class="text-black" href="/admin-login">here</a> first.#}
+    {#        </div>#}
+    {#    {% endif %}#}
+
+{% endblock %}

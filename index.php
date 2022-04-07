@@ -71,8 +71,13 @@ $router->mount('/dashboard', function() use ($router) {
 
     // results in 'dashboard/menu/id'
     $router->get('/menu/(\d+)', function($id) {
-//        echo 'menu id ' . htmlentities($id);
-        (new \app\controller\DashboardController())->displayDashboardMenuEach($id);
+        //echo 'menu id ' . htmlentities($id);
+        (new \app\controller\DashboardController())->displayDashboardMenuEdit($id);
+    });
+
+    // results in 'dashboard/menu/add'
+    $router->get('/menu/add', function() {
+        (new \app\controller\DashboardController())->displayDashboardMenuAdd();
     });
 
 });
