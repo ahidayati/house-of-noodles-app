@@ -218,6 +218,36 @@ INSERT INTO `navbar` VALUES
 UNLOCK TABLES;
 
 --
+-- Table structure for table `reservation_form`
+--
+
+DROP TABLE IF EXISTS `reservation_form`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reservation_form` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(70) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `person` int(2) NOT NULL,
+  `date` date NOT NULL,
+  `hour` time NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `status` enum('pending','confirmed','cancelled','') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reservation_form`
+--
+
+LOCK TABLES `reservation_form` WRITE;
+/*!40000 ALTER TABLE `reservation_form` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reservation_form` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `style_option`
 --
 
@@ -250,8 +280,13 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstName` varchar(70) NOT NULL,
+  `lastName` varchar(70) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `role` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `lastLogin` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -263,8 +298,8 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES
-(1,'annisa','$2y$10$6VMaDWqhGJKZGM8UEX/e4O9LhK0I/QGVQWwd/.v2MMmDrrDjZ9ofC'),
-(2,'foo','$2y$10$Ro0MwMP5MEk3as9fye20ee2U3NAqvVpJ8HlE1ndsMunCilTwwdzvS');
+(1,'','','','','annisa','$2y$10$6VMaDWqhGJKZGM8UEX/e4O9LhK0I/QGVQWwd/.v2MMmDrrDjZ9ofC','0000-00-00 00:00:00'),
+(2,'','','','','foo','$2y$10$Ro0MwMP5MEk3as9fye20ee2U3NAqvVpJ8HlE1ndsMunCilTwwdzvS','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -277,4 +312,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-06 14:17:01
+-- Dump completed on 2022-04-07 12:45:12
