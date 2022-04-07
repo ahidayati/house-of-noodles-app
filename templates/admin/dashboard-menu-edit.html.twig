@@ -70,6 +70,25 @@
                                         </div>
                                         {% endfor %}
 
+
+                                        {#{% for category in viewAllCategories %}
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="{{ category.id }}" id="flexCheckChecked"
+
+                                            {% for menuCategory in viewMenuItemCategories %}
+                                                    {% if menuCategory.menuCategoryTitle == category.menuCategoryTitle %}
+                                                        {% set check = 'checked' %}
+                                                        {{ check }}
+                                                    {% endif %}
+                                            {% endfor %}
+                                            >
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                {{ category.menuCategoryTitle }}
+                                            </label>
+                                        </div>
+                                        {% endfor %}#}
+
+
                                     </div>
                                 </form>
                                 <div>
