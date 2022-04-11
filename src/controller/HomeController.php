@@ -21,9 +21,9 @@ class HomeController extends AbstractController
             'thisRoute' => $_SERVER['REQUEST_URI'],
 
             'headerSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'header'"]),
-            'showMenuItems' => (new Database())->viewMenuItems(["*"], [" WHERE","menuCategoryTitle", "=", "'Main Dishes'"]),
+            'showMenuItems' => (new Database())->viewMenuItems(["*"], [" WHERE","categoryTitle", "=", "'Main Dishes'"]),
 
-            'hoursSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2", "text3", "text4", "text5"], [" WHERE", "section", "=", "'hours'"]),
+            'hoursSectionItems' => (new Database())->viewItem("homepage_item", ["text1"], [" WHERE", "section", "=", "'hours-main'"]),
 
             'thisYear' => Date("Y"),
         ]);

@@ -32,7 +32,7 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `menuCategoryTitle` varchar(100) NOT NULL,
+  `categoryTitle` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -94,14 +94,12 @@ CREATE TABLE `homepage_item` (
   `text1` varchar(255) DEFAULT NULL,
   `text2` varchar(255) DEFAULT NULL,
   `text3` text DEFAULT NULL,
-  `text4` varchar(255) DEFAULT NULL,
-  `text5` varchar(255) DEFAULT NULL,
   `itemOrder` int(2) DEFAULT NULL,
   `activeStatus` tinyint(1) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,14 +109,16 @@ CREATE TABLE `homepage_item` (
 LOCK TABLES `homepage_item` WRITE;
 /*!40000 ALTER TABLE `homepage_item` DISABLE KEYS */;
 INSERT INTO `homepage_item` VALUES
-(1,'header','Welcome to the house of noodles','No life without noodles','','','',0,1,'0000-00-00 00:00:00','2022-04-01 14:47:50'),
-(2,'hours','Opening Hours','Monday to Thursday','09:00 - 23:00','Friday and Saturday','08:00 - 24:00',0,1,'2022-04-01 14:11:06','2022-04-01 14:43:19'),
-(3,'testimonial','Testimonial','Jean-Claude Van Damme','I ordered the spicy tonkotsu ramen, the flavor profile was 10/10. I truly appreciate how much care they put into the presentation of the bowl. That really took the experience the extra mile for me. The noodles are fresh, the cuts of pork belly are juicy and the broth is delicious and not too salty. It was an excellent experience, must try for noodle lovers!',NULL,NULL,NULL,1,'2022-04-06 14:07:18','2022-04-06 14:07:18'),
-(4,'card-main','Our Values','Our core values allow us to bring the best foods and services to you.',NULL,NULL,NULL,NULL,1,'2022-04-06 14:10:47','2022-04-06 14:10:47'),
-(5,'card-1','Fresh','Every ingredients are sourced from responsible suppliers who provide high quality products.',NULL,NULL,NULL,NULL,1,'2022-04-06 14:12:58','2022-04-06 14:12:58'),
-(6,'card-2','Authenticity','The recipes used are authentic from deep research and have been passed down for generations.',NULL,NULL,NULL,NULL,1,'2022-04-06 14:12:58','2022-04-06 14:12:58'),
-(7,'card-3','Made With Love','Every dish is made by our professional chefs with love and passion for good food.',NULL,NULL,NULL,NULL,1,'2022-04-06 14:12:58','2022-04-06 14:12:58'),
-(8,'menu','Our Menu','Our menu changes occasionally. Any meat can be replaced with tofu or saitan. Ask our server for more information about specific allergen.',NULL,NULL,NULL,NULL,1,'2022-04-06 14:16:13','2022-04-06 14:16:13');
+(1,'header','Welcome to the house of noodles','No life without noodles',NULL,NULL,1,'0000-00-00 00:00:00','2022-04-01 14:47:50'),
+(2,'hours-main','Opening Hours',NULL,NULL,NULL,1,'2022-04-01 14:11:06','2022-04-01 14:43:19'),
+(3,'hours-1','Monday to Thursday','09:00 - 23:00',NULL,NULL,1,'2022-04-11 13:16:29','2022-04-11 13:16:29'),
+(4,'hours-2','Friday and Saturday','08:00 - 24:00',NULL,NULL,1,'2022-04-11 13:16:29','2022-04-11 13:16:29'),
+(5,'menu','Our Menu','Our menu changes occasionally. Any meat can be replaced with tofu or saitan. Ask our server for more information about specific allergen.',NULL,NULL,1,'2022-04-06 14:16:13','2022-04-06 14:16:13'),
+(6,'testimonial','Testimonial','Jean-Claude Van Damme','I ordered the spicy tonkotsu ramen, the flavor profile was 10/10. I truly appreciate how much care they put into the presentation of the bowl. That really took the experience the extra mile for me. The noodles are fresh, the cuts of pork belly are juicy and the broth is delicious and not too salty. It was an excellent experience, must try for noodle lovers!',NULL,1,'2022-04-06 14:07:18','2022-04-06 14:07:18'),
+(7,'card-main','Our Values','Our core values allow us to bring the best foods and services to you.',NULL,NULL,1,'2022-04-06 14:10:47','2022-04-06 14:10:47'),
+(8,'card-1','Fresh','Every ingredients are sourced from responsible suppliers who provide high quality products.',NULL,NULL,1,'2022-04-06 14:12:58','2022-04-06 14:12:58'),
+(9,'card-2','Authenticity','The recipes used are authentic from deep research and have been passed down for generations.',NULL,NULL,1,'2022-04-06 14:12:58','2022-04-06 14:12:58'),
+(10,'card-3','Made With Love','Every dish is made by our professional chefs with love and passion for good food.',NULL,NULL,1,'2022-04-06 14:12:58','2022-04-06 14:12:58');
 /*!40000 ALTER TABLE `homepage_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,7 +233,6 @@ CREATE TABLE `reservation_form` (
   `date` date NOT NULL,
   `hour` time NOT NULL,
   `createdAt` datetime NOT NULL,
-  `status` enum('pending','confirmed','cancelled','') NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -245,6 +244,29 @@ CREATE TABLE `reservation_form` (
 LOCK TABLES `reservation_form` WRITE;
 /*!40000 ALTER TABLE `reservation_form` DISABLE KEYS */;
 /*!40000 ALTER TABLE `reservation_form` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reservation_status`
+--
+
+DROP TABLE IF EXISTS `reservation_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reservation_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` enum('pending','confirmed','cancelled','') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reservation_status`
+--
+
+LOCK TABLES `reservation_status` WRITE;
+/*!40000 ALTER TABLE `reservation_status` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reservation_status` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -312,4 +334,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-07 15:29:04
+-- Dump completed on 2022-04-11 13:56:52

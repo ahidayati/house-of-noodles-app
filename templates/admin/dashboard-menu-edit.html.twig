@@ -58,12 +58,12 @@
                                                 {% for category in viewAllCategories %}
                                                 <option value="{{ category.id }}"
 
-                                                        {% if menuCategory.menuCategoryTitle == category.menuCategoryTitle %}
+                                                        {% if menuCategory.categoryTitle == category.categoryTitle %}
                                                             {% set select = 'selected' %}
                                                                  {{ select }}
                                                         {% endif %}
 
-                                                >{{ category.menuCategoryTitle }}</option>
+                                                >{{ category.categoryTitle }}</option>
                                                 {% endfor %}
 
                                             </select>
@@ -77,14 +77,14 @@
                                             <input class="form-check-input" type="checkbox" value="{{ category.id }}" id="flexCheckChecked"
 
                                             {% for menuCategory in viewMenuItemCategories %}
-                                                    {% if menuCategory.menuCategoryTitle == category.menuCategoryTitle %}
+                                                    {% if menuCategory.categoryTitle == category.categoryTitle %}
                                                         {% set check = 'checked' %}
                                                         {{ check }}
                                                     {% endif %}
                                             {% endfor %}
                                             >
                                             <label class="form-check-label" for="flexCheckChecked">
-                                                {{ category.menuCategoryTitle }}
+                                                {{ category.categoryTitle }}
                                             </label>
                                         </div>
                                         {% endfor %}

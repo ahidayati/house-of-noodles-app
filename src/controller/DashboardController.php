@@ -25,7 +25,7 @@ class DashboardController extends AbstractController
 
         echo $this->render('admin/dashboard-home.html.twig', [
             'headerSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2", "updatedAt"], [" WHERE","section", "=", "'header'"]),
-            'hoursSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2", "text3", "text4", "text5", "updatedAt"], [" WHERE", "section", "=", "'hours'"]),
+            'hoursSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "updatedAt"], [" WHERE", "section", "=", "'hours-main'"]),
             'testimonialSectionItems' => (new Database())->viewItem("homepage_item", ["text2", "text3", "updatedAt"], [" WHERE", "section", "=", "'testimonial'"]),
         ]);
     }
@@ -34,19 +34,19 @@ class DashboardController extends AbstractController
     {
         echo $this->render('admin/dashboard-menu.html.twig', [
             'viewMenuItems' => (new Database())->viewMenuItems(["menu.id", "menu.menuItem", "menu.menuDescription", "menu.price", "menu.createdAt", "menu.updatedAt"]),
-//            'viewMenuItemCategories' => (new Database())->viewMenuItems(["category.menuCategoryTitle"], [" WHERE", "menu.id", "="]),
+//            'viewMenuItemCategories' => (new Database())->viewMenuItems(["category.categoryTitle"], [" WHERE", "menu.id", "="]),
         ]);
     }
 
     public function displayDashboardMenuEdit($id)
     {
-//        var_dump((new Database())->viewMenuItems(["category.menuCategoryTitle"], [" WHERE", " menu.id", " =", $id]));
+//        var_dump((new Database())->viewMenuItems(["category.categoryTitle"], [" WHERE", " menu.id", " =", $id]));
 //        die();
 
         echo $this->render('admin/dashboard-menu-edit.html.twig', [
             'viewMenuItem' => (new Database())->viewMenuItem(["menu.id", "menu.menuItem", "menu.menuDescription", "menu.price", "menu.createdAt", "menu.updatedAt"], [" WHERE", " menu.id", " =", $id]),
-            'viewAllCategories' => (new Database())->viewItems("category", ["id", "menuCategoryTitle"]),
-            'viewMenuItemCategories' => (new Database())->viewMenuItems(["category.menuCategoryTitle"], [" WHERE", " menu.id", " =", $id]),
+            'viewAllCategories' => (new Database())->viewItems("category", ["id", "categoryTitle"]),
+            'viewMenuItemCategories' => (new Database())->viewMenuItems(["category.categoryTitle"], [" WHERE", " menu.id", " =", $id]),
         ]);
     }
 
@@ -54,7 +54,7 @@ class DashboardController extends AbstractController
     {
 
         echo $this->render('admin/dashboard-menu-add.html.twig', [
-            'viewAllCategories' => (new Database())->viewItems("category", ["id", "menuCategoryTitle"]),
+            'viewAllCategories' => (new Database())->viewItems("category", ["id", "categoryTitle"]),
         ]);
     }
 
