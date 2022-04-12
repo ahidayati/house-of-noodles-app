@@ -20,6 +20,7 @@
             </div>
         </section>
 
+
         <!--menu section-->
         <section id="menu-section">
             <div class="container py-5">
@@ -28,12 +29,9 @@
                     <p>Our menu changes occasionally. Any meat can be replaced with tofu or saitan. Ask our server for more information about specific allergen.</p>
                 </div>
                 <div class="text-center my-3 row">
-                    <button class="col-lg col-md-6 py-lg-3 py-md-2 py-sm-2 my-sm-2 btn btn-outline-dark"><i class="fa-solid fa-cookie"></i> Starters</button>
-                    <button class="col-lg col-md-6 py-lg-3 py-md-2 py-sm-2 my-sm-2 btn btn-dark"><i class="fa-solid fa-bowl-rice"></i> Main Dishes</button>
-                    <button class="col-lg col-md-6 py-lg-3 py-md-2 py-sm-2 my-sm-2 btn btn-outline-dark"><i class="fa-solid fa-cheese"></i> Deserts</button>
-                    <button class="col-lg col-md-6 py-lg-3 py-md-2 py-sm-2 my-sm-2 btn btn-outline-dark"><i class="fa-solid fa-martini-glass-citrus"></i> Drinks</button>
-                    <button class="col-lg col-md-6 py-lg-3 py-md-2 py-sm-2 my-sm-2 btn btn-outline-dark"><i class="fa-solid fa-seedling"></i> Vegetarian</button>
-                    <button class="col-lg col-md-6 py-lg-3 py-md-2 py-sm-2 my-sm-2 btn btn-outline-dark"><i class="fa-solid fa-pepper-hot"></i> Spicy</button>
+                    {% for category in menuCategories %}
+                        <button class="col-lg col-md-6 py-lg-3 py-md-2 py-sm-2 my-sm-2 btn btn-outline-dark">{{ category.categoryIcon|raw }} {{ category.categoryTitle }}</button>
+                    {% endfor %}
                 </div>
                 <div class="row menu-items-row px-lg-5 mx-lg-5">
                     <div class="col-lg-6 offset-lg-3 col-sm-12">

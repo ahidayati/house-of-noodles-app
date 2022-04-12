@@ -29,11 +29,15 @@ class HomeController extends AbstractController
         // var_dump($_SERVER['REQUEST_URI']);
         // die();
 
+        // TODO: optimization
+        // instead of making new Database everytime, declare the Database object in the beginning
         echo $this->render('home/index.html.twig', [
             'thisRoute' => $_SERVER['REQUEST_URI'],
 
             'headerSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'header'"]),
-            'showMenuItems' => (new Database())->viewMenuItems(["*"], [" WHERE","categoryTitle", "=", "'Main Dishes'"]),
+
+            'menuCategories' => (new Database())->viewItems("category", ["id", "categoryTitle", "categoryIcon"]),
+            'menuItems' => (new Database())->viewMenuItems(["*"], [" WHERE","categoryTitle", "=", "'Main Dishes'"]),
 
             'hoursSectionItems' => (new Database())->viewItem("homepage_item", ["text1"], [" WHERE", "section", "=", "'hours-main'"]),
 

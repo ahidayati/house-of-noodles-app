@@ -33,6 +33,7 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `categoryTitle` varchar(100) NOT NULL,
+  `categoryIcon` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -44,12 +45,12 @@ CREATE TABLE `category` (
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
 INSERT INTO `category` VALUES
-(1,'Starters'),
-(2,'Main Dishes'),
-(3,'Deserts'),
-(4,'Drinks'),
-(5,'Vegetarian'),
-(6,'Spicy');
+(1,'Starters','<i class=\"fa-solid fa-cookie\"></i>'),
+(2,'Main Dishes','<i class=\"fa-solid fa-bowl-rice\"></i>'),
+(3,'Deserts','<i class=\"fa-solid fa-cheese\"></i>'),
+(4,'Drinks','<i class=\"fa-solid fa-martini-glass-citrus\"></i>'),
+(5,'Vegetarian','<i class=\"fa-solid fa-seedling\"></i>'),
+(6,'Spicy','<i class=\"fa-solid fa-pepper-hot\"></i>');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -334,5 +335,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-11 13:59:52
-
+-- Dump completed on 2022-04-12 14:17:00
