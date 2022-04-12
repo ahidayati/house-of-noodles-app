@@ -34,7 +34,7 @@ class HomeController extends AbstractController
         echo $this->render('home/index.html.twig', [
             'thisRoute' => $_SERVER['REQUEST_URI'],
 
-            'headerSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'header'"]),
+            'headerSection' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'header'"]),
 
             'menuCategories' => (new Database())->viewItems("category", ["id", "categoryTitle", "categoryIcon"]),
             'menuItemsDefault' => (new Database())->viewMenuItems(["*"], [" WHERE","categoryTitle", "=", "'Main Dishes'"]),
@@ -45,10 +45,10 @@ class HomeController extends AbstractController
 
             'testimonialSection' => (new Database())->viewItem("homepage_item", ["text2", "text3"], [" WHERE", "section", "=", "'testimonial'"]),
 
-            'cardMain' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-main'"]),
-            'card1' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-1'"]),
-            'card2' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-2'"]),
-            'card3' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-3'"]),
+            'valuesMainSection' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-main'"]),
+            'valuesSection1' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-1'"]),
+            'valuesSection2' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-2'"]),
+            'valuesSection3' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-3'"]),
 
             'thisYear' => Date("Y"),
         ]);

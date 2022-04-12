@@ -33,15 +33,15 @@
                                 <form>
                                     <div class="mb-3">
                                         <label for="header-heading" class="form-label">Heading</label>
-                                        <input type="text" class="form-control" id="header-heading" value="{{ headerSectionItems['text1'] }}">
+                                        <input type="text" class="form-control" id="header-heading" value="{{ headerSection['text1'] }}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="header-subheading" class="form-label">Sub Heading</label>
-                                        <input type="text" class="form-control" id="header-subheading" value="{{ headerSectionItems['text2'] }}">
+                                        <input type="text" class="form-control" id="header-subheading" value="{{ headerSection['text2'] }}">
                                     </div>
                                 </form>
                                 <div>
-                                    <p>Last Updated: {{ headerSectionItems['updatedAt']|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
+                                    <p>Last Updated: {{ headerSection['updatedAt']|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
                                 </div>
                                 <div class="text-center mb-3">
                                     <button class="btn btn-primary" id="headerSubmit">Save Update <i class="fa-solid fa-floppy-disk"></i></button>
@@ -57,33 +57,33 @@
                                 <form>
                                     <div class="mb-3">
                                         <label for="hours-text1" class="form-label">Heading</label>
-                                        <input type="text" class="form-control" id="hours-text1" value="{{ hoursSectionItems['text1'] }}">
+                                        <input type="text" class="form-control" id="hours-text1" value="{{ hoursSectionMain.text1 }}">
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label for="hours-text2" class="form-label">Sub Heading Left</label>
-                                                <input type="text" class="form-control" id="hours-text2" value="">
+                                                <input type="text" class="form-control" id="hours-text2" value="{{ hoursSection1.text1 }}">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="hours-text3" class="form-label">Sub Sub Heading Left</label>
-                                                <input type="text" class="form-control" id="hours-text3" value="">
+                                                <input type="text" class="form-control" id="hours-text3" value="{{ hoursSection1.text2 }}">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label for="hours-text4" class="form-label">Sub Heading Right</label>
-                                                <input type="text" class="form-control" id="hours-text4" value="">
+                                                <input type="text" class="form-control" id="hours-text4" value="{{ hoursSection2.text1 }}">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="hours-text5" class="form-label">Sub Sub Heading Right</label>
-                                                <input type="text" class="form-control" id="hours-text5" value="">
+                                                <input type="text" class="form-control" id="hours-text5" value="{{ hoursSection2.text2 }}">
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                                 <div>
-                                    <p>Last Updated: {{ hoursSectionItems['updatedAt']|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
+                                    <p>Last Updated: {{ hoursSectionMain.updatedAt|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
                                 </div>
                                 <div class="text-center mb-3">
                                     <button class="btn btn-primary" id="hoursSubmit">Save Update <i class="fa-solid fa-floppy-disk"></i></button>
@@ -99,15 +99,15 @@
                                 <form>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Testimonial Text</label>
-                                        <textarea rows="4" type="text" class="form-control" id="">{{ testimonialSectionItems['text3'] }}</textarea>
+                                        <textarea rows="4" type="text" class="form-control" id="">{{ testimonialSection['text3'] }}</textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Reviewer's Name</label>
-                                        <input type="text" class="form-control" id="" value="{{ testimonialSectionItems['text2'] }}">
+                                        <input type="text" class="form-control" id="" value="{{ testimonialSection['text2'] }}">
                                     </div>
                                 </form>
                                 <div>
-                                    <p>Last Updated: {{ testimonialSectionItems['updatedAt']|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
+                                    <p>Last Updated: {{ testimonialSection['updatedAt']|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
                                 </div>
                                 <div class="text-center mb-3">
                                     <button class="btn btn-primary" id="">Save Update <i class="fa-solid fa-floppy-disk"></i></button>
@@ -116,22 +116,55 @@
                             </div>
                         </div>
 
-                        {#section#}
+                        {#values section#}
                         <div class="row px-3 mt-3">
-                            <h4 class="mb-2">Another Section</h4>
+                            <h4 class="mb-2">Values Section</h4>
                             <div class="border border-light rounded-3">
                                 <form>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Heading</label>
-                                        <input type="text" class="form-control" id="" value="">
+                                        <input type="text" class="form-control" id="" value="{{ valuesMainSection.text1 }}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Sub Heading</label>
-                                        <input type="text" class="form-control" id="" value="">
+                                        <input type="text" class="form-control" id="" value="{{ valuesMainSection.text2 }}">
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="hours-text2" class="form-label">Sub Sub Heading</label>
+                                                <input type="text" class="form-control" id="hours-text2" value="{{ valuesSection1.text1 }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="hours-text2" class="form-label">Text</label>
+                                                <textarea rows="3" type="text" class="form-control" id="">{{ valuesSection1.text2 }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="hours-text2" class="form-label">Sub Sub Heading</label>
+                                                <input type="text" class="form-control" id="hours-text2" value="{{ valuesSection2.text1 }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="hours-text2" class="form-label">Text</label>
+                                                <textarea rows="3" type="text" class="form-control" id="">{{ valuesSection2.text2 }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="hours-text2" class="form-label">Sub Sub Heading</label>
+                                                <input type="text" class="form-control" id="hours-text2" value="{{ valuesSection3.text1 }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="hours-text2" class="form-label">Text</label>
+                                                <textarea rows="3" type="text" class="form-control" id="">{{ valuesSection3.text2 }}</textarea>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                                 <div>
-                                    <p>Last Updated: </p>
+                                    <p>Last Updated: {{ valuesMainSection.updatedAt|date("d-m-Y H:i:s", "Europe/Paris") }}</p>
                                 </div>
                                 <div class="text-center mb-3">
                                     <button class="btn btn-primary" id="">Save Update <i class="fa-solid fa-floppy-disk"></i></button>

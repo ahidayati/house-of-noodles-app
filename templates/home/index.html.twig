@@ -6,16 +6,12 @@
 {#    <a class="btn btn btn-outline-danger" id="test-btn">test</a>#}
 {#    <div id="test-div"></div>#}
 
-    {#{% for menuItem in showMenuItems %}
-    <div>{{ menuItem['menuItem'] }}</div>
-    {% endfor %}#}
-
     <page data-title="homepage">
         <!--header section-->
         <section id="header-section">
             <div>
-                <h1 class="header-text">{{ headerSectionItems.text1 }}</h1>
-                {#<p>{{ headerSectionItems["text2"] }}</p>#}
+                <h1 class="header-text">{{ headerSection.text1 }}</h1>
+                {#<p>{{ headerSection["text2"] }}</p>#}
                 <a href="#reservation-section" class="btn btn-outline-light header-button">Reserve Now</a>
             </div>
         </section>
@@ -131,16 +127,16 @@
         <!--values section-->
         <section id="values-section">
             <div class="container py-5">
-                <h2 class="text-center">{{ cardMain.text1 }}</h2>
-                <p class="text-center">{{ cardMain.text2 }}</p>
+                <h2 class="text-center">{{ valuesMainSection.text1 }}</h2>
+                <p class="text-center">{{ valuesMainSection.text2 }}</p>
                 <div class="row">
                     <div class="col-lg-4 col-sm-12">
                         <div class="card text-white">
                             <img src="/assets/images/card-1.jpg" class="card-img" alt="card-image">
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"><i class="values-icon fa-solid fa-fish-fins"></i></h5>
-                                <h5>{{ card1.text1 }}</h5>
-                                <p class="card-text">{{ card1.text2 }}</p>
+                                <h5>{{ valuesSection1.text1 }}</h5>
+                                <p class="card-text">{{ valuesSection1.text2 }}</p>
                             </div>
                         </div>
                     </div>
@@ -149,8 +145,8 @@
                             <img src="/assets/images/card-2.jpg" class="card-img" alt="card-image">
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"><i class="values-icon fa-solid fa-fire-burner"></i></h5>
-                                <h5>{{ card2.text1 }}</h5>
-                                <p class="card-text">{{ card2.text2 }}</p>
+                                <h5>{{ valuesSection2.text1 }}</h5>
+                                <p class="card-text">{{ valuesSection2.text2 }}</p>
                             </div>
                         </div>
                     </div>
@@ -159,8 +155,8 @@
                             <img src="/assets/images/card-3.jpg" class="card-img" alt="card-image">
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"><i class="values-icon fa-solid fa-heart"></i></h5>
-                                <h5>{{ card3.text1 }}</h5>
-                                <p class="card-text">{{ card3.text2 }}</p>
+                                <h5>{{ valuesSection3.text1 }}</h5>
+                                <p class="card-text">{{ valuesSection3.text2 }}</p>
                             </div>
                         </div>
                     </div>

@@ -33,9 +33,18 @@ class DashboardController extends AbstractController
         $this->twig->addGlobal('session', $_SESSION);
 
         echo $this->render('admin/dashboard-home.html.twig', [
-            'headerSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2", "updatedAt"], [" WHERE","section", "=", "'header'"]),
-            'hoursSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "updatedAt"], [" WHERE", "section", "=", "'hours-main'"]),
-            'testimonialSectionItems' => (new Database())->viewItem("homepage_item", ["text2", "text3", "updatedAt"], [" WHERE", "section", "=", "'testimonial'"]),
+            'headerSection' => (new Database())->viewItem("homepage_item", ["text1", "text2", "updatedAt"], [" WHERE","section", "=", "'header'"]),
+
+            'hoursSectionMain' => (new Database())->viewItem("homepage_item", ["text1"], [" WHERE", "section", "=", "'hours-main'"]),
+            'hoursSection1' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'hours-1'"]),
+            'hoursSection2' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'hours-2'"]),
+
+            'testimonialSection' => (new Database())->viewItem("homepage_item", ["text2", "text3", "updatedAt"], [" WHERE", "section", "=", "'testimonial'"]),
+
+            'valuesMainSection' => (new Database())->viewItem("homepage_item", ["text1", "text2", "updatedAt"], [" WHERE", "section", "=", "'card-main'"]),
+            'valuesSection1' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-1'"]),
+            'valuesSection2' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-2'"]),
+            'valuesSection3' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-3'"]),
         ]);
     }
 
