@@ -20,7 +20,6 @@
             </div>
         </section>
 
-
         <!--menu section-->
         <section id="menu-section">
             <div class="container py-5">
@@ -35,22 +34,14 @@
                 </div>
                 <div class="row menu-items-row px-lg-5 mx-lg-5">
                     <div class="col-lg-6 offset-lg-3 col-sm-12">
-                        <div>
-                            <div class="d-flex justify-content-between"><span class="menu-item-title">Bangkok Shrimp Pad Thai</span> <span>15€</span></div>
-                            <p>Stir-fried rice noodles with shrimp, peanuts, a scrambled egg, and bean sprouts.</p>
-                        </div>
-                        <div>
-                            <div class="d-flex justify-content-between"><span class="menu-item-title">Bali Chicken Fried Noodles</span> <span>16€</span></div>
-                            <p>Thin yellow noodles stir fried in cooking oil with garlic, onion, chicken, cabbages and tomatoes.</p>
-                        </div>
-                        <div>
-                            <div class="d-flex justify-content-between"><span class="menu-item-title">Saigon Beef Pho Bo</span> <span>14€</span></div>
-                            <p>Vietnamese noodle soup dish consisting of broth, rice noodles, herbs, and beef meat.</p>
-                        </div>
-                        <div>
-                            <div class="d-flex justify-content-between"><span class="menu-item-title">Osaka Spicy Tofu Ramen</span> <span>14€</span></div>
-                            <p>Vegetarian ramen with mushroom, carrot, vegetable broth and sweet soy sauce braised tofu.</p>
-                        </div>
+
+                        {% for menuItem in menuItemsDefault %}
+                            <div>
+                                <div class="d-flex justify-content-between"><span class="menu-item-title">{{ menuItem.menuItem }}</span> <span>{{ menuItem.price }}€</span></div>
+                                <p>{{ menuItem.menuDescription }}</p>
+                            </div>
+                        {% endfor %}
+
                     </div>
                     <div class="col-lg-6 col-sm-12">
 
@@ -62,15 +53,15 @@
         <!--hours section-->
         <section id="hours-section">
             <div class="container text-center">
-                <h2 class="text-decoration-underline">{{ hoursSectionItems.text1 }}</h2>
+                <h2 class="text-decoration-underline">{{ hoursSectionMain.text1 }}</h2>
                 <div class="row">
                     <div class="col">
-                        <h3></h3>
-                        <h4></h4>
+                        <h3>{{ hoursSection1.text1 }}</h3>
+                        <h4>{{ hoursSection1.text2 }}</h4>
                     </div>
                     <div class="col">
-                        <h3></h3>
-                        <h4></h4>
+                        <h3>{{ hoursSection2.text1 }}</h3>
+                        <h4>{{ hoursSection2.text1 }}</h4>
                     </div>
                 </div>
                 <!--            <div class="row special-announcement">-->
@@ -131,8 +122,8 @@
             <div class="container py-5">
                 <div class="col-lg-5 offset-lg-7 col-sm-12 testimonial-box">
                     <i class="fa-solid fa-quote-right"></i>
-                    <p class="testimonial-text">I ordered the spicy tonkotsu ramen, the flavor profile was 10/10. I truly appreciate how much care they put into the presentation of the bowl. That really took the experience the extra mile for me. The noodles are fresh, the cuts of pork belly are juicy and the broth is delicious and not too salty. It was an excellent experience, must try for noodle lovers!</p>
-                    <p class="testimonial-name">Jean-Claude Van Damme</p>
+                    <p class="testimonial-text">{{ testimonialSection.text3 }}</p>
+                    <p class="testimonial-name">{{ testimonialSection.text2 }}</p>
                 </div>
             </div>
         </section>
@@ -140,16 +131,16 @@
         <!--values section-->
         <section id="values-section">
             <div class="container py-5">
-                <h2 class="text-center">Our Values</h2>
-                <p class="text-center">Our core values allow us to bring the best foods and services to you.</p>
+                <h2 class="text-center">{{ cardMain.text1 }}</h2>
+                <p class="text-center">{{ cardMain.text2 }}</p>
                 <div class="row">
                     <div class="col-lg-4 col-sm-12">
                         <div class="card text-white">
                             <img src="/assets/images/card-1.jpg" class="card-img" alt="card-image">
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"><i class="values-icon fa-solid fa-fish-fins"></i></h5>
-                                <h5>Fresh</h5>
-                                <p class="card-text">Every ingredients are sourced from responsible suppliers who provide high quality products.</p>
+                                <h5>{{ card1.text1 }}</h5>
+                                <p class="card-text">{{ card1.text2 }}</p>
                             </div>
                         </div>
                     </div>
@@ -158,8 +149,8 @@
                             <img src="/assets/images/card-2.jpg" class="card-img" alt="card-image">
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"><i class="values-icon fa-solid fa-fire-burner"></i></h5>
-                                <h5>Authenticity</h5>
-                                <p class="card-text">The recipes used are authentic from deep research and have been passed down for generations.</p>
+                                <h5>{{ card2.text1 }}</h5>
+                                <p class="card-text">{{ card2.text2 }}</p>
                             </div>
                         </div>
                     </div>
@@ -168,8 +159,8 @@
                             <img src="/assets/images/card-3.jpg" class="card-img" alt="card-image">
                             <div class="card-body text-center">
                                 <h5 class="card-title text-center"><i class="values-icon fa-solid fa-heart"></i></h5>
-                                <h5>Made With Love</h5>
-                                <p class="card-text">Every dish is made by our professional chefs with love and passion for good food.</p>
+                                <h5>{{ card3.text1 }}</h5>
+                                <p class="card-text">{{ card3.text2 }}</p>
                             </div>
                         </div>
                     </div>

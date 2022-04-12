@@ -37,9 +37,18 @@ class HomeController extends AbstractController
             'headerSectionItems' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'header'"]),
 
             'menuCategories' => (new Database())->viewItems("category", ["id", "categoryTitle", "categoryIcon"]),
-            'menuItems' => (new Database())->viewMenuItems(["*"], [" WHERE","categoryTitle", "=", "'Main Dishes'"]),
+            'menuItemsDefault' => (new Database())->viewMenuItems(["*"], [" WHERE","categoryTitle", "=", "'Main Dishes'"]),
 
-            'hoursSectionItems' => (new Database())->viewItem("homepage_item", ["text1"], [" WHERE", "section", "=", "'hours-main'"]),
+            'hoursSectionMain' => (new Database())->viewItem("homepage_item", ["text1"], [" WHERE", "section", "=", "'hours-main'"]),
+            'hoursSection1' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'hours-1'"]),
+            'hoursSection2' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'hours-2'"]),
+
+            'testimonialSection' => (new Database())->viewItem("homepage_item", ["text2", "text3"], [" WHERE", "section", "=", "'testimonial'"]),
+
+            'cardMain' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-main'"]),
+            'card1' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-1'"]),
+            'card2' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-2'"]),
+            'card3' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-3'"]),
 
             'thisYear' => Date("Y"),
         ]);
