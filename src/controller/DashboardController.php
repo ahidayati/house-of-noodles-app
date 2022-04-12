@@ -3,13 +3,22 @@ namespace app\controller;
 
 use app\model\Database;
 
+/**
+ *
+ */
 class DashboardController extends AbstractController
 {
+    /**
+     *
+     */
     function __construct()
     {
         parent::__construct();
     }
 
+    /**
+     * @return void
+     */
     public function displayDashboardHome()
     {
         //condition for session timeout
@@ -30,6 +39,9 @@ class DashboardController extends AbstractController
         ]);
     }
 
+    /**
+     * @return void
+     */
     public function displayDashboardMenu()
     {
         echo $this->render('admin/dashboard-menu.html.twig', [
@@ -38,6 +50,10 @@ class DashboardController extends AbstractController
         ]);
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function displayDashboardMenuEdit($id)
     {
 //        var_dump((new Database())->viewMenuItems(["category.categoryTitle"], [" WHERE", " menu.id", " =", $id]));
@@ -50,6 +66,9 @@ class DashboardController extends AbstractController
         ]);
     }
 
+    /**
+     * @return void
+     */
     public function displayDashboardMenuAdd()
     {
 
@@ -59,6 +78,9 @@ class DashboardController extends AbstractController
     }
 
 
+    /**
+     * @return void
+     */
     public function updateHeader()
     {
         if($_POST['headerHeading'] !== "" && $_POST['headerSubheading'] !== ""){
@@ -80,6 +102,9 @@ class DashboardController extends AbstractController
         }
     }
 
+    /**
+     * @return void
+     */
     public function updateHours()
     {
         if($_POST['text1'] !== "" && $_POST['text2'] !== ""  && $_POST['text3'] !== "" && $_POST['text4'] !== "" && $_POST['text5'] !== ""){

@@ -3,11 +3,20 @@
 namespace app\model;
 use PDO;
 
+/**
+ *
+ */
 class Database
 {
 
+    /**
+     * @var PDO
+     */
     protected PDO $pdo;
 
+    /**
+     *
+     */
     public function __construct()
     {
         try{
@@ -22,6 +31,12 @@ class Database
         return $this->pdo;
     }
 
+    /**
+     * @param string $tableName
+     * @param array $fieldName
+     * @param array $conditions
+     * @return bool|array
+     */
     public function viewItem(string $tableName, array $fieldName, array $conditions) :bool|array
     {
         if (!empty($conditions)){
@@ -39,6 +54,12 @@ class Database
         return $row;
     }
 
+    /**
+     * @param string $tableName
+     * @param array $fieldName
+     * @param array|NULL $conditions
+     * @return bool|array
+     */
     public function viewItems(string $tableName, array $fieldName, array $conditions = NULL) :bool|array
     {
         if (!empty($conditions)){
@@ -57,6 +78,13 @@ class Database
     }
 
 
+    /**
+     * @param string $tableName
+     * @param array $fields
+     * @param array $values
+     * @param array $conditions
+     * @return bool
+     */
     public function updateItem(string $tableName, array $fields, array $values, array $conditions) :bool
     {
 
@@ -79,6 +107,12 @@ class Database
         }
     }
 
+    /**
+     * @param string $tableName
+     * @param array $fieldName
+     * @param array $values
+     * @return bool
+     */
     public function addItem(string $tableName, array $fieldName, array $values) :bool
     {
         $insertValues = [];
@@ -101,6 +135,12 @@ class Database
     }
 
 
+    /**
+     * @param string $tableName
+     * @param array $fields
+     * @param array $values
+     * @return bool
+     */
     public function deleteItem(string $tableName, array $fields, array $values) :bool
     {
         $conditionFields = [];
@@ -124,6 +164,12 @@ class Database
     }
 
     //https://stackoverflow.com/questions/3029454/sql-query-through-an-intermediate-table
+
+    /**
+     * @param array $fieldName
+     * @param array|NULL $conditions
+     * @return bool|array
+     */
     public function viewMenuItems(array $fieldName, array $conditions = NULL) :bool|array
     {
         if (!empty($conditions)){
@@ -141,6 +187,11 @@ class Database
         return $rows;
     }
 
+    /**
+     * @param array $fieldName
+     * @param array|NULL $conditions
+     * @return bool|array
+     */
     public function viewMenuItem(array $fieldName, array $conditions = NULL) :bool|array
     {
         if (!empty($conditions)){

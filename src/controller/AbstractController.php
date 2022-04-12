@@ -5,11 +5,23 @@ namespace app\controller;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
+/**
+ *
+ */
 abstract class AbstractController
 {
+    /**
+     * @var FilesystemLoader
+     */
     protected FilesystemLoader $loader;
+    /**
+     * @var Environment
+     */
     protected Environment $twig;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->loader = new FilesystemLoader('./templates');
@@ -32,6 +44,14 @@ abstract class AbstractController
         return $this->twig;
     }
 
+    /**
+     * @param string $templateName
+     * @param array $params
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function render(string $templateName, array $params = []): string
     {
         return $this->twig->render($templateName, $params);

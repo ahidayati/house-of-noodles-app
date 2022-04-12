@@ -1,6 +1,5 @@
 <?php
 
-
 if($_POST['logout'] == true){
     session_start();
     $_SESSION["use"] = "";

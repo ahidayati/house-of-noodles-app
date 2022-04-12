@@ -4,18 +4,30 @@ namespace app\controller;
 
 use app\model\Database;
 
+/**
+ *
+ */
 class HomeController extends AbstractController
 {
 
+    /**
+     *
+     */
     function __construct()
     {
         parent::__construct();
     }
 
+    /**
+     * @return void
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function displayPage()
     {
-//        var_dump($_SERVER['REQUEST_URI']);
-//        die();
+        // var_dump($_SERVER['REQUEST_URI']);
+        // die();
 
         echo $this->render('home/index.html.twig', [
             'thisRoute' => $_SERVER['REQUEST_URI'],
@@ -29,6 +41,9 @@ class HomeController extends AbstractController
         ]);
     }
 
+    /**
+     * @return void
+     */
     public function contactFormTreatment()
     {
         if($_POST['name'] !== "" && $_POST['email'] !== "" && $_POST['phone'] !== ""){
