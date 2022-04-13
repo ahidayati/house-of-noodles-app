@@ -85,6 +85,11 @@ $router->mount('/dashboard', function() use ($router) {
         (new \app\controller\DashboardController())->displayDashboardMessage();
     });
 
+    // results in 'dashboard/message/delete/id'
+    $router->get('/message/delete/(\d+)', function($id) {
+        (new \app\controller\DashboardController())->deleteMessage($id);
+    });
+
 });
 
 

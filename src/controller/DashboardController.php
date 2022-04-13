@@ -150,6 +150,13 @@ class DashboardController extends AbstractController
 
     public function deleteMessage($id)
     {
+        try {
+            $db = new Database();
+            $db->deleteItem("contact_form", ["id"], [$id]);
 
+            header('location: /dashboard/message');
+        }catch (Exception $e){
+            echo "<div class='text-center fs-3 mt-5'>Cannot delete item.</div>".$e;
+        }
     }
 }

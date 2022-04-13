@@ -87,7 +87,7 @@ class HomeController extends AbstractController
             //input to database
             $add = (new Database())->addItem("contact_form", ["name", "email", "phone", "subject", "message", "createdAt"], [$clientName, $clientEmail, $clientPhone, $clientSubject, $clientMessage, $clientDatetime]);
             if ($add){
-                echo "<h3>Thanks, we have received your message!controller</h3>";
+                echo "<h3>Thanks, we have received your message!</h3>";
             } else {
                 echo "Cannot send form to server ".$add;
             }

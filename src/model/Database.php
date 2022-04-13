@@ -152,7 +152,7 @@ class Database
         $results = $this->pdo->prepare($query);
 
         foreach ($values as $key=>$value){
-            $results->bindValue(":value".$key, $value);
+            $results->bindValue(":value".$key, $value);;
         };
 
         if ($results->execute()){
