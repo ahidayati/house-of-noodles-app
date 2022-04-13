@@ -159,4 +159,11 @@ class DashboardController extends AbstractController
             echo "<div class='text-center fs-3 mt-5'>Cannot delete item.</div>".$e;
         }
     }
+
+    public function displayDashboardReservation()
+    {
+        echo $this->render('admin/dashboard-reservation.html.twig', [
+            'viewReservationList' => (new Database())->viewReservations(["reservation_form.id AS idForm", "reservation_form.name", "reservation_form.email", "reservation_form.phone", "reservation_form.person", "reservation_form.date", "reservation_form.hour", "reservation_form.createdAt", "reservation_status.id AS idStatusDetail", "reservation_status.status"]),
+        ]);
+    }
 }

@@ -209,5 +209,21 @@ class Database
         return $row;
     }
 
+    public function viewReservations(array $fieldName, array $conditions = NULL) :bool|array
+    {
+        if (!empty($conditions)){
+            $implodeConditions = implode(" ", $conditions);
+        } else {
+            $implodeConditions = NULL;
+        }
+
+        $query = "SELECT ".implode(", ", $fieldName)." FROM reservation_form JOIN reservation_status ON reservation_status.id=reservation_form.idStatus ".$implodeConditions." ORDER BY reservation_form.id;";
+        $this->pdo->prepare($query);
+        $results = $this->pdo->query($query);
+        $results->execute();
+
+        $rows = $results->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
 
 }

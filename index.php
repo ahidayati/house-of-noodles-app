@@ -95,6 +95,11 @@ $router->mount('/dashboard', function() use ($router) {
         (new \app\controller\DashboardController())->deleteMessage($id);
     });
 
+    // results in '/dashboard/reservation'
+    $router->get('/reservation', function() {
+        (new \app\controller\DashboardController())->displayDashboardReservation();
+    });
+
 });
 
 
