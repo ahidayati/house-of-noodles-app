@@ -59,6 +59,9 @@ class HomeController extends AbstractController
      */
     public function contactFormTreatment()
     {
+        $status = "Fail";
+        $message= "";
+
         if($_POST['name'] !== "" && $_POST['email'] !== "" && $_POST['phone'] !== ""){
             //data for admin
             $clientName=$_POST['name'];
@@ -70,28 +73,46 @@ class HomeController extends AbstractController
             $clientDatetime = (new \DateTime())->format('Y-m-d H:i:s');
 
             //email for admin
-            $adminEmail="hidayati.ann@gmail.com";
-            $AdminEmailBody = "Client Name: " . $clientName . "\n" . "Phone Number: " . $clientPhone . "\n\n" . "Client Message: " . "\n" . $clientMessage;
-            $headerToAdmin = "From: " . $clientEmail;
-            $sendMailToAdmin = mail($adminEmail, $clientSubject, $clientMessage, $headerToAdmin);
+            //$adminEmail="hidayati.ann@gmail.com";
+            //$AdminEmailBody = "Client Name: " . $clientName . "\n" . "Phone Number: " . $clientPhone . "\n\n" . "Client Message: " . "\n" . $clientMessage;
+            //$headerToAdmin = "From: " . $clientEmail;
+            //$sendMailToAdmin = mail($adminEmail, $clientSubject, $clientMessage, $headerToAdmin);
 
             //email for client
-            $subjectToClient = "Automatic reply: Message was submitted successfully | The House of Noodles";
-            $replyToClient = "Dear" . $clientName . "\n"
-                . "Thank you for contacting us. We will get back to you shortly!" . "\n\n"
-                . "You submitted the following message: " . "\n" . $clientMessage . "\n\n"
-                . "Regards," . "\n" . "- The House of Noodles";
-            $headerToClient = "From: " . $adminEmail;
-            $sendMailToClient = mail($clientEmail, $subjectToClient, $replyToClient, $headerToClient);
+            //$subjectToClient = "Automatic reply: Message was submitted successfully | The House of Noodles";
+            //$replyToClient = "Dear" . $clientName . "\n"
+            //    . "Thank you for contacting us. We will get back to you shortly!" . "\n\n"
+            //    . "You submitted the following message: " . "\n" . $clientMessage . "\n\n"
+            //    . "Regards," . "\n" . "- The House of Noodles";
+            //$headerToClient = "From: " . $adminEmail;
+            //$sendMailToClient = mail($clientEmail, $subjectToClient, $replyToClient, $headerToClient);
 
             //input to database
-            $add = (new Database())->addItem("contact_form", ["name", "email", "phone", "subject", "message", "createdAt"], [$clientName, $clientEmail, $clientPhone, $clientSubject, $clientMessage, $clientDatetime]);
-            if ($add){
-                echo "<h3>Thanks, we have received your message!</h3>";
+
+            if (!filter_var($clientEmail, FILTER_VALIDATE_EMAIL)) {
+                $message = "<span class='bg-danger'>Invalid email format</span>";
+            } else if (!preg_match('/^[0-9]{10}+$/', $clientPhone)) {
+                $message = "<span class='bg-danger'>Invalid phone format</span>";
             } else {
-                echo "Cannot send form to server ".$add;
+
+                $add = (new Database())->addItem("contact_form", ["name", "email", "phone", "subject", "message", "createdAt"], [$clientName, $clientEmail, $clientPhone, $clientSubject, $clientMessage, $clientDatetime]);
+                if ($add){
+                    // echo "<h3>Thanks, we have received your message!</h3>";
+                    $status = "OK";
+                } else {
+                    $message = "Cannot send form to server ".$add;
+                }
+
             }
+
+
+        } else {
+            $message = "<span class='bg-danger'>Field(s) cannot be empty</span>";
         }
 
+        echo json_encode([
+            "status" => $status,
+            "message" => $message
+            ]);
     }
 }

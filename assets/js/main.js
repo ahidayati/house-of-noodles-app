@@ -76,8 +76,16 @@ if ($("page").data("title") === "homepage") {
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange=function () {
             if(xhr.readyState == 4 && xhr.status == 200) {
-                contactSubmitBtn.setAttribute('disabled', 'true');
-                document.getElementById("contactMessageResult").innerHTML=xhr.responseText;
+
+                let responseObject  = JSON.parse(xhr.responseText);
+                if (responseObject.status == "OK"){
+                    contactSubmitBtn.setAttribute('disabled', 'true');
+                    document.getElementById("contactMessageResult").innerHTML="<h3>Thanks, we have received your message!</h3>";
+                    document.getElementById("contactForm").reset();
+                } else {
+                    document.getElementById("contactMessageResult").innerHTML=responseObject.message;
+                    console.log(responseObject);
+                }
             }
         }
         xhr.send("name="+nameValue+"&email="+emailValue+"&phone="+phoneValue+"&subject="+subjectValue+"&message="+messageValue);
