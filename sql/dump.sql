@@ -70,7 +70,7 @@ CREATE TABLE `contact_form` (
   `message` text NOT NULL,
   `createdAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,6 +79,20 @@ CREATE TABLE `contact_form` (
 
 LOCK TABLES `contact_form` WRITE;
 /*!40000 ALTER TABLE `contact_form` DISABLE KEYS */;
+INSERT INTO `contact_form` VALUES
+(15,'foo','foo@','1234567','foo','foo bar','2022-04-13 10:38:55'),
+(16,'Jean Dujardin','bonjour@jean','5555555','Hi','Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.','2022-04-13 11:10:23'),
+(22,'foo','bar@','787','foo','bar','2022-04-13 13:53:41'),
+(23,'foo','bar@','787','foo','bar','2022-04-13 13:54:20'),
+(26,'foo','bar','787','foo','bar','2022-04-13 13:57:41'),
+(27,'test','bar','787','foo','bar','2022-04-13 14:05:01'),
+(28,'trr','bar','787','foo','bar','2022-04-13 14:12:39'),
+(29,'trr','bar','787','foo','bar','2022-04-13 14:14:15'),
+(30,'ddd','bar','787','foo','bar','2022-04-13 14:19:56'),
+(31,'dsss','bar','787','foo','bar','2022-04-13 14:36:13'),
+(32,'cvc','bar','787','foo','bar','2022-04-13 14:38:11'),
+(33,'cvc','bar','787','foo','bar','2022-04-13 14:38:29'),
+(34,'ds','bar@mail.com','7642797879','foo','bar','2022-04-13 14:53:19');
 /*!40000 ALTER TABLE `contact_form` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,8 +248,11 @@ CREATE TABLE `reservation_form` (
   `date` date NOT NULL,
   `hour` time NOT NULL,
   `createdAt` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `idStatus` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_reservation_status` (`idStatus`),
+  CONSTRAINT `FK_reservation_status` FOREIGN KEY (`idStatus`) REFERENCES `reservation_status` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,6 +261,11 @@ CREATE TABLE `reservation_form` (
 
 LOCK TABLES `reservation_form` WRITE;
 /*!40000 ALTER TABLE `reservation_form` DISABLE KEYS */;
+INSERT INTO `reservation_form` VALUES
+(1,'foo','bar@foo.com','1234567890',1,'2022-04-15','12:14:00','2022-04-13 17:37:08',1),
+(2,'foo','foo@bar.com','6543246896',3,'2022-04-12','14:15:00','2022-04-13 17:39:08',1),
+(3,'test','foo@bar.com','7654387608',3,'2022-04-15','21:04:00','2022-04-13 17:57:36',1),
+(4,'Asterix','asterix@mail.fr','5643125797',2,'2022-04-18','19:57:00','2022-04-13 17:59:18',1);
 /*!40000 ALTER TABLE `reservation_form` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,7 +280,7 @@ CREATE TABLE `reservation_status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `status` enum('pending','confirmed','cancelled','') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,6 +289,10 @@ CREATE TABLE `reservation_status` (
 
 LOCK TABLES `reservation_status` WRITE;
 /*!40000 ALTER TABLE `reservation_status` DISABLE KEYS */;
+INSERT INTO `reservation_status` VALUES
+(1,'pending'),
+(2,'confirmed'),
+(3,'cancelled');
 /*!40000 ALTER TABLE `reservation_status` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -335,4 +361,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-12 14:17:00
+-- Dump completed on 2022-04-13 16:00:04

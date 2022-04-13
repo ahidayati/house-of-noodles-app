@@ -8,22 +8,13 @@
     <page data-title="dashboard-menu-add">
 
         <div class="container">
-            <h1 class="my-1">Dashboard Add</h1>
+            <h1 class="my-1">Dashboard - Add Menu</h1>
             <div class="my-1">Hello {{ session.use }}.</div>
             <div class="my-1">Last Login:</div>
             <div class="row d-flex justify-content-center my-2">
-                <div class="col-2 d-flex flex-column justify-content-between border rounded-3 bg-dark text-light py-3 mx-2">
-                    <div>
-                        <a href="/dashboard/" class="btn btn-outline-light text-start mb-3 w-100">Homepage</a>
-                        <a href="/dashboard/menu" class="btn btn-light text-start mb-3 w-100">Restaurant's Menu</a>
-                        <a class="btn btn-outline-light text-start mb-3 w-100">Reservation</a>
-                        <a href="/dashboard/message" class="btn btn-outline-light text-start mb-3 w-100">Message</a>
-                        <a class="btn btn-outline-light text-start mb-3 w-100">User</a>
-                    </div>
-                    <div>
-                        <a id="adminLogout" class="btn btn-outline-light w-100">Logout</a>
-                    </div>
-                </div>
+
+                {% include "common/partial/_dashboard_menu.html.twig" %}
+
                 <div class="col-9 border rounded-3 bg-dark text-light py-3 mx-2">
                     <div class="row px-3">
                         <h4 class="mb-2">Menu Item</h4>

@@ -47,6 +47,11 @@ $router->post('/contact-form-post', function () {
     (new HomeController())->contactFormTreatment();
 });
 
+//homepage's reserve form
+$router->post('/reserve-form-post', function () {
+    (new HomeController())->reserveFormTreatment();
+});
+
 //admin routes
 
 $router->get('/admin-login', function () {

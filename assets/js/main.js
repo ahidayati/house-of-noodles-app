@@ -49,8 +49,53 @@
 //script exist only on homepage
 if ($("page").data("title") === "homepage") {
 
-    const contactSubmitBtn = document.getElementById("contactSubmit");
+    //RESERVATION FORM
+    const reserveSubmitBtn = document.getElementById("reserveSubmit");
 
+    let nameReserve = document.getElementById("reserveName");
+    let emailReserve = document.getElementById("reserveEmail");
+    let phoneReserve = document.getElementById("reservePhone");
+    let personReserve = document.getElementById("reservePerson");
+    let dateReserve = document.getElementById("reserveDate");
+    let hourReserve = document.getElementById("reserveHour");
+
+    //to submit data on reservation form
+    reserveSubmitBtn.addEventListener("click", function (e){
+        e.preventDefault();
+
+        // get input values
+        let nameValue = nameReserve.value;
+        let emailValue = emailReserve.value;
+        let phoneValue = phoneReserve.value;
+        let personValue = personReserve.value;
+        let dateValue = dateReserve.value;
+        let hourValue = hourReserve.value;
+
+        // console.log(nameContact);
+        console.log(nameValue, emailValue, phoneValue, personValue, dateValue, hourValue);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/reserve-form-post", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange=function () {
+            if(xhr.readyState == 4 && xhr.status == 200) {
+
+                let responseObject  = JSON.parse(xhr.responseText);
+                if (responseObject.status == "OK"){
+                    reserveSubmitBtn.setAttribute('disabled', 'true');
+                    document.getElementById("reserveMessageResult").innerHTML="<h3>We have received your request for a table,</br>we'll get back to you as soon as possible!</h3>";
+                    document.getElementById("reserveForm").reset();
+                } else {
+                    document.getElementById("reserveMessageResult").innerHTML=responseObject.message;
+                    console.log(responseObject);
+                }
+            }
+        }
+        xhr.send("name="+nameValue+"&email="+emailValue+"&phone="+phoneValue+"&person="+personValue+"&date="+dateValue+"&hour="+hourValue);
+    });
+
+    //CONTACT FORM
+    const contactSubmitBtn = document.getElementById("contactSubmit");
     let nameContact = document.getElementById("contactName");
     let emailContact = document.getElementById("contactEmail");
     let phoneContact = document.getElementById("contactPhone");
@@ -89,7 +134,6 @@ if ($("page").data("title") === "homepage") {
             }
         }
         xhr.send("name="+nameValue+"&email="+emailValue+"&phone="+phoneValue+"&subject="+subjectValue+"&message="+messageValue);
-
     });
 };
 
@@ -131,6 +175,22 @@ if ($("page").data("title") === "admin-login") {
 
 //script exist only on dashboard page
 if ($("page").data("title") === "dashboard") {
+
+    // to change button color on click
+    // TODO
+    // add class to local storage on the client side, so when user click to go to other page, button color will be changed
+    let dashboardMenuButtons = document.getElementsByClassName("dashboard-menu-btn");
+    for (let menuButton in dashboardMenuButtons) {
+        dashboardMenuButtons[menuButton].addEventListener("click", function(){
+            let lightButton = document.querySelector(".btn-light");
+
+            if(this.classList.contains("btn-outline-light")) {
+                lightButton.classList.replace("btn light", "btn-outline-light");
+                this.classList.remove("btn-outline-light");
+                this.classList.add("btn-light");
+            }
+        })
+    };
 
     //update header section
     const updateHeaderBtn = document.getElementById("headerSubmit");
@@ -179,7 +239,7 @@ if ($("page").data("title") === "dashboard") {
         xhr.send("text1="+text1Value+"&text2="+text2Value+"&text3="+text3Value+"&text4="+text4Value+"&text5="+text5Value);
     });
 
-    //admin logout button
+    // admin logout button
     const adminLogoutBtn = document.getElementById("adminLogout");
     adminLogoutBtn.addEventListener("click", function(e) {
         e.preventDefault();

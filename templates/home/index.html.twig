@@ -57,7 +57,7 @@
                     </div>
                     <div class="col">
                         <h3>{{ hoursSection2.text1 }}</h3>
-                        <h4>{{ hoursSection2.text1 }}</h4>
+                        <h4>{{ hoursSection2.text2 }}</h4>
                     </div>
                 </div>
                 <!--            <div class="row special-announcement">-->
@@ -70,7 +70,7 @@
         <section id="reservation-section">
             <div class="container py-5">
                 <h2 class="text-center">Reserve Your Table Now</h2>
-                <form>
+                <form id="reserveForm">
                     <div class="row">
                         <div class="col-lg-3 offset-lg-3 col-sm-12 d-flex flex-column justify-content-center">
                             <div class="mb-3">
@@ -107,7 +107,8 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-outline-dark">RESERVE A TABLE</button>
+                        <button id="reserveSubmit" type="submit" class="btn btn-outline-dark">RESERVE A TABLE</button>
+                        <div id="reserveMessageResult"></div>
                     </div>
                 </form>
             </div>

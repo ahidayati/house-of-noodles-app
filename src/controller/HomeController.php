@@ -87,20 +87,19 @@ class HomeController extends AbstractController
             //$headerToClient = "From: " . $adminEmail;
             //$sendMailToClient = mail($clientEmail, $subjectToClient, $replyToClient, $headerToClient);
 
-            //input to database
 
             if (!filter_var($clientEmail, FILTER_VALIDATE_EMAIL)) {
                 $message = "<span class='bg-danger'>Invalid email format</span>";
             } else if (!preg_match('/^[0-9]{10}+$/', $clientPhone)) {
                 $message = "<span class='bg-danger'>Invalid phone format</span>";
             } else {
-
+                //input to database
                 $add = (new Database())->addItem("contact_form", ["name", "email", "phone", "subject", "message", "createdAt"], [$clientName, $clientEmail, $clientPhone, $clientSubject, $clientMessage, $clientDatetime]);
                 if ($add){
                     // echo "<h3>Thanks, we have received your message!</h3>";
                     $status = "OK";
                 } else {
-                    $message = "Cannot send form to server ".$add;
+                    $message = "Cannot send data to server ".$add;
                 }
 
             }
@@ -114,5 +113,48 @@ class HomeController extends AbstractController
             "status" => $status,
             "message" => $message
             ]);
+    }
+
+    public function reserveFormTreatment()
+    {
+        $status = "Fail";
+        $message= "";
+
+        if($_POST['name'] !== "" && $_POST['email'] !== "" && $_POST['phone'] !== "" && $_POST['person'] !== "" && $_POST['date'] !== "" && $_POST['hour'] !== ""){
+            //data for admin
+            $clientName=$_POST['name'];
+            $clientEmail=$_POST['email'];
+            $clientPhone=$_POST['phone'];
+            $clientPerson=$_POST['person'];
+            $clientDate=$_POST['date'];
+            $clientHour=$_POST['hour'];
+            date_default_timezone_set('Europe/Paris');
+            $clientRequestSent = (new \DateTime())->format('Y-m-d H:i:s');
+
+
+            if (!filter_var($clientEmail, FILTER_VALIDATE_EMAIL)) {
+                $message = "<span class='bg-danger text-light'>Invalid email format</span>";
+            } else if (!preg_match('/^[0-9]{10}+$/', $clientPhone)) {
+                $message = "<span class='bg-danger text-light'>Invalid phone format</span>";
+            } else {
+                //input to database
+                $add = (new Database())->addItem("reservation_form", ["name", "email", "phone", "person", "date","hour", "createdAt", "idStatus"], [$clientName, $clientEmail, $clientPhone, $clientPerson, $clientDate, $clientHour, $clientRequestSent, 1]);
+                if ($add){
+                    $status = "OK";
+                } else {
+                    $message = "Cannot send data to server ".$add;
+                }
+
+            }
+
+
+        } else {
+            $message = "<span class='bg-danger text-light'>Field(s) cannot be empty</span>";
+        }
+
+        echo json_encode([
+            "status" => $status,
+            "message" => $message
+        ]);
     }
 }
