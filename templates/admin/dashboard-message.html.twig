@@ -1,0 +1,80 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+{#    {% if session.use %}#}
+        <page data-title="dashboard-message">
+
+            <div class="container">
+                <h1 class="my-1">Dashboard Message</h1>
+                <div class="my-1">Hello {{ session.use }}.</div>
+                <div class="my-1">Last Login:</div>
+                <div class="row d-flex justify-content-center my-2">
+                    <div class="col-2 d-flex flex-column justify-content-between border rounded-3 bg-dark text-light py-3 mx-2">
+                        <div>
+                            <a href="/dashboard/" class="btn btn-outline-light text-start mb-3 w-100">Homepage</a>
+                            <a href="/dashboard/menu" class="btn btn-outline-light text-start mb-3 w-100">Restaurant's Menu</a>
+                            <a class="btn btn-outline-light text-start mb-3 w-100">Reservation</a>
+                            <a class="btn btn-light text-start mb-3 w-100">Message</a>
+                            <a class="btn btn-outline-light text-start mb-3 w-100">User</a>
+                        </div>
+                        <div>
+                            <a id="adminLogout" class="btn btn-outline-light w-100">Logout</a>
+                        </div>
+                    </div>
+                    <div class="col-9 border rounded-3 bg-dark text-light py-3 mx-2">
+                        <div class="row px-3">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h4>Messages</h4>
+                            </div>
+
+
+
+                            <div class="border border-light rounded-3 mb-4">
+                                <table class="table text-light">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Phone</th>
+                                        <th scope="col">Subject</th>
+                                        <th scope="col">Message</th>
+                                        <th scope="col">Sent at</th>
+                                        <th class="text-center" colspan="2" scope="colgroup">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for message in viewMessages %}
+                                    <tr>
+                                        <th scope="row">{{ loop.index }}</th>
+                                        <td>{{ message.name }}</td>
+                                        <td>{{ message.email }}</td>
+                                        <td>{{ message.phone }}</td>
+                                        <td>{{ message.subject }}</td>
+                                        <td>{{ message.message }}</td>
+                                        <td>{{ message.createdAt|date("H:i d/m/Y") }}</td>
+                                        <td><a href="mailto: {{ message.email }}" class="btn btn-primary" title="Reply"><i class="fa-solid fa-reply"></i></a></td>
+                                        <td><a class="btn btn-danger" title="Delete"><i class="fa-solid fa-trash-can"></i></a></td>
+                                    </tr>
+                                    </tbody>
+                                    {% endfor %}
+                                </table>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </page>
+{#    {% else %}#}
+{#        <div class="container mt-5 vh-100">#}
+{#            This page is only accessible by administrator. Please log in <a class="text-black" href="/admin-login">here</a> first.#}
+{#        </div>#}
+{#    {% endif %}#}
+
+{% endblock %}

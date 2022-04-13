@@ -137,4 +137,19 @@ class DashboardController extends AbstractController
             echo "<span class='bg-danger text-light'>Empty field(s).</span>";
         }
     }
+
+    /**
+     * @return void
+     */
+    public function displayDashboardMessage()
+    {
+        echo $this->render('admin/dashboard-message.html.twig', [
+            'viewMessages' => (new Database())->viewItems("contact_form", ["id", "name", "email", "phone", "subject", "message", "createdAt"]),
+        ]);
+    }
+
+    public function deleteMessage($id)
+    {
+
+    }
 }

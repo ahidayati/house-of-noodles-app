@@ -64,7 +64,7 @@ $router->mount('/dashboard', function() use ($router) {
         (new \app\controller\DashboardController())->displayDashboardHome();
     });
 
-    // results in '/dashboard/home'
+    // results in '/dashboard/menu'
     $router->get('/menu', function() {
         (new \app\controller\DashboardController())->displayDashboardMenu();
     });
@@ -78,6 +78,11 @@ $router->mount('/dashboard', function() use ($router) {
     // results in 'dashboard/menu/add'
     $router->get('/menu/add', function() {
         (new \app\controller\DashboardController())->displayDashboardMenuAdd();
+    });
+
+    // results in '/dashboard/message'
+    $router->get('/message', function() {
+        (new \app\controller\DashboardController())->displayDashboardMessage();
     });
 
 });
