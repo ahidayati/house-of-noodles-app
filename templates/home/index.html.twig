@@ -25,18 +25,21 @@
                 </div>
                 <div class="text-center my-3 row">
                     {% for category in menuCategories %}
-                        <button class="col-lg col-md-6 py-lg-3 py-md-2 py-sm-2 my-sm-2 btn btn-outline-dark">{{ category.categoryIcon|raw }} {{ category.categoryTitle }}</button>
+                        <a  class="col-lg col-md-6 py-lg-3 py-md-2 py-sm-2 my-sm-2 btn btn-outline-dark menu-section-btn">{{ category.categoryIcon|raw }} {{ category.categoryTitle }}</a>
+{#                        href="/menu-category/{{ category.id }}"#}
                     {% endfor %}
                 </div>
                 <div class="row menu-items-row px-lg-5 mx-lg-5">
-                    <div class="col-lg-6 offset-lg-3 col-sm-12">
+                    <div class="col-lg-6 offset-lg-3 col-sm-12 menuItemsBox">
 
-                        {% for menuItem in menuItemsDefault %}
-                            <div>
-                                <div class="d-flex justify-content-between"><span class="menu-item-title">{{ menuItem.menuItem }}</span> <span>{{ menuItem.price }}€</span></div>
-                                <p>{{ menuItem.menuDescription }}</p>
-                            </div>
-                        {% endfor %}
+{#                        {% for menuItem in menuItemsDefault %}#}
+{#                            <div>#}
+{#                                <div class="d-flex justify-content-between"><span class="menu-item-title">{{ menuItem.menuItem }}</span> <span>{{ menuItem.price }}€</span></div>#}
+{#                                <p>{{ menuItem.menuDescription }}</p>#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+
+
 
                     </div>
                     <div class="col-lg-6 col-sm-12">

@@ -15,7 +15,7 @@
 
                     {% include "common/partial/_dashboard_menu.html.twig" %}
 
-                    <div class="col-9 border rounded-3 bg-dark text-light py-3 mx-2">
+                    <div class="col border rounded-3 bg-dark text-light py-3 mx-2">
                         <div class="row px-3">
                             <div class="d-flex justify-content-between mb-3">
                                 <h4>Messages</h4>
@@ -49,7 +49,7 @@
                                         {#<td><a href="/dashboard/message/delete/{{ message.id }}" class="btn btn-danger" title="Delete"><i class="fa-solid fa-trash-can"></i></a></td>#}
 
                                         <!-- Button trigger modal -->
-                                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ message.id }}">
+                                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ message.id }}" title="Delete">
                                                 <i class="fa-solid fa-trash-can"></i>
                                         </button></td>
 

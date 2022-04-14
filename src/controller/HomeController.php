@@ -29,29 +29,37 @@ class HomeController extends AbstractController
         // var_dump($_SERVER['REQUEST_URI']);
         // die();
 
+        $db = new Database();
+
         // TODO: optimization
         // instead of making new Database everytime, declare the Database object in the beginning
         echo $this->render('home/index.html.twig', [
             'thisRoute' => $_SERVER['REQUEST_URI'],
 
-            'headerSection' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'header'"]),
+            'headerSection' => $db->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'header'"]),
 
-            'menuCategories' => (new Database())->viewItems("category", ["id", "categoryTitle", "categoryIcon"]),
-            'menuItemsDefault' => (new Database())->viewMenuItems(["*"], [" WHERE","categoryTitle", "=", "'Main Dishes'"]),
+            'menuCategories' => $db->viewItems("category", ["id", "categoryTitle", "categoryIcon"]),
+            'menuItemsDefault' => $db->viewMenuItems(["*"], [" WHERE","categoryTitle", "=", "'Main Dishes'"]),
 
-            'hoursSectionMain' => (new Database())->viewItem("homepage_item", ["text1"], [" WHERE", "section", "=", "'hours-main'"]),
-            'hoursSection1' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'hours-1'"]),
-            'hoursSection2' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'hours-2'"]),
+            'hoursSectionMain' => $db->viewItem("homepage_item", ["text1"], [" WHERE", "section", "=", "'hours-main'"]),
+            'hoursSection1' => $db->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'hours-1'"]),
+            'hoursSection2' => $db->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'hours-2'"]),
 
-            'testimonialSection' => (new Database())->viewItem("homepage_item", ["text2", "text3"], [" WHERE", "section", "=", "'testimonial'"]),
+            'testimonialSection' => $db->viewItem("homepage_item", ["text2", "text3"], [" WHERE", "section", "=", "'testimonial'"]),
 
-            'valuesMainSection' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-main'"]),
-            'valuesSection1' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-1'"]),
-            'valuesSection2' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-2'"]),
-            'valuesSection3' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-3'"]),
+            'valuesMainSection' => $db->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-main'"]),
+            'valuesSection1' => $db->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-1'"]),
+            'valuesSection2' => $db->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-2'"]),
+            'valuesSection3' => $db->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-3'"]),
 
             'thisYear' => Date("Y"),
         ]);
+    }
+
+    public function getMenuByCategory($id)
+    {
+        $menuData = (new Database())->viewMenuItems(["*"], [" WHERE","category.id", "=", $id]);
+        echo json_encode($menuData);
     }
 
     /**

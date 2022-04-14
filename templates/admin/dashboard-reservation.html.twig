@@ -15,7 +15,7 @@
 
                     {% include "common/partial/_dashboard_menu.html.twig" %}
 
-                    <div class="col-9 border rounded-3 bg-dark text-light py-3 mx-2">
+                    <div class="col border rounded-3 bg-dark text-light py-3 mx-2">
                         <div class="row px-3">
                             <div class="d-flex justify-content-between mb-3">
                                 <h4>Reservation List</h4>
@@ -32,7 +32,7 @@
                                         <th scope="col">Person</th>
                                         <th scope="col">Date</th>
                                         <th scope="col">Time</th>
-                                        <th scope="col">Requested at</th>
+                                        <th scope="col">Sent</th>
                                         <th scope="col">Status</th>
                                         <th class="text-center" colspan="2" scope="colgroup">Action</th>
                                     </tr>
@@ -45,15 +45,33 @@
                                         <td>{{ reserve.email }}</td>
                                         <td>{{ reserve.phone }}</td>
                                         <td>{{ reserve.person }}</td>
-                                        <td>{{ reserve.date }}</td>
+                                        <td>{{ reserve.date|date("d/m/y") }}</td>
                                         <td>{{ reserve.hour }}</td>
-                                        <td>{{ reserve.createdAt|date("H:i d/m/Y") }}</td>
-                                        <td>{{ reserve.status }}</td>
+                                        <td>{{ reserve.createdAt|date("H:i d/m/y") }}</td>
+                                        {#<td>{{ reserve.status }}</td>#}
+
+                                        <td>
+                                        <div class="input-group mb-2">
+                                            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                                <option>Choose Status</option>
+                                                {% for eachStatus in viewAllStatus %}
+                                                    <option value="{{ category.id }}"
+                                                            {% if reserve.status == eachStatus.status %}
+                                                                {% set select = 'selected' %}
+                                                                {{ select }}
+                                                            {% endif %}
+                                                    >{{ eachStatus.status }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <button class="btn btn-success" type="button" title="Save Change"><i class="fa-solid fa-floppy-disk"></i></button>
+                                        </div>
+                                        </td>
+
                                         <td><a href="mailto: {{ reserve.email }}" class="btn btn-primary" title="Reply"><i class="fa-solid fa-reply"></i></a></td>
                                         {#<td><a href="/dashboard/message/delete/{{ message.id }}" class="btn btn-danger" title="Delete"><i class="fa-solid fa-trash-can"></i></a></td>#}
 
                                         <!-- Button trigger modal -->
-                                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ message.id }}">
+                                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ message.id }}" title="Delete">
                                                 <i class="fa-solid fa-trash-can"></i>
                                         </button></td>
 
@@ -62,11 +80,11 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title text-dark" id="exampleModalLabel">Delete Message</h5>
+                                                        <h5 class="modal-title text-dark" id="exampleModalLabel">Delete Reservation</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body text-dark">
-                                                        Are you sure you want to delete this message?
+                                                        Are you sure you want to delete this reservation?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, I'm not sure</button>

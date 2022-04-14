@@ -164,6 +164,8 @@ class DashboardController extends AbstractController
     {
         echo $this->render('admin/dashboard-reservation.html.twig', [
             'viewReservationList' => (new Database())->viewReservations(["reservation_form.id AS idForm", "reservation_form.name", "reservation_form.email", "reservation_form.phone", "reservation_form.person", "reservation_form.date", "reservation_form.hour", "reservation_form.createdAt", "reservation_status.id AS idStatusDetail", "reservation_status.status"]),
+
+            'viewAllStatus' => (new Database())->viewItems("reservation_status", ["id", "status"]),
         ]);
     }
 }

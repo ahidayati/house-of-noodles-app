@@ -41,6 +41,10 @@ $router->get('/privacy-policy', function () {
 $router->get('/info', function () {
     (new \app\controller\InfoController())->displayInfo();
 });
+//$router->get('/menu-category/(\d+)', function($id) {
+//    (new HomeController())->getMenuByCategory($id);
+//});
+
 
 //homepage's contact form
 $router->post('/contact-form-post', function () {
