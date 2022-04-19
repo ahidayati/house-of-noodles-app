@@ -212,18 +212,18 @@ if ($("page").data("title") === "dashboard") {
     // to change button color on click
     // TODO
     // add class to local storage on the client side, so when user click to go to other page, button color will be changed
-    let dashboardMenuButtons = document.getElementsByClassName("dashboard-menu-btn");
-    for (let menuButton in dashboardMenuButtons) {
-        dashboardMenuButtons[menuButton].addEventListener("click", function(){
-            let lightButton = document.querySelector(".btn-light");
-
-            if(this.classList.contains("btn-outline-light")) {
-                lightButton.classList.replace("btn light", "btn-outline-light");
-                this.classList.remove("btn-outline-light");
-                this.classList.add("btn-light");
-            }
-        })
-    };
+    // let dashboardMenuButtons = document.getElementsByClassName("dashboard-menu-btn");
+    // for (let menuButton in dashboardMenuButtons) {
+    //     dashboardMenuButtons[menuButton].addEventListener("click", function(){
+    //         let lightButton = document.querySelector(".btn-light");
+    //
+    //         if(this.classList.contains("btn-outline-light")) {
+    //             lightButton.classList.replace("btn light", "btn-outline-light");
+    //             this.classList.remove("btn-outline-light");
+    //             this.classList.add("btn-light");
+    //         }
+    //     })
+    // };
 
     //update header section
     const updateHeaderBtn = document.getElementById("headerSubmit");
