@@ -26,6 +26,9 @@ abstract class AbstractController
     {
         $this->loader = new FilesystemLoader('./templates');
         $this->twig = new Environment($this->loader);
+
+        //add twig global variable for all templates, thus session is accessible in all templates
+        $this->twig->addGlobal('session', $_SESSION);
     }
 
     /**

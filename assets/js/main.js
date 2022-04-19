@@ -49,33 +49,6 @@
 //script exist only on homepage
 if ($("page").data("title") === "homepage") {
 
-    // let menuButtons = document.getElementsByClassName("menu-section-btn");
-    // for (let menuButton in menuButtons) {
-    //     menuButtons[menuButton].addEventListener("click", function(){
-    //         let darkButton = document.querySelector(".btn-dark");
-    //
-    //         if(this.classList.contains("btn-outline-dark")) {
-    //             // change class name to change button color
-    //             this.classList.replace("btn-outline-dark", "btn-dark");
-    //             darkButton.classList.replace("btn-dark", "btn-outline-dark");
-    //
-    //             // const xhr = new XMLHttpRequest();
-    //             // xhr.open("GET", "/menu-category/");
-    //             // xhr.onload = function (){
-    //             //     // console.log(xhr.responseText);
-    //             //     let ourData = JSON.parse(xhr.responseText);
-    //             //     //console.log(ourData);
-    //             //
-    //             //     let menuBox = document.getElementsByClassName("menuItemsBox");
-    //             //
-    //             //     menuBox.innerHTML = ourData;
-    //             //
-    //             // };
-    //             // xhr.send();
-    //
-    //         }
-    //     })
-    // };
 
     //RESERVATION FORM
     const reserveSubmitBtn = document.getElementById("reserveSubmit");
@@ -111,7 +84,8 @@ if ($("page").data("title") === "homepage") {
                 let responseObject  = JSON.parse(xhr.responseText);
                 if (responseObject.status == "OK"){
                     reserveSubmitBtn.setAttribute('disabled', 'true');
-                    document.getElementById("reserveMessageResult").innerHTML="<h3>We have received your request for a table,</br>we'll get back to you as soon as possible!</h3>";
+                    document.getElementById("reserveMessageResult").innerHTML="<h3>We have received your request for a table," +
+                        "</br>we'll get back to you as soon as possible!</h3>";
                     document.getElementById("reserveForm").reset();
                 } else {
                     document.getElementById("reserveMessageResult").innerHTML=responseObject.message;
@@ -133,7 +107,7 @@ if ($("page").data("title") === "homepage") {
     //to submit data on contact form
     contactSubmitBtn.addEventListener("click", function (e){
         e.preventDefault();
-alert('ok');
+
         // get input values
         let nameValue = nameContact.value;
         let emailValue = emailContact.value;
@@ -163,6 +137,37 @@ alert('ok');
         }
         xhr.send("name="+nameValue+"&email="+emailValue+"&phone="+phoneValue+"&subject="+subjectValue+"&message="+messageValue);
     });
+
+    // menu-section buttons
+    let menuButtons = document.getElementsByClassName("menu-section-btn");
+    for (let menuButton in menuButtons) {
+        menuButtons[menuButton].addEventListener("click", function(){
+            let darkButton = document.querySelector(".btn-dark");
+
+            if(this.classList.contains("btn-outline-dark")) {
+                // change class name to change button color
+                this.classList.replace("btn-outline-dark", "btn-dark");
+                darkButton.classList.replace("btn-dark", "btn-outline-dark");
+
+                // const xhr = new XMLHttpRequest();
+                // xhr.open("GET", "/menu-category/");
+                // xhr.onload = function (){
+                //     // console.log(xhr.responseText);
+                //     let ourData = JSON.parse(xhr.responseText);
+                //     //console.log(ourData);
+                //
+                //     let menuBox = document.getElementsByClassName("menuItemsBox");
+                //
+                //     menuBox.innerHTML = ourData;
+                //
+                // };
+                // xhr.send();
+
+            }
+        })
+    };
+
+
 };
 
 //script exist only on admin-login page

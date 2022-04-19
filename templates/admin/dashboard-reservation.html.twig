@@ -4,7 +4,7 @@
 
 {% block body %}
 
-{#    {% if session.use %}#}
+    {% if session.use %}
         <page data-title="dashboard-reservation">
 
             <div class="container">
@@ -107,10 +107,10 @@
             </div>
 
         </page>
-{#    {% else %}#}
-{#        <div class="container mt-5 vh-100">#}
-{#            This page is only accessible by administrator. Please log in <a class="text-black" href="/admin-login">here</a> first.#}
-{#        </div>#}
-{#    {% endif %}#}
+    {% else %}
+        <div class="container mt-5 vh-100">
+            This page is only accessible by administrator. Please log in <a class="text-black" href="/admin-login">here</a> first.
+        </div>
+    {% endif %}
 
 {% endblock %}

@@ -84,10 +84,6 @@ INSERT INTO `contact_form` VALUES
 (16,'Jean Dujardin','bonjour@jean','5555555','Hi','Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.','2022-04-13 11:10:23'),
 (22,'foo','bar@','787','foo','bar','2022-04-13 13:53:41'),
 (23,'foo','bar@','787','foo','bar','2022-04-13 13:54:20'),
-(28,'trr','bar','787','foo','bar','2022-04-13 14:12:39'),
-(30,'ddd','bar','787','foo','bar','2022-04-13 14:19:56'),
-(31,'dsss','bar','787','foo','bar','2022-04-13 14:36:13'),
-(32,'cvc','bar','787','foo','bar','2022-04-13 14:38:11'),
 (33,'cvc','bar','787','foo','bar','2022-04-13 14:38:29'),
 (34,'ds','bar@mail.com','7642797879','foo','bar','2022-04-13 14:53:19');
 /*!40000 ALTER TABLE `contact_form` ENABLE KEYS */;
@@ -360,4 +356,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-14  6:26:02
+-- Dump completed on 2022-04-15  9:22:20

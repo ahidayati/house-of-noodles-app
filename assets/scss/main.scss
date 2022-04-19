@@ -116,6 +116,7 @@ body {
 
   .card {
     overflow: hidden;
+    border: none;
     h5, p {
       color: #000000;
     }
@@ -217,4 +218,73 @@ body {
   a{
     text-decoration: none;
   }
+}
+
+//Mobile devices
+@media (max-width: 480px) {
+
+  //navbar
+  .navbar-logo {
+    width: 30%;
+  }
+  .logo-text {
+    display: none;
+  }
+
+  //header section
+  #header-section {
+    div {
+
+      .header-button {
+        display: none;
+      }
+
+      .header-text {
+        top: 5%;
+        width: 80%;
+        font-weight: bold;
+      }
+    }
+  }
+
+  //testimonial section
+  #testimonial-section {
+    .testimonial-box {
+      padding: 0;
+    }
+  }
+
+}
+
+//Medium devices, tablets
+@media (max-width: 1024px) {
+
+  //header section
+  #header-section {
+    div {
+
+      .header-text {
+        top: 5%;
+        width: 80%;
+        font-weight: bold;
+      }
+    }
+  }
+
+  //values-section
+  #values-section {
+    .card {
+      background: none;
+      border: none;
+      .card-img {
+        width: 30%;
+        margin: auto;
+      }
+    }
+  }
+}
+
+//Large devices (desktops, 1025px and up)
+@media (min-width: 1025px) {
+
 }

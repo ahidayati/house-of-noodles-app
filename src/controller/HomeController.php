@@ -56,6 +56,10 @@ class HomeController extends AbstractController
         ]);
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function getMenuByCategory($id)
     {
         $menuData = (new Database())->viewMenuItems(["*"], [" WHERE","category.id", "=", $id]);
@@ -97,9 +101,9 @@ class HomeController extends AbstractController
 
 
             if (!filter_var($clientEmail, FILTER_VALIDATE_EMAIL)) {
-                $message = "<span class='bg-danger'>Invalid email format</span>";
+                $message = "<span class='alert alert-danger'>Invalid email format</span>";
             } else if (!preg_match('/^[0-9]{10}+$/', $clientPhone)) {
-                $message = "<span class='bg-danger'>Invalid phone format</span>";
+                $message = "<span class='alert alert-danger'>Invalid phone format</span>";
             } else {
                 //input to database
                 $add = (new Database())->addItem("contact_form", ["name", "email", "phone", "subject", "message", "createdAt"], [$clientName, $clientEmail, $clientPhone, $clientSubject, $clientMessage, $clientDatetime]);
@@ -114,7 +118,7 @@ class HomeController extends AbstractController
 
 
         } else {
-            $message = "<span class='bg-danger'>Field(s) cannot be empty</span>";
+            $message = "<span class='alert alert-danger'>Field(s) cannot be empty</span>";
         }
 
         echo json_encode([
@@ -123,6 +127,9 @@ class HomeController extends AbstractController
             ]);
     }
 
+    /**
+     * @return void
+     */
     public function reserveFormTreatment()
     {
         $status = "Fail";
@@ -141,9 +148,9 @@ class HomeController extends AbstractController
 
 
             if (!filter_var($clientEmail, FILTER_VALIDATE_EMAIL)) {
-                $message = "<span class='bg-danger text-light'>Invalid email format</span>";
+                $message = "<span class='alert alert-danger'>Invalid email format</span>";
             } else if (!preg_match('/^[0-9]{10}+$/', $clientPhone)) {
-                $message = "<span class='bg-danger text-light'>Invalid phone format</span>";
+                $message = "<span class='alert alert-dangert'>Invalid phone format</span>";
             } else {
                 //input to database
                 $add = (new Database())->addItem("reservation_form", ["name", "email", "phone", "person", "date","hour", "createdAt", "idStatus"], [$clientName, $clientEmail, $clientPhone, $clientPerson, $clientDate, $clientHour, $clientRequestSent, 1]);
@@ -157,7 +164,7 @@ class HomeController extends AbstractController
 
 
         } else {
-            $message = "<span class='bg-danger text-light'>Field(s) cannot be empty</span>";
+            $message = "<span class='alert alert-danger'>Field(s) cannot be empty</span>";
         }
 
         echo json_encode([

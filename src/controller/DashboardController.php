@@ -16,6 +16,8 @@ class DashboardController extends AbstractController
         parent::__construct();
     }
 
+
+
     /**
      * @return void
      */
@@ -29,8 +31,6 @@ class DashboardController extends AbstractController
         }
         $_SESSION['start'] = time();
 
-        //add twig global variable for all templates, in this case for session
-        $this->twig->addGlobal('session', $_SESSION);
 
         echo $this->render('admin/dashboard-home.html.twig', [
             'headerSection' => (new Database())->viewItem("homepage_item", ["text1", "text2", "updatedAt"], [" WHERE","section", "=", "'header'"]),
@@ -148,6 +148,10 @@ class DashboardController extends AbstractController
         ]);
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function deleteMessage($id)
     {
         try {
@@ -160,6 +164,12 @@ class DashboardController extends AbstractController
         }
     }
 
+    /**
+     * @return void
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function displayDashboardReservation()
     {
         echo $this->render('admin/dashboard-reservation.html.twig', [

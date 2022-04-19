@@ -25,19 +25,19 @@
                 </div>
                 <div class="text-center my-3 row">
                     {% for category in menuCategories %}
-                        <a  class="col-lg col-md-6 py-lg-3 py-md-2 py-sm-2 my-sm-2 btn btn-outline-dark menu-section-btn">{{ category.categoryIcon|raw }} {{ category.categoryTitle }}</a>
+                        <a  class="col-lg py-lg-3 col-md-6 py-md-2 my-sm-2 col-6 my-2 btn btn-outline-dark menu-section-btn">{{ category.categoryIcon|raw }} {{ category.categoryTitle }}</a>
 {#                        href="/menu-category/{{ category.id }}"#}
                     {% endfor %}
                 </div>
                 <div class="row menu-items-row px-lg-5 mx-lg-5">
                     <div class="col-lg-6 offset-lg-3 col-sm-12 menuItemsBox">
 
-{#                        {% for menuItem in menuItemsDefault %}#}
-{#                            <div>#}
-{#                                <div class="d-flex justify-content-between"><span class="menu-item-title">{{ menuItem.menuItem }}</span> <span>{{ menuItem.price }}€</span></div>#}
-{#                                <p>{{ menuItem.menuDescription }}</p>#}
-{#                            </div>#}
-{#                        {% endfor %}#}
+                        {% for menuItem in menuItemsDefault %}
+                            <div>
+                                <div class="d-flex justify-content-between"><span class="menu-item-title">{{ menuItem.menuItem }}</span> <span>{{ menuItem.price }}€</span></div>
+                                <p>{{ menuItem.menuDescription }}</p>
+                            </div>
+                        {% endfor %}
 
 
 
@@ -110,8 +110,8 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button id="reserveSubmit" type="submit" class="btn btn-outline-dark">RESERVE A TABLE</button>
-                        <div id="reserveMessageResult"></div>
+                        <button id="reserveSubmit" type="submit" class="btn btn-outline-dark mb-2">RESERVE A TABLE</button>
+                        <div class="my-auto" id="reserveMessageResult"></div>
                     </div>
                 </form>
             </div>
