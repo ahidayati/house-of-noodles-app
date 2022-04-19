@@ -10,7 +10,7 @@
             <div class="container">
                 <h1 class="my-1">Dashboard - Reservation</h1>
                 <div class="my-1">Hello {{ session.use }}.</div>
-                <div class="my-1">Last Login:</div>
+                <div class="my-1">Last Login: {{ session.userLastLogin|date("d-m-Y H:i:s", "Europe/Paris") }}</div>
                 <div class="row d-flex justify-content-center my-2">
 
                     {% include "common/partial/_dashboard_menu.html.twig" %}

@@ -23,8 +23,15 @@ class DashboardController extends AbstractController
      */
     public function displayDashboardHome()
     {
+//        $now = new \DateTime();
+//        var_dump($now->format("Y-m-d H:i:s"));
+//        die();
+
         //condition for session timeout
         if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 1800)) {
+
+            (new Database())->updateItem("user", ["lastLogin"], [(new \DateTime())->format('Y-m-d H:i:s')], ["id", "=", $_SESSION['userId']]);
+
             session_unset();
             session_destroy();
             echo "session destroyed";
@@ -176,6 +183,13 @@ class DashboardController extends AbstractController
             'viewReservationList' => (new Database())->viewReservations(["reservation_form.id AS idForm", "reservation_form.name", "reservation_form.email", "reservation_form.phone", "reservation_form.person", "reservation_form.date", "reservation_form.hour", "reservation_form.createdAt", "reservation_status.id AS idStatusDetail", "reservation_status.status"]),
 
             'viewAllStatus' => (new Database())->viewItems("reservation_status", ["id", "status"]),
+        ]);
+    }
+
+    public function displayDashboardUser($id)
+    {
+        echo $this->render('admin/dashboard-user.html.twig', [
+            'userData' => (new Database())->viewItem("user", ["username", "firstName"], ["WHERE", "id", "=", $id]),
         ]);
     }
 }

@@ -45,7 +45,7 @@ class Database
             $implodeConditions = NULL;
         }
 
-        $query = "SELECT ".implode(", ", $fieldName)." FROM ".$tableName.$implodeConditions.";";
+        $query = "SELECT ".implode(", ", $fieldName)." FROM ".$tableName." ".$implodeConditions.";";
         $this->pdo->prepare($query);
         $results = $this->pdo->query($query);
         $results->execute();

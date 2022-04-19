@@ -189,16 +189,26 @@ if ($("page").data("title") === "admin-login") {
 
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/src/model/check-admin-login.php", true);
+        xhr.open("POST", "/check-login", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange=function () {
 
             if(xhr.readyState == 4 && xhr.status == 200) {
-                if(xhr.responseText === "Success"){
+
+                let responseObject = JSON.parse(xhr.responseText);
+                if (responseObject.status == "OK") {
                     window.location.href = "/dashboard/";
                 } else {
-                    messages.innerHTML=xhr.responseText;
+                    messages.innerHTML = responseObject.message;
+                    console.log(responseObject);
                 }
+
+
+                // if(xhr.responseText === "Success"){
+                //     window.location.href = "/dashboard/";
+                // } else {
+                //     messages.innerHTML=xhr.responseText;
+                // }
 
             }
         }
@@ -278,14 +288,16 @@ if ($("page").data("title") === "dashboard") {
         e.preventDefault();
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/src/model/admin-logout.php", true);
+        xhr.open("POST", "/check-logout", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange=function () {
             if(xhr.readyState == 4 && xhr.status == 200) {
-                if(xhr.responseText === "Logout"){
+
+                let responseObject = JSON.parse(xhr.responseText);
+                if (responseObject.status == "OK") {
                     window.location.href = "/admin-login";
                 } else {
-                    console.log("response="+xhr.responseText);
+                    console.log(responseObject);
                 }
 
             }

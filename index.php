@@ -62,9 +62,13 @@ $router->get('/admin-login', function () {
     (new \app\controller\AdminController())->displayAdminLogin();
 });
 
-//$router->post('/testlogin', function () {
-//    (new \app\controller\AdminController())->adminLoginCheck();
-//});
+$router->post('/check-login', function () {
+    (new \app\controller\AdminController())->adminLoginCheck();
+});
+
+$router->post('/check-logout', function () {
+    (new \app\controller\AdminController())->adminLogoutCheck();
+});
 
 $router->mount('/dashboard', function() use ($router) {
 
@@ -104,12 +108,12 @@ $router->mount('/dashboard', function() use ($router) {
         (new \app\controller\DashboardController())->displayDashboardReservation();
     });
 
+    // results in '/dashboard/user/id'
+    $router->get('/user/(\d+)', function ($id) {
+        (new \app\controller\DashboardController())->displayDashboardUser($id);
+    });
+
 });
-
-
-//$router->post('/admin-logout', function () {
-//    (new \app\controller\AdminController())->adminLogout();
-//});
 
 // route to send superglobal post to update data
 $router->post('/dashboard/update/header-section', function () {

@@ -32,36 +32,67 @@ class AdminController extends AbstractController
         ]);
     }
 
-//    public function adminLoginCheck()
-//    {
-//        //to get hashed password
-//        //echo password_hash("test", PASSWORD_DEFAULT);
-//
-//        if($_POST['username'] !== "" && $_POST['password'] !== ""){
-//            $user = $_POST['username'];
-//            $pass = $_POST['password'];
-//
-//
-//            $validityCheck = (new Database())->viewItem("user", ["username", "password"], ["username", "=", "'".$user."'"]);
-//
-//            if ($validityCheck == true && password_verify($pass, $validityCheck['password'])){
-//                //if($validityCheck['username'] === $user && $validityCheck['password'] === $pass){
-//
-//                session_start();
-//                $_SESSION['use']=$user;
-//
-//                echo "Success";
-//            }else{
-//                echo "Invalid Username and/or Password.";
-//            }
-//
-//        } else {
-//            echo "Empty Username and/or Password.";
-//        }
-//    }
+    public function adminLoginCheck()
+    {
+        //to get hashed password
+        //echo password_hash("test", PASSWORD_DEFAULT);
 
-//    public function adminLogout()
-//    {
+        $status = "Fail";
+        $message = "";
+
+        if ($_POST['username'] !== "" && $_POST['password'] !== "") {
+            $user = $_POST['username'];
+            $pass = $_POST['password'];
+
+
+            $validityCheck = (new Database())->viewItem("user", ["username", "password", "id", "lastLogin"], [" WHERE", "username", "=", "'" . $user . "'"]);
+
+            if ($validityCheck == true && password_verify($pass, $validityCheck['password'])) {
+                //if($validityCheck['username'] === $user && $validityCheck['password'] === $pass){
+
+                $_SESSION['use'] = $user;
+                $_SESSION['userId'] = $validityCheck['id'];
+                $_SESSION['userLastLogin'] = $validityCheck['lastLogin'];
+
+                $status = "OK";
+            } else {
+                $message = "Invalid Username and/or Password.";
+            }
+
+        } else {
+            $message = "Empty Username and/or Password.";
+        }
+
+        echo json_encode([
+            "status" => $status,
+            "message" => $message
+        ]);
+    }
+
+    public function adminLogoutCheck()
+    {
+        $status = "Fail";
+        $message = "";
+
+        if ($_POST['logout'] == true) {
+
+            (new Database())->updateItem("user", ["lastLogin"], [(new \DateTime())->format('Y-m-d H:i:s')], ["id", "=", $_SESSION['userId']]);
+
+            $_SESSION["use"] = "";
+            $_SESSION['userId'] = "";
+            $_SESSION['userLastLogin'] = "";
+
+            session_destroy();
+            $status = "OK";
+        } else {
+            $message = "Cannot logout. Something's wrong";
+        }
+
+        echo json_encode([
+            "status" => $status,
+            "message" => $message
+        ]);
+
 //        if($_POST['logout'] == true){
 //            session_start();
 //            $_SESSION["use"] = "";
@@ -70,5 +101,5 @@ class AdminController extends AbstractController
 //        } else {
 //            echo $_POST['logout'];
 //        }
-//    }
+    }
 }
