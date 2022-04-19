@@ -11028,33 +11028,35 @@ if ($("page").data("title") === "homepage") {
     });
 
     // menu-section buttons
-    let menuButtons = document.getElementsByClassName("menu-section-btn");
-    for (let menuButton in menuButtons) {
-        menuButtons[menuButton].addEventListener("click", function(){
-            let darkButton = document.querySelector(".btn-dark");
+    // let menuButtons = document.getElementsByClassName("menu-section-btn");
+    // for (let menuButton in menuButtons) {
+    //     menuButtons[menuButton].addEventListener("click", function(){
+    //         let darkButton = document.querySelector(".btn-dark");
+    //
+    //         if(this.classList.contains("btn-outline-dark")) {
+    //             // change class name to change button color
+    //             this.classList.replace("btn-outline-dark", "btn-dark");
+    //             darkButton.classList.replace("btn-dark", "btn-outline-dark");
+    //
+    //             // const xhr = new XMLHttpRequest();
+    //             // xhr.open("GET", "/menu-category/");
+    //             // xhr.onload = function (){
+    //             //     // console.log(xhr.responseText);
+    //             //     let ourData = JSON.parse(xhr.responseText);
+    //             //     //console.log(ourData);
+    //             //
+    //             //     let menuBox = document.getElementsByClassName("menuItemsBox");
+    //             //
+    //             //     menuBox.innerHTML = ourData;
+    //             //
+    //             // };
+    //             // xhr.send();
+    //
+    //         }
+    //     })
+    // };
 
-            if(this.classList.contains("btn-outline-dark")) {
-                // change class name to change button color
-                this.classList.replace("btn-outline-dark", "btn-dark");
-                darkButton.classList.replace("btn-dark", "btn-outline-dark");
 
-                // const xhr = new XMLHttpRequest();
-                // xhr.open("GET", "/menu-category/");
-                // xhr.onload = function (){
-                //     // console.log(xhr.responseText);
-                //     let ourData = JSON.parse(xhr.responseText);
-                //     //console.log(ourData);
-                //
-                //     let menuBox = document.getElementsByClassName("menuItemsBox");
-                //
-                //     menuBox.innerHTML = ourData;
-                //
-                // };
-                // xhr.send();
-
-            }
-        })
-    };
 
 
 };
@@ -11252,3 +11254,41 @@ if ($("page").data("title") === "dashboard-menu-add") {
         // xhr.send("logout=true");
     });
 };
+
+//script exist only on dashboard-reservation page
+if ($("page").data("title") === "dashboard-reservation") {
+
+    let selectForm = "";
+    let statusId = "";
+    let reserveId = "";
+    function getValues(selectOnChange) {
+        selectForm = selectOnChange;
+        console.log("status value="+ selectForm.value+"  reserve id="+ selectForm.id);
+
+        statusId = selectForm.value;
+        reserveId = selectForm.id;
+    }
+
+    // //update status
+    // const updateStatusBtn = document.getElementsByClassName("updateButton");
+    // updateStatusBtn.addEventListener("click", function (e) {
+    //     e.preventDefault();
+    //     alert("ok");
+    //     // get input values
+    //     let selectValue = document.getElementById('inputGroupSelect04').value;
+    //
+    //     console.log(selectValue);
+    //
+    //     // const xhr = new XMLHttpRequest();
+    //     // xhr.open("POST", "/dashboard/update/header-section", true);
+    //     // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //     // xhr.onreadystatechange = function () {
+    //     //     if (xhr.readyState == 4 && xhr.status == 200) {
+    //     //         //console.log(xhr.responseText);
+    //     //         document.getElementById("headerMessageResult").innerHTML = xhr.responseText;
+    //     //     }
+    //     // }
+    //     // xhr.send("headerHeading=" + headingValue + "&headerSubheading=" + subheadingValue);
+    // });
+
+}

@@ -52,18 +52,18 @@
 
                                         <td>
                                         <div class="input-group mb-2">
-                                            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                            <select class="form-select" id="{{ reserve.idForm }}" aria-label="Example select with button addon" onchange="getValues(this)">
                                                 <option>Choose Status</option>
                                                 {% for eachStatus in viewAllStatus %}
-                                                    <option value="{{ category.id }}"
+                                                    <option value="{{ eachStatus.id }}"
                                                             {% if reserve.status == eachStatus.status %}
                                                                 {% set select = 'selected' %}
-                                                                {{ select }}
+                                                                selected = {{ select }}
                                                             {% endif %}
                                                     >{{ eachStatus.status }}</option>
                                                 {% endfor %}
                                             </select>
-                                            <button class="btn btn-success" type="button" title="Save Change"><i class="fa-solid fa-floppy-disk"></i></button>
+                                            {#<a class="btn btn-success" onclick="updateStatus(this)" id="{{ reserve.idForm }}" type="button" title="Save Change"><i class="fa-solid fa-floppy-disk"></i></a>#}
                                         </div>
                                         </td>
 
