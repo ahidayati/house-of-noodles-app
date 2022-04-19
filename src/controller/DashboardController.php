@@ -189,7 +189,7 @@ class DashboardController extends AbstractController
     public function displayDashboardUser($id)
     {
         echo $this->render('admin/dashboard-user.html.twig', [
-            'userData' => (new Database())->viewItem("user", ["username", "firstName"], ["WHERE", "id", "=", $id]),
+            'userData' => (new Database())->viewItem("user", ["username", "firstName", "lastName", "email"], ["WHERE", "id", "=", $id]),
         ]);
     }
 }
