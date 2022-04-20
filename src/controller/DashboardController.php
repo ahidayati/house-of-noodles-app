@@ -206,6 +206,18 @@ class DashboardController extends AbstractController
         }
     }
 
+    public function deleteReservation($id)
+    {
+        try {
+            $db = new Database();
+            $db->deleteItem("reservation_form", ["id"], [$id]);
+
+            header('location: /dashboard/reservation');
+        } catch (Exception $e) {
+            echo "<div class='text-center fs-3 mt-5'>Cannot delete item.</div>" . $e;
+        }
+    }
+
     public function displayDashboardUser($id)
     {
         echo $this->render('admin/dashboard-user.html.twig', [

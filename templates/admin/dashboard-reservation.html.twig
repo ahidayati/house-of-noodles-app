@@ -66,18 +66,16 @@
                                             <div id="reservationResult{{ reserve.idForm }}"></div>
                                         </td>
 
-
-
                                         <td><a href="mailto: {{ reserve.email }}" class="btn btn-primary" title="Reply"><i class="fa-solid fa-reply"></i></a></td>
                                         {#<td><a href="/dashboard/message/delete/{{ message.id }}" class="btn btn-danger" title="Delete"><i class="fa-solid fa-trash-can"></i></a></td>#}
 
                                         <!-- Button trigger modal -->
-                                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ message.id }}" title="Delete">
+                                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ reserve.idForm }}" title="Delete">
                                                 <i class="fa-solid fa-trash-can"></i>
                                         </button></td>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal{{ message.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModal{{ reserve.idForm }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -86,10 +84,11 @@
                                                     </div>
                                                     <div class="modal-body text-dark">
                                                         Are you sure you want to delete this reservation?
+                                                        <br>Deleting this data cannot be undone.
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, I'm not sure</button>
-                                                        <a href="/dashboard/message/delete/{{ message.id }}" type="button" class="btn btn-danger">Yes, I want to delete it</a>
+                                                        <a href="/dashboard/reservation/delete/{{ reserve.idForm }}" type="button" class="btn btn-danger">Yes, I want to delete it</a>
                                                     </div>
                                                 </div>
                                             </div>

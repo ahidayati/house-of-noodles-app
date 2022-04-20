@@ -108,6 +108,16 @@ $router->mount('/dashboard', function() use ($router) {
         (new \app\controller\DashboardController())->displayDashboardReservation();
     });
 
+    // results in '/dashboard/reservation/update'
+    $router->post('/reservation/update', function () {
+        (new \app\controller\DashboardController())->updateReservation();
+    });
+
+    // results in 'dashboard/reservation/delete/id'
+    $router->get('/reservation/delete/(\d+)', function ($id) {
+        (new \app\controller\DashboardController())->deleteReservation($id);
+    });
+
     // results in '/dashboard/user/id'
     $router->get('/user/(\d+)', function ($id) {
         (new \app\controller\DashboardController())->displayDashboardUser($id);
@@ -124,10 +134,6 @@ $router->mount('/dashboard', function() use ($router) {
         (new \app\controller\DashboardController())->updateHours();
     });
 
-    // results in '/dashboard/update/reservation'
-    $router->post('/update/reservation', function () {
-        (new \app\controller\DashboardController())->updateReservation();
-    });
 
 });
 

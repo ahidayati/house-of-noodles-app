@@ -380,7 +380,7 @@ if ($("page").data("title") === "dashboard-reservation") {
         reserveId = selectForm.id;
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/dashboard/update/reservation", true);
+        xhr.open("POST", "/dashboard/reservation/update", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
