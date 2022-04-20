@@ -254,6 +254,15 @@ body {
     }
   }
 
+  //footer
+  .map-responsive {
+    overflow: hidden;
+
+    iframe {
+      width: 100%;
+    }
+  }
+
 }
 
 //Medium devices, tablets
