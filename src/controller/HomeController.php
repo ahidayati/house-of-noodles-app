@@ -101,9 +101,9 @@ class HomeController extends AbstractController
 
 
             if (!filter_var($clientEmail, FILTER_VALIDATE_EMAIL)) {
-                $message = "<span class='alert alert-danger'>Invalid email format</span>";
+                $message = "<span class='text-danger'>Invalid email format</span>";
             } else if (!preg_match('/^[0-9]{10}+$/', $clientPhone)) {
-                $message = "<span class='alert alert-danger'>Invalid phone format</span>";
+                $message = "<span class='text-danger'>Invalid phone format</span>";
             } else {
                 //input to database
                 $add = (new Database())->addItem("contact_form", ["name", "email", "phone", "subject", "message", "createdAt"], [$clientName, $clientEmail, $clientPhone, $clientSubject, $clientMessage, $clientDatetime]);
@@ -118,7 +118,7 @@ class HomeController extends AbstractController
 
 
         } else {
-            $message = "<span class='alert alert-danger'>Field(s) cannot be empty</span>";
+            $message = "<span class='text-danger'>Field(s) cannot be empty</span>";
         }
 
         echo json_encode([
@@ -148,9 +148,9 @@ class HomeController extends AbstractController
 
 
             if (!filter_var($clientEmail, FILTER_VALIDATE_EMAIL)) {
-                $message = "<span class='alert alert-danger'>Invalid email format</span>";
+                $message = "<span class='text-danger'>Invalid email format</span>";
             } else if (!preg_match('/^[0-9]{10}+$/', $clientPhone)) {
-                $message = "<span class='alert alert-dangert'>Invalid phone format</span>";
+                $message = "<span class='text-danger'>Invalid phone format</span>";
             } else {
                 //input to database
                 $add = (new Database())->addItem("reservation_form", ["name", "email", "phone", "person", "date","hour", "createdAt", "idStatus"], [$clientName, $clientEmail, $clientPhone, $clientPerson, $clientDate, $clientHour, $clientRequestSent, 1]);
@@ -164,7 +164,7 @@ class HomeController extends AbstractController
 
 
         } else {
-            $message = "<span class='alert alert-danger'>Field(s) cannot be empty</span>";
+            $message = "<span class='text-danger'>Field(s) cannot be empty</span>";
         }
 
         echo json_encode([
