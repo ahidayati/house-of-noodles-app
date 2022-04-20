@@ -19,28 +19,29 @@
                         <div class="row px-3">
                             <div class="d-flex justify-content-between mb-3">
                                 <h4>User Profile</h4>
+                                <a href="/dashboard/menu/add" class="btn btn-secondary text-light">Add User <i class="fa-solid fa-circle-plus"></i></a>
                             </div>
 
                             <div class="border border-light rounded-3 mb-4">
                                 <form>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Username</label>
-                                        <input type="text" class="form-control" id=""
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="username"
                                                value="{{ userData.username }}">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="userFirstName" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="userFirstName"
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="firstName"
                                                value="{{ userData.firstName }}">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" id=""
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName"
                                                value="{{ userData.lastName }}">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Email</label>
-                                        <input type="text" class="form-control" id=""
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="text" class="form-control" id="email"
                                                value="{{ userData.email }}">
                                     </div>
                                 </form>

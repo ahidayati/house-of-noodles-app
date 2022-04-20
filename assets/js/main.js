@@ -312,26 +312,6 @@ if ($("page").data("title") === "dashboard") {
 if ($("page").data("title") === "dashboard-menu") {
 
 
-    //admin logout button
-    const adminLogoutBtn = document.getElementById("adminLogout");
-    adminLogoutBtn.addEventListener("click", function(e) {
-        e.preventDefault();
-
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/src/model/admin-logout.php", true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange=function () {
-            if(xhr.readyState == 4 && xhr.status == 200) {
-                if(xhr.responseText === "Logout"){
-                    window.location.href = "/admin-login";
-                } else {
-                    console.log("response="+xhr.responseText);
-                }
-
-            }
-        }
-        xhr.send("logout=true");
-    });
 };
 
 //script exist only on dashboard-menu-add page
