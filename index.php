@@ -113,15 +113,25 @@ $router->mount('/dashboard', function() use ($router) {
         (new \app\controller\DashboardController())->displayDashboardUser($id);
     });
 
+    // TO UPDATE DATA
+    // results in '/dashboard/update/header-section'
+    $router->post('/update/header-section', function () {
+        (new \app\controller\DashboardController())->updateHeader();
+    });
+
+    // results in '/dashboard/update/hours-section'
+    $router->post('/update/hours-section', function () {
+        (new \app\controller\DashboardController())->updateHours();
+    });
+
+    // results in '/dashboard/update/reservation'
+    $router->post('/update/reservation', function () {
+        (new \app\controller\DashboardController())->updateReservation();
+    });
+
 });
 
-// route to send superglobal post to update data
-$router->post('/dashboard/update/header-section', function () {
-    (new \app\controller\DashboardController())->updateHeader();
-});
-$router->post('/dashboard/update/hours-section', function () {
-    (new \app\controller\DashboardController())->updateHours();
-});
+
 
 // Custom 404 Handler
 $router->set404(function () {

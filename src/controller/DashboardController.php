@@ -186,6 +186,26 @@ class DashboardController extends AbstractController
         ]);
     }
 
+    public function updateReservation()
+    {
+        if ($_POST['statusId'] !== "") {
+            $statusId = $_POST['statusId'];
+            $reserveId = $_POST['reserveId'];
+
+            //update to database
+            $update = (new Database())->updateItem("reservation_form", ["idStatus"], [$statusId], ["id", "=", $reserveId]);
+
+            if ($update) {
+                echo "<span class='bg-light text-black'>Data is updated. <i class='fa-solid fa-thumbs-up'></i></span>";
+            } else {
+                echo "<span class='bg-danger text-light'>Cannot update data in server</span> " . $update;
+            }
+
+        } else {
+            echo "<span class='bg-danger text-light'>Empty field(s).</span>";
+        }
+    }
+
     public function displayDashboardUser($id)
     {
         echo $this->render('admin/dashboard-user.html.twig', [

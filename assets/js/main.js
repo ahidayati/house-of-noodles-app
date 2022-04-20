@@ -374,10 +374,21 @@ if ($("page").data("title") === "dashboard-reservation") {
     let reserveId = "";
     function getValues(selectOnChange) {
         selectForm = selectOnChange;
-        console.log("status value="+ selectForm.value+"  reserve id="+ selectForm.id);
+        //console.log("status value="+ selectForm.value+"  reserve id="+ selectForm.id);
 
         statusId = selectForm.value;
         reserveId = selectForm.id;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/dashboard/update/reservation", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                //console.log(xhr.responseText);
+                document.getElementById("reservationResult"+reserveId).innerHTML = xhr.responseText;
+            }
+        }
+        xhr.send("statusId=" + statusId + "&reserveId=" + reserveId);
     }
 
     // //update status
@@ -390,16 +401,16 @@ if ($("page").data("title") === "dashboard-reservation") {
     //
     //     console.log(selectValue);
     //
-    //     // const xhr = new XMLHttpRequest();
-    //     // xhr.open("POST", "/dashboard/update/header-section", true);
-    //     // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //     // xhr.onreadystatechange = function () {
-    //     //     if (xhr.readyState == 4 && xhr.status == 200) {
-    //     //         //console.log(xhr.responseText);
-    //     //         document.getElementById("headerMessageResult").innerHTML = xhr.responseText;
-    //     //     }
-    //     // }
-    //     // xhr.send("headerHeading=" + headingValue + "&headerSubheading=" + subheadingValue);
+    //     const xhr = new XMLHttpRequest();
+    //     xhr.open("POST", "/dashboard/update/header-section", true);
+    //     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //     xhr.onreadystatechange = function () {
+    //         if (xhr.readyState == 4 && xhr.status == 200) {
+    //             //console.log(xhr.responseText);
+    //             document.getElementById("headerMessageResult").innerHTML = xhr.responseText;
+    //         }
+    //     }
+    //     xhr.send("headerHeading=" + headingValue + "&headerSubheading=" + subheadingValue);
     // });
 
 }

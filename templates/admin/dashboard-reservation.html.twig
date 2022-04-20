@@ -48,24 +48,25 @@
                                         <td>{{ reserve.date|date("d/m/y") }}</td>
                                         <td>{{ reserve.hour }}</td>
                                         <td>{{ reserve.createdAt|date("H:i d/m/y") }}</td>
-                                        {#<td>{{ reserve.status }}</td>#}
 
                                         <td>
-                                        <div class="input-group mb-2">
-                                            <select class="form-select" id="{{ reserve.idForm }}" aria-label="Example select with button addon" onchange="getValues(this)">
-                                                <option>Choose Status</option>
-                                                {% for eachStatus in viewAllStatus %}
-                                                    <option value="{{ eachStatus.id }}"
-                                                            {% if reserve.status == eachStatus.status %}
-                                                                {% set select = 'selected' %}
-                                                                selected = {{ select }}
-                                                            {% endif %}
-                                                    >{{ eachStatus.status }}</option>
-                                                {% endfor %}
-                                            </select>
-                                            {#<a class="btn btn-success" onclick="updateStatus(this)" id="{{ reserve.idForm }}" type="button" title="Save Change"><i class="fa-solid fa-floppy-disk"></i></a>#}
-                                        </div>
+                                            <div class="input-group mb-2">
+                                                <select class="form-select" id="{{ reserve.idForm }}" aria-label="Example select with button addon" onchange="getValues(this)">
+                                                    {% for eachStatus in viewAllStatus %}
+                                                        <option value="{{ eachStatus.id }}"
+                                                                {% if reserve.status == eachStatus.status %}
+                                                                    {% set select = 'selected' %}
+                                                                    selected = {{ select }}
+                                                                {% endif %}
+                                                        >{{ eachStatus.status }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                {#<a class="btn btn-success" onclick="updateStatus(this)" id="{{ reserve.idForm }}" type="button" title="Save Change"><i class="fa-solid fa-floppy-disk"></i></a>#}
+                                            </div>
+                                            <div id="reservationResult{{ reserve.idForm }}"></div>
                                         </td>
+
+
 
                                         <td><a href="mailto: {{ reserve.email }}" class="btn btn-primary" title="Reply"><i class="fa-solid fa-reply"></i></a></td>
                                         {#<td><a href="/dashboard/message/delete/{{ message.id }}" class="btn btn-danger" title="Delete"><i class="fa-solid fa-trash-can"></i></a></td>#}
@@ -93,7 +94,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </tr>
                                     </tbody>
                                     {% endfor %}
