@@ -25,12 +25,20 @@
                 </div>
                 <div class="text-center my-3 row">
                     {% for category in menuCategories %}
-                        <a  class="col-lg py-lg-3 col-md-6 py-md-2 my-sm-2 col-6 my-2 btn btn-outline-dark menu-section-btn">{{ category.categoryIcon|raw }} {{ category.categoryTitle }}</a>
-{#                        href="/menu-category/{{ category.id }}"#}
+                        <a class="col-lg py-lg-3 col-md-6 py-md-2 my-sm-2 col-6 my-2 btn menu-section-btn
+                            {% if category.categoryTitle == "Main Dishes" %}
+                            btn-dark
+                            {% else %}
+                            btn-outline-dark
+                            {% endif %}
+                            " onclick="getMenu({{ category.id }})">
+                            {{ category.categoryIcon|raw }} {{ category.categoryTitle }}
+                        </a>
+                    {# href="/menu-category/{{ category.id }}" #}
                     {% endfor %}
                 </div>
                 <div class="row menu-items-row px-lg-5 mx-lg-5">
-                    <div class="col-lg-6 offset-lg-3 col-sm-12 menuItemsBox">
+                    <div class="col-lg-6 offset-lg-3 col-sm-12" id="menuItemsBox">
 
                         {% for menuItem in menuItemsDefault %}
                             <div>

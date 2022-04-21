@@ -56,14 +56,15 @@ class HomeController extends AbstractController
         ]);
     }
 
-    /**
-     * @param $id
-     * @return void
-     */
-    public function getMenuByCategory($id)
+
+    public function getMenuByCategory()
     {
-        $menuData = (new Database())->viewMenuItems(["*"], [" WHERE","category.id", "=", $id]);
+        $categoryId = $_POST['id'];
+
+        $menuData = (new Database())->viewMenuItems(["menuItem", "menuDescription", "price"], [" WHERE","category.id", "=", $categoryId]);
+
         echo json_encode($menuData);
+
     }
 
     /**

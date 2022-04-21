@@ -146,7 +146,7 @@ CREATE TABLE `menu` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,7 +159,13 @@ INSERT INTO `menu` VALUES
 (1,'Bangkok Shrimp Pad Thai','Stir-fried rice noodles with shrimp, peanuts, a scrambled egg, and bean sprouts.',1,15,'2022-04-04 08:59:21','2022-04-04 08:59:21'),
 (2,'Bali Chicken Fried Noodles','Thin yellow noodles stir fried in cooking oil with garlic, onion, chicken, cabbages and tomatoes.',2,16,'2022-04-04 08:59:21','2022-04-04 08:59:21'),
 (3,'Saigon Beef Pho Bo','Vietnamese noodle soup dish consisting of broth, rice noodles, herbs, and beef meat.',3,14,'2022-04-04 08:59:21','2022-04-04 08:59:21'),
-(4,'Osaka Spicy Tofu Ramen','Vegetarian ramen with mushroom, carrot, vegetable broth and sweet soy sauce braised tofu.',4,14,'2022-04-04 08:59:21','2022-04-04 08:59:21');
+(4,'Osaka Spicy Tofu Ramen','Vegetarian ramen with mushroom, carrot, vegetable broth and sweet soy sauce braised tofu.',4,14,'2022-04-04 08:59:21','2022-04-04 08:59:21'),
+(5,'Pork Gyoza','Pan-fried Japanese dumplings which make perfect starters or nibbles. Filled with a savory mixture of ground pork and Japanese flavors.',1,4,'2022-04-21 12:00:34','2022-04-21 12:00:34'),
+(6,'Crispy Salmon Salad','Luscious salad that is a riot of flavours, colours and textures. With crispy salmon, crunchy coconut and sweet, sour, spicy sauce.',2,5,'2022-04-21 12:04:11','2022-04-21 12:04:11'),
+(7,'Miso Cold Noodle Salad','Miso adds authentic sweet flavour to the marinade in this cold and fresh noodle salad.',3,4.5,'2022-04-21 12:06:13','2022-04-21 12:06:13'),
+(8,'Ice Cream with Grass Jelly','Grass jelly, also known as leaf jelly or herb jelly, is a traditional Asian herbal dessert that tastes like mint. Perfect to finish your meal.',1,3,'2022-04-21 12:09:38','2022-04-21 12:09:38'),
+(9,'Soju Watermelon Cocktail','An excellent summertime drink with light, dry, slightly flowery, and has a ton of watermelon yumminess. Slushy and cold, making it the perfect way to cool down on a hot day.  ',1,3,'2022-04-21 12:14:11','2022-04-21 12:14:11'),
+(10,'Singapore Sling','The multiple ingredients are what makes it so good. The primary flavor is fruit – pineapple, cherry, lime, and orange – but there are other, earthier tastes in the drink – primarily herbs. ',2,3.5,'2022-04-21 12:14:11','2022-04-21 12:14:11');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +198,14 @@ INSERT INTO `menu_category` VALUES
 (3,2),
 (4,2),
 (4,5),
-(4,6);
+(4,6),
+(5,1),
+(6,1),
+(7,1),
+(8,3),
+(7,5),
+(9,4),
+(10,4);
 /*!40000 ALTER TABLE `menu_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -343,7 +356,7 @@ LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES
 (1,'','','','','annisa','$2y$10$6VMaDWqhGJKZGM8UEX/e4O9LhK0I/QGVQWwd/.v2MMmDrrDjZ9ofC','2022-04-19 12:36:24'),
-(2,'foo firstname','bar lastname','foo@bar','','foo','$2y$10$Ro0MwMP5MEk3as9fye20ee2U3NAqvVpJ8HlE1ndsMunCilTwwdzvS','2022-04-19 13:42:55');
+(2,'fooFirstname','barLastname','foo@bar.com','','foo1','$2y$10$Ro0MwMP5MEk3as9fye20ee2U3NAqvVpJ8HlE1ndsMunCilTwwdzvS','2022-04-19 13:42:55');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -356,4 +369,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-19 15:19:23
+-- Dump completed on 2022-04-21 12:18:06

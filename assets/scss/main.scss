@@ -52,11 +52,17 @@ body {
 
   .menu-items-row {
     //padding: 2rem 150px;
+    #menuItemsBox {
+      height: 350px;
+      display: block;
+      overflow: auto;
 
-    .menu-item-title {
-      font-size: 1.5rem;
-      font-weight: 400;
+      .menu-item-title {
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
     }
+
   }
 
 }

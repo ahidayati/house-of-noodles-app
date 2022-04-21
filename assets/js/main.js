@@ -139,7 +139,60 @@ if ($("page").data("title") === "homepage") {
     });
 
     // menu-section buttons
-    // let menuButtons = document.getElementsByClassName("menu-section-btn");
+    let menuButtons = document.getElementsByClassName("menu-section-btn");
+    for (let i = 0; i < menuButtons.length; i++) {
+        menuButtons[i].addEventListener("click", function () {
+                let darkButton = document.querySelector(".btn-dark");
+            if (this.classList.contains("btn-outline-dark")) {
+                // change class name to change button color
+                this.classList.replace("btn-outline-dark", "btn-dark");
+                darkButton.classList.replace("btn-dark", "btn-outline-dark");
+
+
+
+            }
+        });
+    }
+
+    function getMenu($id) {
+        //console.log($id)
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/menu-category", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                let responseObject = JSON.parse(xhr.responseText);
+                //let secondParse = JSON.parse(responseObject);
+                // console.log(responseObject);
+                // console.log(responseObject[0]['menuItem'])
+
+                // console.log(secondParse);
+                // console.log(secondParse[0]);
+                renderHTML(responseObject);
+            }
+        }
+        xhr.send("id=" + $id);
+    }
+
+    let menuItemsBox = document.getElementById('menuItemsBox');
+    function renderHTML(data) {
+        // menuItemsBox.removeChild();
+
+        let htmlString = "";
+        for (let i = 0; i < data.length; i++) {
+
+            // htmlString += "<p>" + data[i].menuItem + " " + data[i].menuDescription + "</p>";
+            htmlString += "<div> <div class='d-flex justify-content-between'> <span class='menu-item-title'>" + data[i].menuItem +"</span> <span>"+ data[i].price +"€</span> </div> <p>"+ data[i].menuDescription +"</p> </div>";
+            // console.log(data[i].menuItem);
+
+        }
+        menuItemsBox.innerHTML = htmlString;
+    };
+
+
     // for (let menuButton in menuButtons) {
     //     menuButtons[menuButton].addEventListener("click", function(){
     //         let darkButton = document.querySelector(".btn-dark");

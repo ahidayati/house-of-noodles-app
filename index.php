@@ -41,9 +41,9 @@ $router->get('/privacy-policy', function () {
 $router->get('/info', function () {
     (new \app\controller\InfoController())->displayInfo();
 });
-//$router->get('/menu-category/(\d+)', function($id) {
-//    (new HomeController())->getMenuByCategory($id);
-//});
+$router->post('/menu-category', function() {
+    (new HomeController())->getMenuByCategory();
+});
 
 
 //homepage's contact form
