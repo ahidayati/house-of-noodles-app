@@ -6,45 +6,6 @@
 //     alert("jQuery is available")
 // }
 
-// const testdiv = document.getElementById("test-div");
-// const testbtn = document.getElementById("test-btn");
-// let pageCounter = 1;
-//
-// testbtn.addEventListener("click", function () {
-//     const ourRequest = new XMLHttpRequest();
-//     ourRequest.open("GET", "https://learnwebcode.github.io/json-example/animals-"+pageCounter+".json");
-//     ourRequest.onload = function (){
-//         // console.log(ourRequest.responseText);
-//         let ourData = JSON.parse(ourRequest.responseText);
-//         // console.log(ourData[0]);
-//         renderHTML(ourData);
-//         pageCounter++;
-//         if(pageCounter > 3){
-//             testbtn.classList.add("d-none");
-//         }
-//     };
-//     ourRequest.send();
-// });
-//
-// function renderHTML(data){
-//     htmlString = "";
-//
-//     for(i=0; i<data.length; i++){
-//         htmlString += "<p>"+ data[i].name+" is a "+data[i].species+" that likes to eat ";
-//
-//         for(ii=0; ii<data[i].foods.likes.length; ii++){
-//             if ( ii == 0){
-//                 htmlString += data[i].foods.likes[ii];
-//             } else {
-//                 htmlString += " and "+data[i].foods.likes[ii];
-//             }
-//         }
-//
-//         htmlString += ".</p>";
-//     }
-//
-//     testdiv.insertAdjacentHTML('beforeend', htmlString);
-// };
 
 //script exist only on homepage
 if ($("page").data("title") === "homepage") {
@@ -165,12 +126,9 @@ if ($("page").data("title") === "homepage") {
             if (xhr.readyState == 4 && xhr.status == 200) {
 
                 let responseObject = JSON.parse(xhr.responseText);
-                //let secondParse = JSON.parse(responseObject);
                 // console.log(responseObject);
                 // console.log(responseObject[0]['menuItem'])
 
-                // console.log(secondParse);
-                // console.log(secondParse[0]);
                 renderHTML(responseObject);
             }
         }
@@ -191,35 +149,6 @@ if ($("page").data("title") === "homepage") {
         }
         menuItemsBox.innerHTML = htmlString;
     };
-
-
-    // for (let menuButton in menuButtons) {
-    //     menuButtons[menuButton].addEventListener("click", function(){
-    //         let darkButton = document.querySelector(".btn-dark");
-    //
-    //         if(this.classList.contains("btn-outline-dark")) {
-    //             // change class name to change button color
-    //             this.classList.replace("btn-outline-dark", "btn-dark");
-    //             darkButton.classList.replace("btn-dark", "btn-outline-dark");
-    //
-    //             // const xhr = new XMLHttpRequest();
-    //             // xhr.open("GET", "/menu-category/");
-    //             // xhr.onload = function (){
-    //             //     // console.log(xhr.responseText);
-    //             //     let ourData = JSON.parse(xhr.responseText);
-    //             //     //console.log(ourData);
-    //             //
-    //             //     let menuBox = document.getElementsByClassName("menuItemsBox");
-    //             //
-    //             //     menuBox.innerHTML = ourData;
-    //             //
-    //             // };
-    //             // xhr.send();
-    //
-    //         }
-    //     })
-    // };
-
 
 
 
@@ -257,13 +186,6 @@ if ($("page").data("title") === "admin-login") {
                     messages.innerHTML = responseObject.message;
                     console.log(responseObject);
                 }
-
-
-                // if(xhr.responseText === "Success"){
-                //     window.location.href = "/dashboard/";
-                // } else {
-                //     messages.innerHTML=xhr.responseText;
-                // }
 
             }
         }
@@ -423,28 +345,6 @@ if ($("page").data("title") === "dashboard-reservation") {
         }
         xhr.send("statusId=" + statusId + "&reserveId=" + reserveId);
     }
-
-    // //update status
-    // const updateStatusBtn = document.getElementsByClassName("updateButton");
-    // updateStatusBtn.addEventListener("click", function (e) {
-    //     e.preventDefault();
-    //     alert("ok");
-    //     // get input values
-    //     let selectValue = document.getElementById('inputGroupSelect04').value;
-    //
-    //     console.log(selectValue);
-    //
-    //     const xhr = new XMLHttpRequest();
-    //     xhr.open("POST", "/dashboard/update/header-section", true);
-    //     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //     xhr.onreadystatechange = function () {
-    //         if (xhr.readyState == 4 && xhr.status == 200) {
-    //             //console.log(xhr.responseText);
-    //             document.getElementById("headerMessageResult").innerHTML = xhr.responseText;
-    //         }
-    //     }
-    //     xhr.send("headerHeading=" + headingValue + "&headerSubheading=" + subheadingValue);
-    // });
 
 }
 
