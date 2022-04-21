@@ -123,6 +123,11 @@ $router->mount('/dashboard', function() use ($router) {
         (new \app\controller\DashboardController())->displayDashboardUser($id);
     });
 
+    // results in '/dashboard/update/user'
+    $router->post('/update/user', function () {
+        (new \app\controller\DashboardController())->updateUser();
+    });
+
     // TO UPDATE DATA
     // results in '/dashboard/update/header-section'
     $router->post('/update/header-section', function () {

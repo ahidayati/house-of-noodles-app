@@ -394,3 +394,33 @@ if ($("page").data("title") === "dashboard-reservation") {
     // });
 
 }
+
+//script exist only on dashboard-user page
+if ($("page").data("title") === "dashboard-user") {
+
+    //update user profile
+    const userUpdateBtn = document.getElementById("userSubmit");
+    userUpdateBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // get input values
+        let usernameValue = document.getElementById('username').value;
+        let firstNameValue = document.getElementById('firstName').value;
+        let lastNameValue = document.getElementById('lastName').value;
+        let emailValue = document.getElementById('email').value;
+        let idValue = document.getElementById('userId').value;
+
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/dashboard/update/user", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                //console.log(xhr.responseText);
+                document.getElementById("userMessageResult").innerHTML = xhr.responseText;
+            }
+        }
+        xhr.send("username=" + usernameValue + "&firstName=" + firstNameValue + "&lastName=" + lastNameValue + "&email=" + emailValue + "&userId=" + idValue);
+    });
+
+}

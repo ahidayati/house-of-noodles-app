@@ -224,4 +224,28 @@ class DashboardController extends AbstractController
             'userData' => (new Database())->viewItem("user", ["username", "firstName", "lastName", "email"], ["WHERE", "id", "=", $id]),
         ]);
     }
+
+    public function updateUser()
+    {
+        if ($_POST['username'] !== "" && $_POST['firstName'] !== "" && $_POST['lastName'] !== "" && $_POST['email'] !== "" && $_POST['userId'] !== "") {
+            $username = $_POST['username'];
+            $firstName = $_POST['firstName'];
+            $lastName = $_POST['lastName'];
+            $email = $_POST['email'];
+            $userId = $_POST['userId'];
+
+            //update to database
+            $update = (new Database())->updateItem("user", ["username", "firstName", "lastName", "email"], [$username, $firstName, $lastName, $email], ["id", "=", $userId]);
+
+            if ($update) {
+                echo "<span class='bg-light text-black'>Data successfully updated. <i class='fa-solid fa-thumbs-up'></i></span>";
+            } else {
+                echo "<span class='bg-danger text-light'>Cannot update data in server.</span> " . $update;
+            }
+
+        } else {
+            echo "<span class='bg-danger text-light'>Empty field(s).</span>";
+        }
+    }
+
 }

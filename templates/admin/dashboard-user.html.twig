@@ -24,6 +24,8 @@
 
                             <div class="border border-light rounded-3 mb-4">
                                 <form>
+                                    <input type="hidden" id="userId" name="userId" value="{{ session.userId }}">
+
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>
                                         <input type="text" class="form-control" id="username"
@@ -49,10 +51,10 @@
                                     <a class="btn btn-warning"><i class="fa-solid fa-key"></i> Change Password</a>
                                 </div>
                                 <div class="text-center mb-3">
-                                    <button class="btn btn-primary" id="headerSubmit">Save Update <i
+                                    <button class="btn btn-primary" id="userSubmit">Save Update <i
                                                 class="fa-solid fa-floppy-disk"></i></button>
                                 </div>
-                                <div id="headerMessageResult"></div>
+                                <div id="userMessageResult"></div>
                             </div>
 
                         </div>
