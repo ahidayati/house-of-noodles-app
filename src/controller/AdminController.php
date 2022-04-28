@@ -32,6 +32,9 @@ class AdminController extends AbstractController
         ]);
     }
 
+    /**
+     * @return void
+     */
     public function adminLoginCheck()
     {
         //to get hashed password
@@ -69,6 +72,9 @@ class AdminController extends AbstractController
         ]);
     }
 
+    /**
+     * @return void
+     */
     public function adminLogoutCheck()
     {
         $status = "Fail";

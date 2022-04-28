@@ -115,6 +115,7 @@ if ($("page").data("title") === "homepage") {
         });
     }
 
+    //function to change menu content
     function getMenu($id) {
         //console.log($id)
 

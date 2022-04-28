@@ -28,6 +28,8 @@ class DashboardController extends AbstractController
 //        die();
 
         //condition for session timeout
+
+
         if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 1800)) {
 
             (new Database())->updateItem("user", ["lastLogin"], [(new \DateTime())->format('Y-m-d H:i:s')], ["id", "=", $_SESSION['userId']]);
@@ -38,20 +40,20 @@ class DashboardController extends AbstractController
         }
         $_SESSION['start'] = time();
 
-
+        $db = new Database();
         echo $this->render('admin/dashboard-home.html.twig', [
             'headerSection' => (new Database())->viewItem("homepage_item", ["text1", "text2", "updatedAt"], [" WHERE","section", "=", "'header'"]),
 
-            'hoursSectionMain' => (new Database())->viewItem("homepage_item", ["text1"], [" WHERE", "section", "=", "'hours-main'"]),
-            'hoursSection1' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'hours-1'"]),
-            'hoursSection2' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'hours-2'"]),
+            'hoursSectionMain' => $db->viewItem("homepage_item", ["text1"], [" WHERE", "section", "=", "'hours-main'"]),
+            'hoursSection1' => $db->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'hours-1'"]),
+            'hoursSection2' => $db->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'hours-2'"]),
 
-            'testimonialSection' => (new Database())->viewItem("homepage_item", ["text2", "text3", "updatedAt"], [" WHERE", "section", "=", "'testimonial'"]),
+            'testimonialSection' => $db->viewItem("homepage_item", ["text2", "text3", "updatedAt"], [" WHERE", "section", "=", "'testimonial'"]),
 
-            'valuesMainSection' => (new Database())->viewItem("homepage_item", ["text1", "text2", "updatedAt"], [" WHERE", "section", "=", "'card-main'"]),
-            'valuesSection1' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-1'"]),
-            'valuesSection2' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-2'"]),
-            'valuesSection3' => (new Database())->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-3'"]),
+            'valuesMainSection' => $db->viewItem("homepage_item", ["text1", "text2", "updatedAt"], [" WHERE", "section", "=", "'card-main'"]),
+            'valuesSection1' => $db->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-1'"]),
+            'valuesSection2' => $db->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-2'"]),
+            'valuesSection3' => $db->viewItem("homepage_item", ["text1", "text2"], [" WHERE", "section", "=", "'card-3'"]),
         ]);
     }
 
