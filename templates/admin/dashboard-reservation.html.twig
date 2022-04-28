@@ -22,81 +22,97 @@
                             </div>
 
                             <div class="border border-light rounded-3 mb-4">
-                                <table class="table text-light">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Phone</th>
-                                        <th scope="col">Person</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Time</th>
-                                        <th scope="col">Sent</th>
-                                        <th scope="col">Status</th>
-                                        <th class="text-center" colspan="2" scope="colgroup">Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for reserve in viewReservationList %}
-                                    <tr>
-                                        <th scope="row">{{ loop.index }}</th>
-                                        <td>{{ reserve.name }}</td>
-                                        <td>{{ reserve.email }}</td>
-                                        <td>{{ reserve.phone }}</td>
-                                        <td>{{ reserve.person }}</td>
-                                        <td>{{ reserve.date|date("d/m/y") }}</td>
-                                        <td>{{ reserve.hour }}</td>
-                                        <td>{{ reserve.createdAt|date("H:i d/m/y") }}</td>
+                                <div class="table-responsive table-responsive-md table-responsive-lg">
+                                    <table class="table text-light">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">Person</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Time</th>
+                                            <th scope="col">Sent</th>
+                                            <th scope="col">Status</th>
+                                            <th class="text-center" colspan="2" scope="colgroup">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for reserve in viewReservationList %}
+                                        <tr>
+                                            <th scope="row">{{ loop.index }}</th>
+                                            <td>{{ reserve.name }}</td>
+                                            <td>{{ reserve.email }}</td>
+                                            <td>{{ reserve.phone }}</td>
+                                            <td>{{ reserve.person }}</td>
+                                            <td>{{ reserve.date|date("d/m/y") }}</td>
+                                            <td>{{ reserve.hour }}</td>
+                                            <td>{{ reserve.createdAt|date("H:i d/m/y") }}</td>
 
-                                        <td>
-                                            <div class="input-group mb-2">
-                                                <select class="form-select" id="{{ reserve.idForm }}" aria-label="Example select with button addon" onchange="getValues(this)">
-                                                    {% for eachStatus in viewAllStatus %}
-                                                        <option value="{{ eachStatus.id }}"
-                                                                {% if reserve.status == eachStatus.status %}
+                                            <td>
+                                                <div class="input-group mb-2">
+                                                    <select class="form-select" id="{{ reserve.idForm }}"
+                                                            aria-label="Example select with button addon"
+                                                            onchange="getValues(this)">
+                                                        {% for eachStatus in viewAllStatus %}
+                                                            <option value="{{ eachStatus.id }}"
+                                                                    {% if reserve.status == eachStatus.status %}
                                                                     {% set select = 'selected' %}
-                                                                    selected = {{ select }}
+                                                                    selected= {{ select }}
                                                                 {% endif %}
-                                                        >{{ eachStatus.status }}</option>
-                                                    {% endfor %}
-                                                </select>
-                                                {#<a class="btn btn-success" onclick="updateStatus(this)" id="{{ reserve.idForm }}" type="button" title="Save Change"><i class="fa-solid fa-floppy-disk"></i></a>#}
-                                            </div>
-                                            <div id="reservationResult{{ reserve.idForm }}"></div>
-                                        </td>
+                                                            >{{ eachStatus.status }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    {# <a class="btn btn-success" onclick="updateStatus(this)" id="{{ reserve.idForm }}" type="button" title="Save Change"><i class="fa-solid fa-floppy-disk"></i></a> #}
+                                                </div>
+                                                <div id="reservationResult{{ reserve.idForm }}"></div>
+                                            </td>
 
-                                        <td><a href="mailto: {{ reserve.email }}" class="btn btn-primary" title="Reply"><i class="fa-solid fa-reply"></i></a></td>
-                                        {#<td><a href="/dashboard/message/delete/{{ message.id }}" class="btn btn-danger" title="Delete"><i class="fa-solid fa-trash-can"></i></a></td>#}
+                                            <td><a href="mailto: {{ reserve.email }}" class="btn btn-primary"
+                                                   title="Reply"><i class="fa-solid fa-reply"></i></a></td>
+                                            {# <td><a href="/dashboard/message/delete/{{ message.id }}" class="btn btn-danger" title="Delete"><i class="fa-solid fa-trash-can"></i></a></td> #}
 
-                                        <!-- Button trigger modal -->
-                                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ reserve.idForm }}" title="Delete">
-                                                <i class="fa-solid fa-trash-can"></i>
-                                        </button></td>
+                                            <!-- Button trigger modal -->
+                                            <td>
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal{{ reserve.idForm }}"
+                                                        title="Delete">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </button>
+                                            </td>
 
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal{{ reserve.idForm }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title text-dark" id="exampleModalLabel">Delete Reservation</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body text-dark">
-                                                        Are you sure you want to delete this reservation?
-                                                        <br>Deleting this data cannot be undone.
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, I'm not sure</button>
-                                                        <a href="/dashboard/reservation/delete/{{ reserve.idForm }}" type="button" class="btn btn-danger">Yes, I want to delete it</a>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal{{ reserve.idForm }}" tabindex="-1"
+                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title text-dark" id="exampleModalLabel">
+                                                                Delete Reservation</h5>
+                                                            <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body text-dark">
+                                                            Are you sure you want to delete this reservation?
+                                                            <br>Deleting this data cannot be undone.
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">No, I'm not sure
+                                                            </button>
+                                                            <a href="/dashboard/reservation/delete/{{ reserve.idForm }}"
+                                                               type="button" class="btn btn-danger">Yes, I want to
+                                                                delete it</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </tr>
-                                    </tbody>
-                                    {% endfor %}
-                                </table>
+                                        </tr>
+                                        </tbody>
+                                        {% endfor %}
+                                    </table>
+                                </div>
                             </div>
 
 
