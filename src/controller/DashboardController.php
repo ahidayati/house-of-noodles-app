@@ -23,20 +23,18 @@ class DashboardController extends AbstractController
      */
     public function displayDashboardHome()
     {
-//        $now = new \DateTime();
-//        var_dump($now->format("Y-m-d H:i:s"));
-//        die();
+        //$now = new \DateTime();
+        //var_dump($now->format("Y-m-d H:i:s"));
+        //die();
 
         //condition for session timeout
-
-
         if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 1800)) {
 
             (new Database())->updateItem("user", ["lastLogin"], [(new \DateTime())->format('Y-m-d H:i:s')], ["id", "=", $_SESSION['userId']]);
 
             session_unset();
             session_destroy();
-            echo "session destroyed";
+            //echo "session destroyed";
         }
         $_SESSION['start'] = time();
 
@@ -224,6 +222,26 @@ class DashboardController extends AbstractController
     {
         echo $this->render('admin/dashboard-user.html.twig', [
             'userData' => (new Database())->viewItem("user", ["username", "firstName", "lastName", "email"], ["WHERE", "id", "=", $id]),
+        ]);
+    }
+
+    /**
+     * @return void
+     */
+    public function displayDashboardUserAdd()
+    {
+        echo $this->render('admin/dashboard-user-add.html.twig', [
+
+        ]);
+    }
+
+    /**
+     * @return void
+     */
+    public function displayDashboardUserChangePassword()
+    {
+        echo $this->render('admin/dashboard-user-password-change.html.twig', [
+
         ]);
     }
 

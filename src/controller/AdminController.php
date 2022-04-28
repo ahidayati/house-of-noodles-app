@@ -48,14 +48,14 @@ class AdminController extends AbstractController
             $pass = $_POST['password'];
 
 
-            $validityCheck = (new Database())->viewItem("user", ["username", "password", "id", "lastLogin"], [" WHERE", "username", "=", "'" . $user . "'"]);
+            $validityCheck = (new Database())->viewItem("user", ["username", "password", "id", "lastLogin", "role"], [" WHERE", "username", "=", "'" . $user . "'"]);
 
             if ($validityCheck == true && password_verify($pass, $validityCheck['password'])) {
-                //if($validityCheck['username'] === $user && $validityCheck['password'] === $pass){
 
                 $_SESSION['use'] = $user;
                 $_SESSION['userId'] = $validityCheck['id'];
                 $_SESSION['userLastLogin'] = $validityCheck['lastLogin'];
+                $_SESSION['userRole'] = $validityCheck['role'];
 
                 $status = "OK";
             } else {

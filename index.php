@@ -123,6 +123,16 @@ $router->mount('/dashboard', function() use ($router) {
         (new \app\controller\DashboardController())->displayDashboardUser($id);
     });
 
+    // results in '/dashboard/user/add'
+    $router->get('/user/add', function () {
+        (new \app\controller\DashboardController())->displayDashboardUserAdd();
+    });
+
+    // results in '/dashboard/user/change-password'
+    $router->get('/user/change-password', function () {
+        (new \app\controller\DashboardController())->displayDashboardUserChangePassword();
+    });
+
     // results in '/dashboard/update/user'
     $router->post('/update/user', function () {
         (new \app\controller\DashboardController())->updateUser();
