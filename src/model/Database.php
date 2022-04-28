@@ -37,7 +37,7 @@ class Database
      * @param array $conditions
      * @return bool|array
      */
-    public function viewItem(string $tableName, array $fieldName, array $conditions) :bool|array
+    public function viewItem(string $tableName, array $fieldName, array $conditions = NULL) :bool|array
     {
         if (!empty($conditions)){
             $implodeConditions = implode(" ", $conditions);
