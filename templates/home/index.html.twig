@@ -25,7 +25,7 @@
                 </div>
                 <div class="text-center my-3 row">
                     {% for category in menuCategories %}
-                        <a class="col-lg py-lg-3 col-md-6 py-md-2 my-sm-2 col-6 my-2 btn menu-section-btn
+                        <span class="col-lg py-lg-3 col-md-6 py-md-2 my-sm-2 col-6 my-2 btn menu-section-btn
                             {% if category.categoryTitle == "Main Dishes" %}
                             btn-dark
                             {% else %}
@@ -33,7 +33,7 @@
                             {% endif %}
                             " onclick="getMenu({{ category.id }})">
                             {{ category.categoryIcon|raw }} {{ category.categoryTitle }}
-                        </a>
+                        </span>
                     {# href="/menu-category/{{ category.id }}" #}
                     {% endfor %}
                 </div>
@@ -144,9 +144,9 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-12">
                         <div class="card text-white">
-                            <img src="/assets/images/card-1.jpg" class="card-img" alt="card-image">
+                            <img src="/assets/images/card-1.avif" class="card-img" alt="card-image">
                             <div class="card-body text-center">
-                                <h5 class="card-title text-center"><i class="values-icon fa-solid fa-fish-fins"></i></h5>
+                                <p class="card-title text-center"><i class="values-icon fa-solid fa-fish-fins"></i></p>
                                 <h5>{{ valuesSection1.text1 }}</h5>
                                 <p class="card-text">{{ valuesSection1.text2 }}</p>
                             </div>
@@ -154,9 +154,9 @@
                     </div>
                     <div class="col-lg-4 col-sm-12">
                         <div class="card text-white">
-                            <img src="/assets/images/card-2.jpg" class="card-img" alt="card-image">
+                            <img src="/assets/images/card-2.avif" class="card-img" alt="card-image">
                             <div class="card-body text-center">
-                                <h5 class="card-title text-center"><i class="values-icon fa-solid fa-fire-burner"></i></h5>
+                                <p class="card-title text-center"><i class="values-icon fa-solid fa-fire-burner"></i></p>
                                 <h5>{{ valuesSection2.text1 }}</h5>
                                 <p class="card-text">{{ valuesSection2.text2 }}</p>
                             </div>
@@ -164,9 +164,9 @@
                     </div>
                     <div class="col-lg-4 col-sm-12">
                         <div class="card text-white">
-                            <img src="/assets/images/card-3.jpg" class="card-img" alt="card-image">
+                            <img src="/assets/images/card-3.avif" class="card-img" alt="card-image">
                             <div class="card-body text-center">
-                                <h5 class="card-title text-center"><i class="values-icon fa-solid fa-heart"></i></h5>
+                                <p class="card-title text-center"><i class="values-icon fa-solid fa-heart"></i></p>
                                 <h5>{{ valuesSection3.text1 }}</h5>
                                 <p class="card-text">{{ valuesSection3.text2 }}</p>
                             </div>
